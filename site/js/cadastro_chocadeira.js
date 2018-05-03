@@ -32,16 +32,8 @@ function addSensor(){
 	if(qtde==0){
 		lista_sensores = document.getElementById('add').value = sensor+','+entrada;
 		qtde++;
-		if(sensor=='Luz'){
-			luz++;
-			alert(luz);
-		}
 	}else{
 		lista_sensores = document.getElementById('add').value = lista_sensores+'\n'+sensor+','+entrada;
 		qtde++;
-		if(sensor=='Luz'){
-			luz++;
-			alert(luz);
-		}
 	}
 }

@@ -14,6 +14,11 @@ function abrirFrame(id){
 		document.getElementById('frame').src = "../area_chocadeira/grafico.html";
 	}
 	if(tipo == 'logout'){
-		confirm('Tem certeza que deseja sair?');
+		 var confirmar = confirm("Tem certeza que deseja sair?");
+			if (confirmar == true){
+				alert('Saindo...');
+			}else{
+				
+			}
 	}
 }
