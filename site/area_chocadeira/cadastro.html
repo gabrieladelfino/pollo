@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="../estilos/cadastro_chocadeira.css">
+		<link rel="stylesheet" type="text/css" href="../estilos/scroll.css">
 		<script lang="javascript" src="../js/cadastro_chocadeira.js">
 		</script>
 	</head>
@@ -17,12 +18,13 @@
 		<form>
 			
 			<label for="nome">Nome da chocadeira:</label>
+			<br/>
 			<input type="text" id="nome"/>
 
 			<br/><br/>
 
 			<label for="dispositivo">Dispositivo:</label>
-			
+			<br/>
 			<select>
 				<option value="dispositivo1">Dispositivo 1</option>
 				<option value="dispositivo2">Dispositivo 2</option>
@@ -34,7 +36,8 @@
 			
 			<br/><br/>
 			
-			<label for="dispositivo">Tipo de Ovo:</label>
+			<label for="dispositivo">Tipo de Ovo:</label> <label for="ovos">Quantidade de ovos:</label>
+			<br/>
 				<select>
 					<option value="dispositivo1">Ovo 1</option>
 					<option value="dispositivo2">Ovo 2</option>
@@ -44,20 +47,20 @@
 				
 			<button type="button" id="btnMaisOvo" onclick="abrir_ovo(this)">+</button>
 				
-			<br/><br/>
 			
-			<label for="ovos">Quantidade de ovos:</label>
 			<input type="text" id="qtd_ovos_abrigados"/>
-			<br><br> 
+			<br/><br/>
 				
-			<label for="entrada">Sensor: </label>
+			<label for="entrada">Sensor: </label> <label for="entrada">Entrada: </label>
+			<br/>
 				<select id="sensor">
 				  <option value="Luz">Luz</option>
 				  <option value="Umidade">Umidade</option>
 				  <option value="Temperatura">Temperatura</option>
 				</select>
 				
-			<label for="entrada">Entrada: </label>
+			
+			
 				<select id="entrada">
 				  <option value="1">1</option>
 				  <option value="2">2</option>
@@ -76,7 +79,7 @@
 			
 			<br><br>
 			
-			<button type="button">Prosseguir</button> &nbsp&nbsp <button type="button">Cancelar</button>        
+			<button type="button">Prosseguir</button> <button type="button">Cancelar</button>        
 
 			
 			<!-- POP UP - Dispositivo -->

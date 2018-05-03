@@ -32,10 +32,9 @@ function verifica_senha(){
 function aceita_login(){ 
 
     if(aceita_user == 1 && aceita_senha == 1){
-        alert('logou essa poha');
         return true;
     }else{
-        alert('errrrroowww');
+        alert('User ou senha inválidos');
         return false;
     }
 
