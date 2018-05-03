@@ -1,0 +1,147 @@
+/* CORPO */
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background: white;
+	color: #fff !important;
+	overflow-x: hidden;
+}
+
+#container{
+	width: 90%;
+	height: 100%;
+	float: left;
+	background: none;
+}
+
+#espaco{
+	width: 10%;
+	height: 100%;
+	float: right;
+	background: none;
+}
+
+#icon{
+	width: 75%;
+	height: 15%;
+	background: none;
+	margin: auto;
+	padding: 10;
+}
+
+.img-add{
+	width: 100%;
+	height: 100%;
+	background: none;
+}
+
+.monitor {
+	width: 20%;
+	height: 40%; 
+	background: yellow; 
+	padding: 10 10 10 10; 
+	margin: 30 50;
+	float: left;
+	border-radius: 35px;
+	-webkit-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
+	-moz-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
+	box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
+}
+
+.menu{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background: brown;
+	display: none;
+	border-radius: 35px;
+}
+
+.botao{
+	width: 25%;
+	height: 25%;
+	margin: 15% 12% 10% 12%;
+	background: none;
+	float: left;
+	display: none;
+}
+
+img{
+	width: 100%;
+	height: 100%;
+}
+
+/* botao de adcionar */
+
+.botao-add {
+	width: 15%;
+	height: 30%; 
+	background: none; 
+	padding: 25 25 25 25; 
+	margin: 45 50;
+	float: left;
+	border-radius: 35px;
+	border: dashed 4px gray;
+	opacity: 0.5;
+}
+
+.img-botao-add{
+	width: 100%;
+	height: 100%;
+}
+
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}

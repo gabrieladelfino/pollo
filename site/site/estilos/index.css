@@ -1,0 +1,167 @@
+/* CORPO */
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	color: #fff !important;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+main{
+	position: relative;
+	display: block;
+	width:  auto;
+	height: 100%;
+	margin: auto;
+	padding-top: 2%; 
+	padding-bottom: 2%;
+}
+
+main{
+	-webkit-box-shadow: -15px 17px 32px -5px rgba(82,79,82,0.49);
+	-moz-box-shadow: -15px 17px 32px -5px rgba(82,79,82,0.49);
+	box-shadow: -15px 17px 32px -5px rgba(82,79,82,0.49);
+}
+
+/* FORMULÁRIO */
+
+#logo{
+	width: 100%;
+	height: auto;
+	margin: auto;
+	background: none;
+}
+
+img{
+	width: 40%;
+	margin: 0;
+	background: none;
+}
+
+.titulo{
+	width: 100%;
+ 	height: auto;
+ 	background: none;
+}
+
+.pollo{
+	width: 100%;
+	background:none;
+	padding: 20 0 20 0;
+}
+
+p{
+	font-size: 4vw;
+	font-family: arial;
+	text-align: center;
+	color: #3D2520;
+}
+
+
+form{
+	width: 25%;
+	height: auto;
+	background: linear-gradient(orange,#FDC90F);
+	padding: 30 25 30 25;
+	border-radius: 10px;
+	margin:auto;
+}
+
+form{
+	-webkit-box-shadow: -15px 17px 32px -5px rgba(82,79,82,0.49);
+	-moz-box-shadow: -15px 17px 32px -5px rgba(82,79,82,0.49);
+	box-shadow: -15px 17px 32px -5px rgba(82,79,82,0.49);
+}
+
+label{
+	width: 100%;
+	text-align: justify;
+	font-family:arial;
+	font-size: 1.5vw;
+	color: #3D2520;
+	background: none;
+	font-weight: bold;
+	margin: 0 5 0 20;
+}
+
+input{
+	width: 90%;
+	height: 5%;
+	margin: 10 10 0 15;
+	padding: 10 10 10 10;
+	float: center;
+	color: #424242;
+	font-size: 14.5px;
+	background-color: white;
+	border-radius: 10px;
+	-moz-border-radius:10px;
+    -webkit-border-radius:10px;
+	border: none;
+	-webkit-box-shadow: -5px 5px 5px -5px rgba(82,79,82,0.49);
+	-moz-box-shadow: -5px 5px 5px -5px rgba(82,79,82,0.49);
+	box-shadow: -5px 5px 5px -5px rgba(82,79,82,0.49);
+	outline: none;
+}
+
+input:focus{
+	border: solid 2px;
+	border-color: rgba(100, 100, 255, 0.5);
+}
+
+button{
+	color:#3D2520;
+	font-size: 1.5vw;
+	width: 90%;
+	height: 5%;
+	border: none;
+	margin: 10 10 0 15;
+	padding: 0 10 0 10;
+	text-align: center;
+	border-radius: 10px;
+	background-color: white;
+	font-weight: bold;
+	-webkit-box-shadow: -5px 5px 5px -5px rgba(82,79,82,0.49);
+	-moz-box-shadow: -5px 5px 5px -5px rgba(82,79,82,0.49);
+	box-shadow: -5px 5px 5px -5px rgba(82,79,82,0.49);
+}
+
+button:hover{
+	background-color: #795548;
+	color: white;
+}
+
+#rodape{
+	width: 100%;
+	height: 30%;
+	margin: auto;
+	margin-top: 150px;
+	background-color: transparent;
+}
+
+a{
+	text-decoration: none;
+	color: #3D2520;
+}
+
+a:hover{
+	color: #795548;
+	opacity: 1;
+}
+
+.texto{
+	text-align: center;
+	margin: auto;
+	color: white;
+	background-color: transparent;
+}
+
+.sexo{
+	text-align: center;
+	background-color: red;
+}
+
+
+/* CSS */
