@@ -64,7 +64,14 @@ p{
 form{
 	width: 25%;
 	height: auto;
-	background: linear-gradient(orange,#FDC90F);
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff5454+0,ffee00+92 */
+background: #ff5454; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #ff5454 0%, #ffee00 92%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  #ff5454 0%,#ffee00 92%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  #ff5454 0%,#ffee00 92%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5454', endColorstr='#ffee00',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
 	padding: 30 25 30 25;
 	border-radius: 10px;
 	margin:auto;

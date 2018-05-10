@@ -4,8 +4,8 @@
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="../estilos/inicial.css"/>
 		<link rel="stylesheet" type="text/css" href="../estilos/scroll.css"/>
-		<link rel="icon" type="image/x-icon" href="ico.png"/>
-		<link rel="icon" type="image/icon" href="ico.png"/>
+		<link rel="icon" type="image/x-icon" href="../imagens/ico.png"/>
+		<link rel="icon" type="image/icon" href="../imagens/ico.png"/>
 		<meta charset="utf-8"/>
 		<script lang="javascript" src="../js/inicial.js"></script>
 	</head>
@@ -13,50 +13,72 @@
 	<body>
 	
 		<header>
-			<div id="logo">
-				<!-- <img src="imagens/pollo.png"> -->
+		
+			<div class="abrirMenu" id="abrirMenu" onclick="mostrar_menu()">
+				<img id="perfil" src="../imagens/list.png" width="40px" height="40px" />
 			</div>
 		
 			<div class="titulo-pagina">
 				<p class="titulo-pagina-p">Bem vindo</p>
 			</div>
 			
-			<div id="perfil">
-				<img class="perfil" src="../imagens/user.png" width="40px" height="40px">
+			<div class="perfil">
+				<img src="../imagens/user.png" width="40px" height="40px"/>
 			</div>
 				
+			<div class="border"></div>
 		</header>
 
+				
+		
 		<main>
-			<div id="menu">
+	
+			<div class="menu" id="menu1">
+				<div class="itemMenu-pollo" id="bundinha" onclick="abrirFrame('bundinha')">
+					<img class="menu-icon-pollo" src="../imagens/pollo_bundinha.png" title="Chocadeiras">
+					<p class="menu-title-pollo"> Pollo </p>
+				</div>
+			
 				<div class="itemMenu" id="chocadeira" onclick="abrirFrame('chocadeira')">
-					<img src="../imagens/eggg.png" title="Chocadeiras">
+					<img class="menu-icon" src="../imagens/icones/incubadora.png" title="Chocadeiras">
+					<p class="menu-title"> Chocadeiras </p>
 				</div>
 					
-				<div class="itemMenu" id="ovo" onclick="abrirFrame('ovo')">
-					<img src="../imagens/eggg.png" title="Ovos">
+				<div class="itemMenu" id="grafico" onclick="abrirFrame('ovo')">
+					<img class="menu-icon" id="ovo" src="../imagens/icones/ovo.png" title="Ovo" 
+					onmouseover="troca_icon('ovo')" onmouseout="esconde_icon('ovo')">
+					<p class="menu-title"> Ovos </p>
+				</div> 
+				
+				<div class="itemMenu" id="dispositivo" onclick="abrirFrame('dispositivo')">
+					<img class="menu-icon" src="../imagens/icones/usb.png" title="Dipositivos">
+					<p class="menu-title"> Dipositivos </p>
 				</div>
 				
-				<div class="itemMenu" id="dispostivo" onclick="abrirFrame('dispostivo')">
-					<img src="../imagens/eggg.png" title="Dipositivos">
-				</div>
-				
-				<div class="itemMenu" id="grafico" onclick="abrirFrame('graficos')">
-					<img src="../imagens/eggg.png" title="Analytics">
+				<div class="itemMenu" id="grafico" onclick="abrirFrame('grafico')">
+					<img class="menu-icon" id="graph" src="../imagens/icones/grafico.png" title="Analytics" 
+					onmouseover="troca_icon('graph')" onmouseout="esconde_icon('graph')">
+					<p class="menu-title"> Analytics </p>
 				</div> 
 
 				<div class="itemMenu-logout" id="logout" onclick="abrirFrame('logout')">
-					<img src="../imagens/eggg.png" title="Sair">
-				</div> 
+					<img class="menu-icon" src="../imagens/icones/turn-off.png" title="Sair">
+					<p class="menu-title"> Sair </p>
+				</div>
+				
 			</div>
-
-			<iframe src="monitor.html" id="frame"></iframe>
+			
+			<div class="submenu" id="submenu" onclick="esconder_menu()">
+			
+			</div>
+				
+			 <iframe src="monitor.html" id="frame"></iframe> 
+			
 		</main>
-
+		
 		<footer>
 			
 		</footer>
-		
 
 	</body>
 </html>

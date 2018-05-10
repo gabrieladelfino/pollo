@@ -1,20 +1,22 @@
 /* CORPO */
+
 *{
 	margin: 0;
 	padding: 0;
 }
 
 body{
-	background: white;
+	background: white !important;
 	color: #fff !important;
 	overflow-x: hidden;
 }
 
 #container{
-	width: 90%;
-	height: 100%;
+	width: 95%;
+	height: auto;
 	float: left;
-	background: none;
+	border-radius: 20px;
+	margin: 2.5% 3.5%;
 }
 
 #espaco{
@@ -30,6 +32,7 @@ body{
 	background: none;
 	margin: auto;
 	padding: 10;
+	
 }
 
 .img-add{
@@ -43,7 +46,7 @@ body{
 	height: 40%; 
 	background: yellow; 
 	padding: 10 10 10 10; 
-	margin: 30 50;
+	margin: 40 70;
 	float: left;
 	border-radius: 35px;
 	-webkit-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
@@ -77,22 +80,27 @@ img{
 /* botao de adcionar */
 
 .botao-add {
-	width: 15%;
-	height: 30%; 
+	width: 19%;
+	height: 38%; 
 	background: none; 
-	padding: 25 25 25 25; 
-	margin: 45 50;
+	padding: 10 10 10 10; 
+	margin: 40 70;
 	float: left;
 	border-radius: 35px;
+	-webkit-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
+	-moz-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
+	box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
 	border: dashed 4px gray;
 	opacity: 0.5;
 }
+
+
 
 .img-botao-add{
 	width: 100%;
 	height: 100%;
 }
-body {font-family: Arial, Helvetica, sans-serif;}
+
 
 /* The Modal (background) */
 .modal {
