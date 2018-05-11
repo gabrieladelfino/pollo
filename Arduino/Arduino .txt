@@ -1,0 +1,22 @@
+int sensor = 0;
+int linha=1;
+float temperatura;
+float soma=0;
+float media;
+void setup(){
+  Serial.begin(9600);
+}
+
+void loop(){
+    while(linha<=60){
+    temperatura = (float(analogRead(sensor))*5/(1023))/0.01; // Converte a temperatura
+    soma=soma+temperatura;
+    linha++;
+    delay(1000);
+}
+media = soma/60;
+Serial.println(media); 
+soma=0;
+temperatura=0;
+linha=0;
+}
