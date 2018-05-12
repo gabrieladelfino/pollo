@@ -1,0 +1,21 @@
+/* campo do formulário */
+
+input{
+    border:#ddd solid 1px;
+    float:left;
+    padding:5px 20px 5px 5px
+ }
+ 
+ /* formatação do elemento */
+ #lupa{
+    float:left;
+    margin:3px 0px 0px -20px;
+    cursor:pointer
+ }
+ 
+ /* formatação do conteúdo  */
+ #lupa:after{
+    font-family:FontAwesome;
+    font-size:15px;
+    content:"\f002"
+ }
