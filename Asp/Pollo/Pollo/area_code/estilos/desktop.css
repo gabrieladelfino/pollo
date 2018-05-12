@@ -1,0 +1,74 @@
+/* Desktop grande */
+@media (max-width: 2000px){
+    body{
+        color: white;
+        background-color: WHITE;
+    }
+
+    header{
+        width: 100%;
+        height: 10%;
+        color: #333;
+        -webkit-box-shadow: -1px -12px 31px 5px rgba(212,211,210,1);
+         -moz-box-shadow: -1px -12px 31px 5px rgba(212,211,210,1);
+        box-shadow: -1px -12px 31px 5px rgba(212,211,210,1);
+    }
+
+    #menu{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 80px;
+    }
+    #menu ul {
+        float: right;
+        font-size: 1.2vw;
+    }
+
+    #menu ul li { 
+        display: inline;
+    }
+
+    #menu ul li a {
+        margin: 0 35;
+        height: 100%;
+        display: inline-block;
+    }
+
+    .logo{
+        margin: 0 35;
+        height: 100%;
+        float: left;
+        text-align: center;
+        line-height: 80px;
+        font-size: 1.2vw;
+    }
+
+    #menu ul li a:hover {
+        color: #6D6D6D;
+    }
+
+    h1.title{
+        padding: 10 0;
+        margin: 10 0;
+    }
+    main{
+        width: 100%;
+        height: 100%;
+    }
+
+    footer{
+        width: 100%;
+        min-height: 10%;
+        max-height: 15%;
+    }
+
+    .diretrizes, #missao{
+        width: 45%;
+        height: auto;
+        margin: 50;
+        float: left;
+        font-size: 1vw;
+        text-align: justify;
+    }
+}
