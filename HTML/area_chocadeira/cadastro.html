@@ -1,0 +1,135 @@
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="../estilos/cadastro_chocadeira.css">
+		<link rel="stylesheet" type="text/css" href="../estilos/scroll.css">
+		<script lang="javascript" src="../js/cadastro_chocadeira.js">
+		</script>
+	</head>
+	
+	<body>
+		<header>
+			
+		</header>
+		
+		<main>
+		
+		<form>
+			
+			<label for="nome">Nome da chocadeira:</label>
+			<br/>
+			<input type="text" id="nome"/>
+
+			<br/><br/>
+
+			<label for="dispositivo">Dispositivo:</label>
+			<br/>
+			<select>
+				<option value="dispositivo1">Dispositivo 1</option>
+				<option value="dispositivo2">Dispositivo 2</option>
+				<option value="dispositivo3">Dispositivo 3</option>
+				<option value="dispositivo4">Dispositivo 4</option>
+			</select>
+			
+			<button type="button" id="btnMaisDispositivo" onclick="abrir_dispositivo(this)">+</button>
+			
+			<br/><br/>
+			
+			<label for="dispositivo">Tipo de Ovo:</label> <label for="ovos">Quantidade de ovos:</label>
+			<br/>
+				<select>
+					<option value="dispositivo1">Ovo 1</option>
+					<option value="dispositivo2">Ovo 2</option>
+					<option value="dispositivo3">Ovo 3</option>
+					<option value="dispositivo4">Ovo 4</option>
+			    </select>
+				
+			<button type="button" id="btnMaisOvo" onclick="abrir_ovo(this)">+</button>
+				
+			
+			<input type="text" id="qtd_ovos_abrigados"/>
+			<br/><br/>
+				
+			<label for="entrada">Sensor: </label> <label for="entrada">Entrada: </label>
+			<br/>
+				<select id="sensor">
+				  <option value="Luz">Luz</option>
+				  <option value="Umidade">Umidade</option>
+				  <option value="Temperatura">Temperatura</option>
+				</select>
+				
+			
+			
+				<select id="entrada">
+				  <option value="1">1</option>
+				  <option value="2">2</option>
+				  <option value="3">3</option>
+				  <option value="4">4</option>
+				  <option value="5">5</option>
+			</select>
+			
+			<button type="button" id="btnMaisOvo" onclick="addSensor()">+</button>
+			
+			<br><br>
+			
+			<textarea disabled id="add" class="textarea">
+			
+			</textarea>
+			
+			<br><br>
+			
+			<button type="button">Prosseguir</button> <button type="button">Cancelar</button>        
+
+			
+			<!-- POP UP - Dispositivo -->
+			<div id="popup_dispositivo" class="modal">
+				<div class="modal-content">
+					<span class="fechar" onclick="fechar_dispositivo()">&times;</span>
+						<p>Informações adicionais</p>
+						<label for="nome">Nome dispositivo</label>
+						<br>
+						<input class="centralizar" type="text" name="nome" id="user"/>
+						<br>
+
+						<br> 
+						<label>Data conexao</label>
+						<br>
+						<input class="centralizar" type="password" name="senha" id="senha"/>
+						<br>
+						<br>
+
+						<button type="button">Prosseguir</button> <button type="button">Cancelar</button>  
+						<br><br>
+				</div>
+			</div>
+			
+			<!-- POP UP - OVO -->
+			<div id="popup_ovo" class="modal">
+				<div class="modal-content">
+					<span class="fechar" onclick="fechar_ovo()">&times;</span>
+						<p>Informações adicionais</p>
+						<label for="nome">Tipo ovo</label>
+						<br>
+						<input class="centralizar" type="text" name="nome" id="user"/>
+						<br>
+
+						<br> 
+						<label>Temperatura ideal</label>
+						<br>
+						<input class="centralizar" type="password" name="senha" id="senha"/>
+						<br>
+						<br>
+
+						<button type="button">Prosseguir</button> <button type="button">Cancelar</button>  
+						<br><br>
+				</div>
+			</div>
+			
+			</form>
+			 
+		</main>
+		
+	</body>
+</html>
+
