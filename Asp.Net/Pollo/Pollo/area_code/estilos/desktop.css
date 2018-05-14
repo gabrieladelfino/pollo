@@ -1,0 +1,184 @@
+
+/* Desktop grande */
+@media (max-width: 2000px){
+    body{
+        color: white;
+        background-color:#070719;
+    }
+
+    header{
+        width: 100%;
+        height: 10%;
+        background-color:#070719;
+        -webkit-box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
+        -moz-box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
+        box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
+    }
+
+    #menu{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 80px;
+    }
+    #menu ul {
+        float: right;
+        font-size: 1.2vw;
+    }
+
+    #menu ul li { 
+        display: inline;
+    }
+
+    #menu ul li a {
+        margin: 0 35;
+        height: 100%;
+        display: inline-block;
+    }
+
+    .logo{
+        margin: 0 35;
+        height: 100%;
+        float: left;
+        text-align: center;
+        line-height: 80px;
+        font-size: 1.5vw;
+    }
+
+    a:hover {
+        color: #FFFF00 !important;
+    }
+
+    h1.title{
+        padding: 10 0;
+        margin: 10 0;
+        font-size: 2vw;
+    }
+    main{
+        width: 100%;
+        height: auto;
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+
+    section{
+        padding: 5% 0;
+        width: 100%;
+        height: auto;
+        line-height: 6;
+        float: left;
+    }
+
+    section#apresentacao{
+        /* background: indigo; */
+    }
+
+    a.font-logomarca{
+        font-size: 5vw;
+    }
+
+    a.button-logomarca{
+        font-size: 1.5vw;
+        padding: 30 40;
+    }
+
+    a.button-logomarca:hover{
+        border: solid 2px #FFFF00 !important;
+        color: white !important;
+        border-radius: 2px;
+    }
+
+    section#sobre{
+        /* background: hotpink; */
+    }
+
+    .diretrizes, #missao{
+        width: 45%;
+        height: auto;
+        margin: 50;
+        float: left;
+        font-size: 1vw;
+        text-align: justify;
+        line-height: 1.2;
+        letter-spacing: 1;
+    }
+
+    section#time{
+        /* background: lawngreen; */
+    }
+
+    h1.time{
+        font-size: 2vw;
+        line-height: 1.2;
+        letter-spacing: 1;
+        padding: 10 0;
+        margin: 10 0;
+    }
+    #container-time{
+        width: 80%;
+        height: 100%;
+        margin: auto;
+        padding: 50 50;
+    }
+
+    .time-info{
+        width: 20%;
+        height: 40%;
+        margin: 40 90;
+        background: yellow;
+        background-size: 100%;
+        float: left;
+        -webkit-box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
+        -moz-box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
+        box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
+    }
+    
+    #Bruna{
+        background-image: url('../imagens/time/gabi.jpg'); 
+    }
+
+    #Elias{
+        background-image: url('../imagens/time/gabi.jpg'); 
+    }
+
+    #Gabriela{
+        background-image: url('../imagens/time/gabi.jpg'); 
+    }
+
+    #Livia{
+        background-image: url('../imagens/time/gabi.jpg'); 
+    }
+
+    #Lucas{
+        background-image: url('../imagens/time/gabi.jpg'); 
+    }
+
+    footer{
+        width: 100%;
+        min-height: 10%;
+        max-height: 15%;
+    }    
+
+    section.p{
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.parallax {
+    width: 100%;
+    height: 25%; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+#img_um{
+    background-image: url('../imagens/img_um.jpg'); 
+}
+
+#img_dois{
+    background-image: url('../imagens/img_dois.png'); 
+}

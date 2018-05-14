@@ -15,13 +15,7 @@
             Nome Completo:<asp:TextBox runat="server" ID="txtNome" /><br />
             Data de Nascimento:<asp:TextBox runat="server"  ID="txtNasc" placeholder="dd/mm/aaaa"/><br />
             CPF:<asp:TextBox runat="server" ID ="txtCPF" /><br />
-            Sexo:<asp:DropDownList runat="server" ID="ddlSexo">
-                <asp:ListItem Text="" />
-                <asp:ListItem Text="Feminino" />
-                <asp:ListItem Text="Masculino" />
-                <asp:ListItem Text="Não especificado" />
-                </asp:DropDownList><br />
-            Telefone: <asp:TextBox runat="server" ID="txtTelefone"/><br />
+            Celular: <asp:TextBox runat="server" ID="txtCelular"/><br />
             
             <asp:Button Text="Prosseguir" runat="server" ID="btnProseguir" OnClick="btnProsseguir_Click" /><br />
             <asp:Label Text="" runat="server" ID="Label1"/><br />
