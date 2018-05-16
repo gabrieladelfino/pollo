@@ -81,14 +81,52 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="area_consulta\consulta.aspx" />
+    <Content Include="area_consulta\grafico_google.aspx" />
+    <Content Include="area_inicio\inicial.aspx" />
+    <Content Include="area_inicio\monitor.aspx" />
     <Content Include="area_usuario\cadastro.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="estilos\inicial.css" />
+    <Content Include="estilos\monitor.css" />
+    <Content Include="estilos\scroll.css" />
     <Content Include="Global.asax" />
     <Content Include="index.aspx" />
+    <Content Include="js\grafico.js" />
+    <Content Include="js\inicial.js" />
+    <Content Include="js\monitor.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="area_consulta\consulta.aspx.cs">
+      <DependentUpon>consulta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="area_consulta\consulta.aspx.designer.cs">
+      <DependentUpon>consulta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="area_consulta\grafico_google.aspx.cs">
+      <DependentUpon>grafico_google.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="area_consulta\grafico_google.aspx.designer.cs">
+      <DependentUpon>grafico_google.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="area_inicio\inicial.aspx.cs">
+      <DependentUpon>inicial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="area_inicio\inicial.aspx.designer.cs">
+      <DependentUpon>inicial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="area_inicio\monitor.aspx.cs">
+      <DependentUpon>monitor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="area_inicio\monitor.aspx.designer.cs">
+      <DependentUpon>monitor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="area_usuario\cadastro.aspx.cs">
       <DependentUpon>cadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -128,6 +166,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="area_code\" />
     <Folder Include="Controllers\" />
+    <Folder Include="imagens\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
