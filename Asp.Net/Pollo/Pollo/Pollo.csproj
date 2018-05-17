@@ -81,21 +81,50 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="area_code\index.html" />
     <Content Include="area_consulta\consulta.aspx" />
     <Content Include="area_consulta\grafico_google.aspx" />
-    <Content Include="area_inicio\inicial.aspx" />
-    <Content Include="area_inicio\monitor.aspx" />
-    <Content Include="area_usuario\cadastro.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="estilos\inicial.css" />
+    <Content Include="estilos\cadastro.css" />
+    <Content Include="estilos\Pagina_Mestre.css" />
     <Content Include="estilos\monitor.css" />
     <Content Include="estilos\scroll.css" />
     <Content Include="Global.asax" />
+    <Content Include="imagens\area_inicial\add\add.png" />
+    <Content Include="imagens\back.png" />
+    <Content Include="imagens\botao\001.png" />
+    <Content Include="imagens\botao\002.png" />
+    <Content Include="imagens\botao\003.png" />
+    <Content Include="imagens\botao\004.png" />
+    <Content Include="imagens\graph.png" />
+    <Content Include="imagens\icon.png" />
+    <Content Include="imagens\icones\grafico.png" />
+    <Content Include="imagens\icones\graficoh.png" />
+    <Content Include="imagens\icones\incubadora.png" />
+    <Content Include="imagens\icones\Mario---Yoshi-Egg---Variation-1-_Converted_grande.jpg" />
+    <Content Include="imagens\icones\ovo.png" />
+    <Content Include="imagens\icones\ovoh.png" />
+    <Content Include="imagens\icones\relatório.png" />
+    <Content Include="imagens\icones\turn-off.png" />
+    <Content Include="imagens\icones\usb.png" />
+    <Content Include="imagens\icones\usuário.png" />
+    <Content Include="imagens\incubator.png" />
+    <Content Include="imagens\list.png" />
+    <Content Include="imagens\pollo.png" />
+    <Content Include="imagens\pollo_bundinha.png" />
+    <Content Include="imagens\report.png" />
+    <Content Include="imagens\timer.png" />
+    <Content Include="imagens\two-eggs.png" />
+    <Content Include="imagens\user.png" />
     <Content Include="index.aspx" />
     <Content Include="js\grafico.js" />
     <Content Include="js\inicial.js" />
     <Content Include="js\monitor.js" />
     <Content Include="Web.config" />
+    <Content Include="area_inicio\Monitor.aspx" />
+    <Content Include="area_chocadeira\chocadeira.aspx" />
+    <Content Include="area_ovo\ovo.aspx" />
+    <Content Include="area_usuario\cadastro.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -112,27 +141,6 @@
     </Compile>
     <Compile Include="area_consulta\grafico_google.aspx.designer.cs">
       <DependentUpon>grafico_google.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="area_inicio\inicial.aspx.cs">
-      <DependentUpon>inicial.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="area_inicio\inicial.aspx.designer.cs">
-      <DependentUpon>inicial.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="area_inicio\monitor.aspx.cs">
-      <DependentUpon>monitor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="area_inicio\monitor.aspx.designer.cs">
-      <DependentUpon>monitor.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="area_usuario\cadastro.aspx.cs">
-      <DependentUpon>cadastro.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="area_usuario\cadastro.aspx.designer.cs">
-      <DependentUpon>cadastro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -151,10 +159,46 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pagina_Mestra.Master.cs">
+      <DependentUpon>Pagina_Mestra.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pagina_Mestra.Master.designer.cs">
+      <DependentUpon>Pagina_Mestra.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="area_inicio\Monitor.aspx.cs">
+      <DependentUpon>Monitor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="area_inicio\Monitor.aspx.designer.cs">
+      <DependentUpon>Monitor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="area_chocadeira\chocadeira.aspx.cs">
+      <DependentUpon>chocadeira.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="area_chocadeira\chocadeira.aspx.designer.cs">
+      <DependentUpon>chocadeira.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="area_ovo\ovo.aspx.cs">
+      <DependentUpon>ovo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="area_ovo\ovo.aspx.designer.cs">
+      <DependentUpon>ovo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="area_usuario\cadastro.aspx.cs">
+      <DependentUpon>cadastro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="area_usuario\cadastro.aspx.designer.cs">
+      <DependentUpon>cadastro.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Pagina_Mestra.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -164,9 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="area_code\" />
     <Folder Include="Controllers\" />
-    <Folder Include="imagens\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

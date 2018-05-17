@@ -1,0 +1,4 @@
+visualizar detalhes
+editar
+excluir
+gerar relatorio

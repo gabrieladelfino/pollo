@@ -5,22 +5,22 @@
         window.location.href = "../area_inicio/inicial.aspx";
         esconder_menu();
     }
-    //if (tipo == 'chocadeira') {
-    //    document.getElementById('frame').src = "../area_chocadeira/cadastro.html";
-    //    esconder_menu();
-    //}
-    //if (tipo == 'ovo') {
-    //    document.getElementById('frame').src = "../area_ovo/cadastro.html";
-    //    esconder_menu();
-    //}
-    //if (tipo == 'dispositivo') {
-    //    document.getElementById('frame').src = "../area_chocadeira/dispositivo.html";
-    //    esconder_menu();
-    //}
-    //if (tipo == 'grafico') {
-    //    document.getElementById('frame').src = "../area_chocadeira/grafico.html";
-    //    esconder_menu();
-    //}
+    if (tipo == 'chocadeira') {
+        document.getElementById('frame').src = "../area_chocadeira/cadastro.html";
+        esconder_menu();
+    }
+    if (tipo == 'ovo') {
+        document.getElementById('frame').src = "../area_ovo/cadastro.html";
+        esconder_menu();
+    }
+    if (tipo == 'dispositivo') {
+        document.getElementById('frame').src = "../area_chocadeira/dispositivo.html";
+        esconder_menu();
+    }
+    if (tipo == 'grafico') {
+        document.getElementById('frame').src = "../area_chocadeira/grafico.html";
+        esconder_menu();
+    }
     if (tipo == 'logout') {
         var confirmar = confirm("Tem certeza que deseja sair?");
         if (confirmar == true) {

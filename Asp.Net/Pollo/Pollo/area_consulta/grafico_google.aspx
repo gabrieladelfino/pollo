@@ -11,6 +11,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Label Text="Chocadeira: " runat="server" />
+            <asp:Label Text="Data conexão: " runat="server" />
+            <asp:Label Text="Dia(s) restantes: " runat="server" />
             <div id="chart_div" style="width: 100%; height: 500px;"></div>
             <select>
                 <option value="value">Minuto</option>

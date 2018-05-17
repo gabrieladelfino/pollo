@@ -1,37 +1,30 @@
 ﻿/* CORPO */
 
-* {
-    margin: 0;
-    padding: 0;
-}
-
 body {
     background: white !important;
     color: #fff !important;
     overflow-x: hidden;
 }
 
-#container {
-    width: 95%;
-    height: auto;
+
+/* BOTAO DE ADD */
+.botao-add {
+    width: 19%;
+    height: 38%;
+    padding: 10px;
+    margin: 0 70px;
     float: left;
-    border-radius: 20px;
-    margin: 2.5% 3.5%;
+    border-radius: 35px;
+    -webkit-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
+    -moz-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
+    box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
+    border: dashed 4px gray;
+    opacity: 0.5;
 }
 
-#espaco {
-    width: 10%;
+.img-botao-add {
+    width: 100%;
     height: 100%;
-    float: right;
-    background: none;
-}
-
-#icon {
-    width: 75%;
-    height: 15%;
-    background: none;
-    margin: auto;
-    padding: 10;
 }
 
 .img-add {
@@ -40,19 +33,50 @@ body {
     background: none;
 }
 
+#icon {
+    width: 75%;
+    height: 15%;
+    background: none;
+    margin: auto;
+    padding: 10px;
+}
+
+/*MONITOR*/
 .monitor {
     width: 20%;
-    height: 40%;
-    background: yellow;
-    padding: 10 10 10 10;
-    margin: 40 70;
+    height: auto;
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+    margin: 0 70px;
     float: left;
     border-radius: 35px;
+}
+
+.monitor {
     -webkit-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
     -moz-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
     box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
 }
 
+.titulos_monitor {
+    width: 100%;
+    margin: 10px 0px;
+    float: left;
+    padding: 0px 5px;
+    color: gray;
+    text-align: center;
+}
+
+.titulos_monitor_temp {
+    width: 100%;
+    margin: 10px 0px;
+    float: left;
+    padding: 20px 0px;
+    text-align: center;
+    font-size: 60px;
+}
+
+/*MENU - MONITOR*/
 .menu {
     width: 100%;
     height: 100%;
@@ -71,71 +95,9 @@ body {
     display: none;
 }
 
+
+/*IMAGENS*/
 img {
     width: 100%;
     height: 100%;
 }
-
-/* botao de adcionar */
-
-.botao-add {
-    width: 19%;
-    height: 38%;
-    background: none;
-    padding: 10 10 10 10;
-    margin: 40 70;
-    float: left;
-    border-radius: 35px;
-    -webkit-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
-    -moz-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
-    box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
-    border: dashed 4px gray;
-    opacity: 0.5;
-}
-
-
-
-.img-botao-add {
-    width: 100%;
-    height: 100%;
-}
-
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
