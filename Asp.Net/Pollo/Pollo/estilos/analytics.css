@@ -1,0 +1,48 @@
+﻿.comp {
+    width: 100%;
+    height: 20%;
+    display: block;
+    padding: 10px 0;
+    margin: 10px 0;
+}
+
+#parametro {
+    width: 100%;
+    height: 5%;
+    display: block;
+    padding: 10px 0;
+    margin: 20px 0;
+}
+
+/*LABELS E DDL*/
+
+#param {
+    width: auto;
+    height: auto;
+    font-family: arial;
+    font-size: 1.2vw;
+    color: #3D2520;
+    float: left;
+    margin: 10px 0;
+    padding: 0 20px 0 0;
+}
+
+.lbl {
+    width: 100%;
+    height: auto;
+    font-family: arial;
+    font-size: 1.2vw;
+    color: #3D2520;
+    float: left;
+    margin: 10px 0;
+}
+
+.ddl {
+    width: auto;
+    height: 25px;
+    font-family: arial;
+    font-size: 1vw;
+    color: #3D2520;
+    float: left;
+    margin: 10px 0;
+}

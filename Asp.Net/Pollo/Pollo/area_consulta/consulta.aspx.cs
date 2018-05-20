@@ -9,16 +9,19 @@ using System.Web.UI.WebControls;
 
 namespace Pollo.area_consulta
 {
+   
     public partial class consulta : System.Web.UI.Page
     {
-       
+
+        string linkServer = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
-        public struct Temperatura {
+        public struct Temperatura
+        {
 
             public Color cor;
             public string hora;
@@ -33,7 +36,7 @@ namespace Pollo.area_consulta
             int x = 100, y = 20;
 
             //criando nossa "folha de desenho"
-            Bitmap imagem = new Bitmap(400, 400, PixelFormat.Format32bppArgb);
+            Bitmap imagem = new Bitmap(350, 100, PixelFormat.Format32bppArgb);
 
             //dizendo onde ela está
             Graphics grafico = Graphics.FromImage(imagem);
@@ -62,23 +65,23 @@ namespace Pollo.area_consulta
 
                 //nosso retangulo com os respectivos atributos: cor, x, y, largura, altura
                 grafico.FillRectangle(new SolidBrush(Color.Red), 20, 20, 200, 30);
-               
+
                 //desenhando nosso grafico com as seguintes informações: temperatura,fonte,pincel,x,y
                 grafico.DrawString(t[i].temp, new Font("arial", 12, FontStyle.Regular), Brushes.Black, 20, 25);
-                
+
             }
 
             //desenhando nosso grafico
-            grafico.DrawString("Pollo - 2018", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, 950, 900);
+            //grafico.DrawString("Pollo - 2018", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, 950, 900);
 
 
             //apresentando pro navegador como vai ser nosso grafico
             Response.Clear();
             Response.ClearHeaders();
-            Response.ContentType = "image/jpeg";
+            Response.ContentType = "image/png";
 
             //falando pro grafico como ele deve se comportar no navegador
-            imagem.Save(Response.OutputStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+            imagem.Save(Response.OutputStream, System.Drawing.Imaging.ImageFormat.Png);
             imagem.Dispose();
         }
     }
