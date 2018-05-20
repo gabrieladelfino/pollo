@@ -1,25 +1,16 @@
-﻿/* CORPO */
-
-body {
-    background: white !important;
-    color: #fff !important;
-    overflow-x: hidden;
-}
-
-
-/* BOTAO DE ADD */
+﻿/* BOTAO DE ADD */
 .botao-add {
-    width: 19%;
-    height: 38%;
+    width: 15%;
+    height: 35%;
     padding: 10px;
-    margin: 0 70px;
+    margin: 0 40px;
     float: left;
+    border: dashed 4px gray;
+    opacity: 0.5;
     border-radius: 35px;
     -webkit-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
     -moz-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
     box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
-    border: dashed 4px gray;
-    opacity: 0.5;
 }
 
 .img-botao-add {
@@ -27,32 +18,15 @@ body {
     height: 100%;
 }
 
-.img-add {
-    width: 100%;
-    height: 100%;
-    background: none;
-}
-
-#icon {
-    width: 75%;
-    height: 15%;
-    background: none;
-    margin: auto;
-    padding: 10px;
-}
-
 /*MONITOR*/
 .monitor {
-    width: 20%;
-    height: auto;
-    background-color: white;
+    width: 15%;
+    height: 35%;
+    background-color: yellow;
     padding: 10px 10px 10px 10px;
-    margin: 0 70px;
+    margin: 0 40px;
     float: left;
     border-radius: 35px;
-}
-
-.monitor {
     -webkit-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
     -moz-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
     box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
@@ -74,30 +48,4 @@ body {
     padding: 20px 0px;
     text-align: center;
     font-size: 60px;
-}
-
-/*MENU - MONITOR*/
-.menu {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    background: brown;
-    display: none;
-    border-radius: 35px;
-}
-
-.botao {
-    width: 25%;
-    height: 25%;
-    margin: 15% 12% 10% 12%;
-    background: none;
-    float: left;
-    display: none;
-}
-
-
-/*IMAGENS*/
-img {
-    width: 100%;
-    height: 100%;
 }

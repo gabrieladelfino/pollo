@@ -5,28 +5,22 @@
     font-family: arial black;
 }
 
+#conteudo_server {
+    width: 100%;
+    height: 100%;
+}
+
 body {
     color: #000 !important;
     overflow-x: hidden;
+    background-image: url('../imagens/noise.png');
 }
 
 /*CABECALHO*/
 header {
-    width: 100%;
-    height: 9%;
-    float: right;
-}
-
-.border {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 0.8%;
-    background: #fc0093;
-    background: -moz-linear-gradient(to right, #fc0093 71%, #ff0000 0%, #ffee00 100%);
-    background: -webkit-linear-gradient(left, #fc0093 71%,#ff0000 0%,#ffee00 100%);
-    background: linear-gradient(to right, #fc0093 0%,#ff0000 50%,#ffee00 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fc0093', endColorstr='#ffee00',GradientType=1 );
+    padding: 50px 0;
+    display: block;
+    background: white;
 }
 
 .abrirMenu {
@@ -53,14 +47,10 @@ header {
     margin: auto;
     margin-left: 10%;
     width: 80%;
-    height: auto;
-    background: none;
     text-align: center;
 }
 
 .titulo-pagina-p {
-    width: auto;
-    height: auto;
     margin: auto;
     font-size: 3vw;
 }
@@ -78,11 +68,9 @@ header {
 /*CORPO DA PAGINA*/
 
 main {
-    display: block;
     width: 100%;
-    height: 100%;
-    background: white;
-    background-image: url('../imagens/back.png') !important;
+    padding: 20px 0;
+    display: block;
 }
 
 /*MENU*/
@@ -95,7 +83,7 @@ main {
     position: absolute;
     float: left;
     top: 0;
-    background-image: url('../imagens/back.png') !important;
+    background-image: url('../imagens/noise.png');
 }
 
 .submenu {
@@ -163,7 +151,7 @@ p.menu-title-pollo {
 img {
     width: 80%;
     height: 80%;
-    margin: 10 5;
+    margin: 10px 5px;
 }
 
 img.menu-icon {
@@ -180,10 +168,24 @@ img.menu-icon-pollo {
 }
 
 /*CONTAINER*/
+
 #container {
     width: 90%;
+    height: 640px;
     margin: auto;
-    margin-top: 10%;
-    padding: 50px 20px;
-    background: red;
+    padding: 20px;
+}
+
+/*BORDA*/
+
+.border {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0.8%;
+    background: #fc0093;
+    background: -moz-linear-gradient(to right, #fc0093 71%, #ff0000 0%, #ffee00 100%);
+    background: -webkit-linear-gradient(left, #fc0093 71%,#ff0000 0%,#ffee00 100%);
+    background: linear-gradient(to right, #fc0093 0%,#ff0000 50%,#ffee00 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fc0093', endColorstr='#ffee00',GradientType=1 );
 }

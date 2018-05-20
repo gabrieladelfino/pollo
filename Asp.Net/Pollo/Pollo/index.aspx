@@ -11,7 +11,11 @@
     <form id="form1" runat="server">
         <div>
             Colocar aqui o login<br />  
-            <asp:Button Text="Cadastrar" runat="server" ID="btnCadastrar" OnClick="btnCadastrar_Click"/>
+            <asp:Button Text="Cadastrar" runat="server" ID="btnCadastrar" OnClick="btnCadastrar_Click"/>User <asp:TextBox runat="server" ID="txtUser" class="txt"/> <br />
+            Senha <asp:TextBox runat="server" ID="txtSenha" class="txt"/> <br />
+            <asp:Button Text="Login" runat="server" ID="btnLogin" class="btn" OnClick="btnLogin_Click"/>
+            <asp:Button Text="Cadastrar" runat="server" ID="Button1"  class="btn" OnClick="btnCadastrar_Click"/>
+            <asp:Label Text="" runat="server" ID="lblErro" />
         </div>
     </form>
 </body>
