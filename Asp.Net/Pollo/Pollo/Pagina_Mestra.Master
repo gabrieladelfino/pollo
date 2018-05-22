@@ -23,7 +23,7 @@
                         <img id="perfil" src="../imagens/list.png" />
                     </div>
                     <div class="titulo-pagina">
-                        <p class="titulo-pagina-p">Bem vindo</p>
+                        <asp:Label runat="server" ID="label" Text="Bem vindo" class="titulo-pagina-p"></asp:Label>
                     </div>
                     <div class="perfil">
                         <img src="../imagens/user.png"/>
