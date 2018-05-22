@@ -1,11 +1,12 @@
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title> &lt;CODE&#47;&gt; </title>
-        <link rel="stylesheet" type="text/css" href="estilos/desktop.css"/>
-        <link rel="stylesheet" type="text/css" href="estilos/celular.css"/>
-        <link rel="stylesheet" type="text/css" href="estilos/slider.css"/>
-        <link rel="stylesheet" type="text/css" href="estilos/normalize.css"/>
-        <link rel="stylesheet" type="text/css" href="estilos/scroll.css"/>
+        <link rel="stylesheet" type="text/css" href="../estilos/code/desktop.css"/>
+        <link rel="stylesheet" type="text/css" href="../estilos/code/celular.css"/>
+        <link rel="stylesheet" type="text/css" href="../estilos/code/slider.css"/>
+        <link rel="stylesheet" type="text/css" href="../estilos/code/normalize.css"/>
+        <link rel="stylesheet" type="text/css" href="../estilos/code/scroll.css"/>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
     </head>
     <body>
@@ -13,10 +14,9 @@
             <div class="logo"><a href="#apresentacao">&lt;&#47;&gt;</a></div>
             <nav id="menu">
                     <ul>
-                        <li><a href="#">Services</a></li>
                         <li><a href="#sobre">About</a></li>
                         <li><a href="#time">Team</a></li>
-                        <li><a href="#">Contato</a></li>
+                        <li><a href="#rodape">Contato</a></li>
                     </ul>
                 </nav>
         </header>
@@ -46,13 +46,13 @@
                 <!-- slider -->
                 <div class="slideshow-container">
                     <div class="slide fade">
-                        <img src="imagens/luz.jpg">
+                        <img src="imagens/code/slider/luz.jpg">
                     </div>
                     <div class="slide fade">
-                        <img src="imagens/gamer.jpg">
+                        <img src="imagens/code/slider/luz.jpg">
                     </div>
                     <div class="slide fade">
-                        <img src="imagens/ying.jpg">
+                        <img src="imagens/code/slider/luz.jpg">
                     </div>  
                 </div>
 
@@ -84,15 +84,15 @@
         </main>
  
         <footer>
-            <section class="p">
+            <section class="p" id="rodape">
                 <div class="parallax" id="img_um"></div>
+                <div class="pollo"><a href="../index.aspx">Pollo</a></div>
             </section>
             <section>
                     
             </section>
         </footer>
 
-         
     <script type="text/javascript">
         $(window).scroll(function(){ 
             var top = $(window).scrollTop(); 
@@ -131,8 +131,6 @@
             dots[slideIndex-1].className += " active";
             setTimeout(showSlides, 2000); 
         }
-
-
     </script>
 
     </body>

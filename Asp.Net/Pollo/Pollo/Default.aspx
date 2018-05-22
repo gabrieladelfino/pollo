@@ -10,12 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-           Colocar aqui toda a pagina inicial da code <br />   
-            if(pagina>1) <br />  
-            {<br />  
-             Colocar as subpaginas dentro da pasta area_code<br />  
-            }<br />  
-            <asp:Button Text="Pollo" runat="server" ID="btnPollo" OnClick="btnPollo_Click"/>
+          
         </div>
     </form>
 </body>

@@ -11,13 +11,8 @@ namespace Pollo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-       protected void btnPollo_Click(object sender, EventArgs e)
-        {
-            Server.Transfer("index.aspx", true); 
-            Server.Transfer("Default.aspx", false); 
+            Server.Transfer("area_code/index.html", true);
+            Server.Transfer("Default.aspx", false);
         }
     }
 }

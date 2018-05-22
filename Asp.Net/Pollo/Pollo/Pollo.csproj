@@ -88,6 +88,11 @@
     <Content Include="Default.aspx" />
     <Content Include="estilos\analytics.css" />
     <Content Include="estilos\cadastro.css" />
+    <Content Include="estilos\code\celular.css" />
+    <Content Include="estilos\code\desktop.css" />
+    <Content Include="estilos\code\normalize.css" />
+    <Content Include="estilos\code\scroll.css" />
+    <Content Include="estilos\code\slider.css" />
     <Content Include="estilos\login.css" />
     <Content Include="estilos\Pagina_Mestre.css" />
     <Content Include="estilos\monitor.css" />
@@ -99,6 +104,9 @@
     <Content Include="imagens\botao\002.png" />
     <Content Include="imagens\botao\003.png" />
     <Content Include="imagens\botao\004.png" />
+    <Content Include="imagens\code\img_dois.png" />
+    <Content Include="imagens\code\img_um.jpg" />
+    <Content Include="imagens\code\time\gabi.jpg" />
     <Content Include="imagens\graph.png" />
     <Content Include="imagens\icon.png" />
     <Content Include="imagens\icones\grafico.png" />
@@ -208,6 +216,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fontes\Bebas.otf" />
     <None Include="packages.config" />
     <Content Include="Pagina_Mestra.Master" />
     <None Include="Web.Debug.config">
@@ -220,6 +229,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
+    <Folder Include="imagens\code\slider\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
