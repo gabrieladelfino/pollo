@@ -30,7 +30,7 @@
         var dados = [
             ['Minuto', 'Temperatura'],
             <% for (int i = 0; i < Temperaturas.Count; i++) { %>
-                    [ <%=Minutos[i] %>, <%=Temperaturas[i] %> ],
+                    [ <%=Minutos[i] %>, <%=Temperaturas[i].ToString(System.Globalization.CultureInfo.InvariantCulture) %> ],
             <%} %>
             ];
     </script>
