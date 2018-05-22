@@ -32,14 +32,14 @@ namespace Pollo
             {
                 conexao.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT temperatura, minuto FROM Pollo_Minuto", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT minuto,temperatura FROM Pollo_Media_Minuto", conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read() == true)
                         {
-                            Temperaturas.Add(reader.GetDouble(0));
-                            Minutos.Add(reader.GetInt32(1));
+                            Minutos.Add(reader.GetInt32(0));
+                            Temperaturas.Add(reader.GetDouble(1));
                         }
                     }
                 }

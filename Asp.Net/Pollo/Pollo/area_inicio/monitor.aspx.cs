@@ -23,7 +23,7 @@ namespace Pollo
             {
                 conexao.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT tbc.nome_chocadeira,tbo.tempo_dia,tbm.temperatura FROM Pollo_Chocadeira AS tbc, Pollo_Ovo AS tbo, Pollo_Media_Minuto AS tbm WHERE cod_minuto = (SELECT MAX(cod_minuto) FROM Pollo_Media_Minuto)", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT tbc.nome_chocadeira,tbo.tempo_dia,tbm.temperatura FROM Pollo_Chocadeira AS tbc, Pollo_Ovo AS tbo, Pollo_Media_Minuto AS tbm WHERE minuto = (SELECT MAX(minuto) FROM Pollo_Media_Minuto)", conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
