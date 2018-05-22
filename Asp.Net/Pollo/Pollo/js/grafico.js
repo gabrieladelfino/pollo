@@ -8,11 +8,12 @@ function drawChart() {
     //dados
     var data = google.visualization.arrayToDataTable(dados);
 
+    
     //titulos
     var options = {
         title: 'Média das temperaturas por minuto',
-        hAxis: {title: 'Hora',  titleTextStyle: {color: '#333'}},
-        vAxis: {minValue: 0}
+        hAxis: { title: 'Hora', titleTextStyle: { color: '#333' } },
+        vAxis: { minValue: 0 }
     };
 
     //criacao

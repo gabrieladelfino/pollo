@@ -88,6 +88,7 @@
     <Content Include="Default.aspx" />
     <Content Include="estilos\analytics.css" />
     <Content Include="estilos\cadastro.css" />
+    <Content Include="estilos\login.css" />
     <Content Include="estilos\Pagina_Mestre.css" />
     <Content Include="estilos\monitor.css" />
     <Content Include="estilos\scroll.css" />
@@ -119,6 +120,7 @@
     <Content Include="imagens\two-eggs.png" />
     <Content Include="imagens\user.png" />
     <Content Include="index.aspx" />
+    <Content Include="js\cadastro_usuario.js" />
     <Content Include="js\grafico.js" />
     <Content Include="js\inicial.js" />
     <Content Include="js\monitor.js" />

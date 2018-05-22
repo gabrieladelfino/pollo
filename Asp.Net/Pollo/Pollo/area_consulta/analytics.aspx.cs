@@ -10,6 +10,7 @@ namespace Pollo
 {
     public partial class WebForm4 : System.Web.UI.Page
     {
+
         public List<double> Temperaturas { get; set; }
         public List<int> Minutos { get; set; }
 
@@ -17,6 +18,13 @@ namespace Pollo
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            string cod_usuario = (string)Session["cod_usuario"];
+            if (cod_usuario == null)
+            {
+                Response.Redirect("../index.aspx");
+            }
+
             Temperaturas = new List<double>();
             Minutos = new List<int>();
 

@@ -18,58 +18,58 @@
         <form id="form1" runat="server">
             <div id="conteudo_server">
 
-            <header>
-                <div class="abrirMenu" id="abrirMenu" onclick="mostrar_menu()">
-                    <img id="perfil" src="../imagens/list.png" />
-                </div>
-                <div class="titulo-pagina">
-                    <p class="titulo-pagina-p">Bem vindo</p>
-                </div>
-                <div class="perfil">
-                    <img src="../imagens/user.png"/>
-                </div>
-            </header>
+                <header>
+                    <div class="abrirMenu" id="abrirMenu" onclick="mostrar_menu()">
+                        <img id="perfil" src="../imagens/list.png" />
+                    </div>
+                    <div class="titulo-pagina">
+                        <p class="titulo-pagina-p">Bem vindo</p>
+                    </div>
+                    <div class="perfil">
+                        <img src="../imagens/user.png"/>
+                    </div>
+                </header>
              
-            <main>
-                <div class="menu_pg" id="menu1">
-                    <div class="itemMenu-pollo" id="pollo" onclick="abrirFrame('pollo')">
-                     <img class="menu-icon-pollo" src="../imagens/pollo_bundinha.png" title="Chocadeiras">
-                     <p class="menu-title-pollo"> Pollo </p>
-                </div>
+                <main>
+                    <div class="menu_pg" id="menu1">
+                        <div class="itemMenu-pollo" id="pollo" onclick="abrirFrame('pollo')">
+                            <img class="menu-icon-pollo" src="../imagens/pollo_bundinha.png" title="Chocadeiras">
+                            <p class="menu-title-pollo"> Pollo </p>
+                        </div>
                         
-                <div class="itemMenu" id="chocadeira" onclick="abrirFrame('chocadeira')">
-                    <img class="menu-icon" src="../imagens/icones/incubadora.png" title="Chocadeiras">
-                    <p class="menu-title"> Chocadeiras </p>
-                </div>
+                        <div class="itemMenu" id="chocadeira" onclick="abrirFrame('chocadeira')">
+                            <img class="menu-icon" src="../imagens/icones/incubadora.png" title="Chocadeiras">
+                            <p class="menu-title"> Chocadeiras </p>
+                        </div>
                         
-                <div class="itemMenu" id="ovo" onclick="abrirFrame('ovo')">
-                    <img class="menu-icon" src="../imagens/icones/ovo.png" title="Ovo" onmouseover="troca_icon('ovo')" onmouseout="esconde_icon('ovo')">
-                    <p class="menu-title"> Ovos </p>
-                </div>
+                        <div class="itemMenu" id="ovo" onclick="abrirFrame('ovo')">
+                            <img class="menu-icon" src="../imagens/icones/ovo.png" title="Ovo" onmouseover="troca_icon('ovo')" onmouseout="esconde_icon('ovo')">
+                            <p class="menu-title"> Ovos </p>
+                        </div>
                         
-                <div class="itemMenu" id="analytics" onclick="abrirFrame('analytics')">
-                    <img class="menu-icon" id="graph" src="../imagens/icones/grafico.png" title="Analytics" onmouseover="troca_icon('graph')" onmouseout="esconde_icon('graph')">
-                    <p class="menu-title"> Analytics </p>   
-                </div> 
+                        <div class="itemMenu" id="analytics" onclick="abrirFrame('analytics')">
+                            <img class="menu-icon" id="graph" src="../imagens/icones/grafico.png" title="Analytics" onmouseover="troca_icon('graph')" onmouseout="esconde_icon('graph')">
+                            <p class="menu-title"> Analytics </p> 
+                        </div>
                         
-                <div class="itemMenu-logout" id="logout" onclick="abrirFrame('logout')">
-                    <img class="menu-icon" src="../imagens/icones/turn-off.png" title="Sair">
-                    <p class="menu-title"> Sair </p>
-                </div>
-                </div>
+                        <div class="itemMenu-logout" id="logout" onclick="abrirFrame('logout')">
+                            <img class="menu-icon" src="../imagens/icones/turn-off.png" title="Sair">
+                            <p class="menu-title"> Sair </p>
+                            <asp:Button Text="AAAAAAAAAAAA" runat="server" ID="btnSair" OnClick="btnSair_Click"/>
+                        </div>
+                    </div>
+                    
+                     <div id="container">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
 
-                <div class="submenu" id="submenu" onclick="esconder_menu()"></div>
-               
-                <div id="container">
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    </asp:ContentPlaceHolder>
-                </div>
-            </main>
+                    <div class="submenu" id="submenu" onclick="esconder_menu()"></div>
+                </main>
 
-            <footer>
-                <div class="border"></div>
-            </footer>
-
+                <footer>
+                    <div class="border"></div>
+                </footer>
             </div>
         </form>
     </body>

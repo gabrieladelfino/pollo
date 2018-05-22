@@ -17,14 +17,6 @@ function abrirFrame(id){
         window.location.href = "../area_consulta/analytics.aspx";
 		esconder_menu();
 	}
-	if(tipo == 'logout'){
-		var confirmar = confirm("Tem certeza que deseja sair?");
-		if (confirmar == true){
-            window.location.href = "../area_inicio/Monitor.aspx";
-		}else{
-				
-		}
-	}
 }
 
 

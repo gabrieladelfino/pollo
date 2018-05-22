@@ -72,7 +72,7 @@ module.exports.ArduinoData = {List: serial.List}
     var TYPES = require('tedious').TYPES;  
 
     function inserirRegistro(media) {  
-        request = new Request("INSERT INTO Pollo_temperatura VALUES(CURRENT_TIMESTAMP,@media);", function(err) {  
+        request = new Request("INSERT INTO Pollo_Media_Minuto VALUES(CURRENT_TIMESTAMP,@media);", function(err) {  
          if (err) {  
             console.log(err);
 			console.log("Erro");

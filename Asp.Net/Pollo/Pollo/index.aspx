@@ -4,18 +4,47 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <link rel="stylesheet" type="text/css" href="estilos/login.css" />
+    <script lang="javascript" src="js/login.js"> </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Login | Pollo</title>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            Colocar aqui o login<br />  
-            <asp:Button Text="Cadastrar" runat="server" ID="btnCadastrar" OnClick="btnCadastrar_Click"/>User <asp:TextBox runat="server" ID="txtUser" class="txt"/> <br />
-            Senha <asp:TextBox runat="server" ID="txtSenha" class="txt"/> <br />
-            <asp:Button Text="Login" runat="server" ID="btnLogin" class="btn" OnClick="btnLogin_Click"/>
-            <asp:Button Text="Cadastrar" runat="server" ID="Button1"  class="btn" OnClick="btnCadastrar_Click"/>
-            <asp:Label Text="" runat="server" ID="lblErro" />
+            <header>
+
+            </header>
+            <main>
+                <div id="form">
+                    <div id="logo">
+				        <img src="imagens/pollo_bundinha.png"/>
+		            </div>
+                    
+                    <p class="pollo">Pollo</p>
+			       
+                    <div class="comp">
+                        <label class="lbl">Digite seu nome</label>
+			            <br/>
+			            <asp:TextBox runat="server" class="txt" ID="txtUser"/>
+			            <br/>
+				 
+			            <br/>
+			            <label class="lbl">Digite sua senha</label>
+			            <br/>
+			            <asp:TextBox runat="server" type="password" class="txt" ID="txtSenha"/>
+			            <br/>
+			            <br/>
+
+			            <asp:Button runat="server" text="Login" ID="btnLogar" class="btn" OnClick="btnLogin_Click"/>
+			            <br/><br />
+			            <label  class="lbl"><a href="../area_usuario/cadastro.aspx">Não é cadastrado ainda?</a></label>
+                    </div>
+                </div>
+            </main>
+            <footer>
+
+            </footer>
         </div>
     </form>
 </body>

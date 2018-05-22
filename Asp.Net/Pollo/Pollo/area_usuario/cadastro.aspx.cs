@@ -13,17 +13,20 @@ namespace Pollo.area_usuario
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         DateTime nascimento;
         int cont_user;
+        int cont_email;
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-            
+            string cod_usuario = (string)Session["cod_usuario"];
+            if (cod_usuario != null)
+            {
+                Response.Redirect("area_inicio/monitor.aspx");
+            }
         }
 
         public void btnProsseguir_Click(object sender, EventArgs e)
         {
             if (txtNome.Text.Length == 0)
             {
-                lblErro.Text = "Nome Invalido!";
                 txtNome.Focus();
                 return;
             }
@@ -31,30 +34,30 @@ namespace Pollo.area_usuario
 
             if (DateTime.TryParse(txtNasc.Text, out nascimento) == false)
             {
-                lblErro.Text = "Data Invalida!";
                 txtNasc.Focus();
                 return;
             }
             if (txtCPF.Text.Length == 0)
             {
-                lblErro.Text = "CPF Invalido!";
                 txtCPF.Focus();
                 return;
             }
 
             if(txtCelular.Text.Length == 0)
-            {
-                lblErro.Text = "Celular Invalido!";
+            { 
                 txtCelular.Focus();
                 return;
             }
-            lblErro.Text = "Campos Validados!";
+           
         }
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
+
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
+
+                //Verificando se tem User repetido
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE user_pollo= '" + txtUser.Text +"'", conexao))
                 {
 
@@ -62,14 +65,25 @@ namespace Pollo.area_usuario
                     {
                             while (reader.Read() == true)
                         {
-                            cont_user++;
+                            cont_user = 1;
+                        }
+                    }
+                }
+                //Verificando se tem Email repetido 
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE email= '" + txtEmail.Text + "'", conexao))
+                {
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            cont_email = 1;
                         }
                     }
                 }
             }
-            if (txtUser.Text.Length == 0 || cont_user !=0)
+            if (txtUser.Text.Length == 0 || cont_user == 1)
             {
-                lblErro.Text = "User Invalido!";
                 txtUser.Focus();
                 return;
             }
@@ -81,22 +95,19 @@ namespace Pollo.area_usuario
             arroba2 = email.LastIndexOf('@');
             ponto = email.LastIndexOf('.');
 
-            if (arroba <= 0 || ponto <= (arroba + 1) || ponto == (email.Length - 1) || arroba2 != arroba)
+            if (arroba <= 0 || ponto <= (arroba + 1) || ponto == (email.Length - 1) || arroba2 != arroba || cont_email == 1)
             {
-                lblErro.Text = "Email Invalido!";
                 txtEmail.Focus();
                 return;
             }
 
             if (txtSenha.Text.Length == 0)
             {
-                lblErro.Text = "Senha Invalida!";
                 txtSenha.Focus();
                 return;
             }
             if (txtSenha.Text != txtSenhaConfirm.Text)
             {
-                lblErro.Text = "Confirmação de senha invalida!";
                 txtSenhaConfirm.Focus();
                 return;
             }
@@ -105,7 +116,6 @@ namespace Pollo.area_usuario
             pergunta = ddlPergunta.SelectedValue;
             if (pergunta.Equals(""))
             {
-                lblErro.Text = "Pergunta Não Selecionada!";
                 ddlPergunta.Focus();
                 return;
             }
@@ -113,7 +123,6 @@ namespace Pollo.area_usuario
 
             if (txtResposta.Text.Length == 0)
             {
-                lblErro.Text = "Resposta Invalida!";
                 txtResposta.Focus();
                 return;
             }
@@ -134,7 +143,6 @@ namespace Pollo.area_usuario
                     cmd.Parameters.AddWithValue("@rec_pergunta", pergunta);
                     cmd.Parameters.AddWithValue("@rec_resposta", txtResposta.Text);
                     cmd.ExecuteNonQuery();
-                    lblErro.Text = "Cadastro Efetuado com Sucesso!";
 
                     //Limpando
                     txtNome.Text = "";
@@ -147,9 +155,7 @@ namespace Pollo.area_usuario
                     ddlPergunta.SelectedValue = "";
                     txtResposta.Text = "";
                 }
-                conexao.Close();
             }
-            
         }
     }
 }

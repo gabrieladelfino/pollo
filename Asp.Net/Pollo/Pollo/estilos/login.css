@@ -1,0 +1,169 @@
+/* CORPO */
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body {
+    color: #fff !important;
+    overflow: hidden;
+    /*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQklEQVQoU2M8cXh7moWt5ywGPACkhhEqn8bAwIBLMVgOppABm8nIYnCFIJORJdA1oijE507yFBJlNbGeIRw8xAY4AHX0MVuEgUAXAAAAAElFTkSuQmCC);*/
+    /*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAhUlEQVQoU2NkYGCY+f8u03MGPIBR+Z8kI0ielZV15q8bf7EqZtNglgTJgRWCAAsLy7PfN//NQjaYVZ0pDSYGVwhVAHcGyDpkJ6ErZGBmZvYFafpz678xsulkK5zJwMCQju4MEB/FM3/+/JFCtg7Zg/Dg+f37N8wklBCFBR1IIbJ1uIJ9JgDO/DotqtnpXAAAAABJRU5ErkJggg==);*/
+    /* LINK REAL OFICIAL:
+        data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAP0lEQVQoU2NkQAXGaPyzID4jFkVgCQYGBpAGDEVwQSSNYDGYSdgUwNQagxThUwBWSF1FKD5B8y1YDjkIcPoOACXaDHAhYWneAAAAAElFTkSuQmCC
+    */
+    background-image: url("../imagens/fundo.png");
+}
+
+main {
+    display: block;
+    width: auto;
+    height: 100%;
+    margin: auto;
+    padding: 10px 0;
+}
+
+/*LOGO*/
+
+#logo{
+	margin: auto;
+}
+
+img{
+	width: 35%;
+    height: 90%;
+    margin: 0 30%;
+}
+
+/*TITULO*/
+
+.pollo{
+	width: 100%;
+	padding: 10px 0;
+}
+
+p{
+	font-size: 4vw;
+	font-family: arial;
+	text-align: center;
+	color: #3D2520;
+}
+
+/* FORMULÁRIO */
+
+#form {
+    width: 25%;
+    height: auto;
+    background: -moz-linear-gradient(-45deg, #ff5454 0%, #ffee00 92%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #ff5454 0%,#ffee00 92%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #ff5454 0%,#ffee00 92%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5454', endColorstr='#ffee00',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    padding: 30px 25px 30px 25px;
+    border-radius: 10px;
+    margin: auto;
+    -webkit-box-shadow: -15px 17px 32px -5px rgba(82,79,82,0.49);
+    -moz-box-shadow: -15px 17px 32px -5px rgba(82,79,82,0.49);
+    box-shadow: -15px 17px 32px -5px rgba(82,79,82,0.49);
+}
+
+
+/*COMP*/
+.comp{
+    width: 100%;
+    height: 100%;
+    padding: 40px 0 0 0;
+    /*background-color: greenyellow;*/
+}
+
+#info-usuario {
+    margin: 10px 0;
+    display: block;
+}
+
+#info-login {
+    margin: 10px 0;
+    display: none;
+}
+
+#info-recuperacao-senha {
+    margin: 10px 0;
+    display: none;
+}
+
+
+/*ATRIBUTOS FORM*/
+.lbl{
+	width: 100%;
+	text-align: justify;
+	font-family:arial;
+	font-size: 1.2vw;
+	color: #3D2520;
+	background: none;
+	font-weight: bold;
+	margin: 0;
+}
+
+.txt {
+    width: 93.4%;
+}
+
+.ddl {
+    width:100%;
+}
+
+.btn {
+    width: auto;
+    padding: 30px;
+}
+
+.txt, .ddl, .btn{
+    height: 2%;
+    margin: 10px 0;
+    padding: 10px;
+    color: #424242;
+    font-size: 1vw;
+    background-color: white;
+    border-radius: 10px;
+    outline: none;
+    font-weight: bold;
+    border: solid 2px;
+    border-color: white;
+}
+
+.txt, .ddl, .btn {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -webkit-box-shadow: -5px 5px 5px -5px rgba(82,79,82,0.49);
+    -moz-box-shadow: -5px 5px 5px -5px rgba(82,79,82,0.49);
+    box-shadow: -5px 5px 5px -5px rgba(82,79,82,0.49);
+}
+
+.txt:focus, .btn:focus{
+	border: solid 2px;
+	border-color: rgba(100, 100, 255, 0.5);
+}
+
+.btn:hover {
+    background-color: rgba(122, 62, 24, 1);
+    color: white;
+    border-color: rgba(122, 62, 24, 1);
+}
+
+.btn {
+    font-size: 1.3vw;
+}
+
+.txt {
+    font-size: 1vw;
+}
+
+a{
+	text-decoration: none;
+	color: #3D2520;
+}
+
+a:hover{
+	color: #795548;
+	opacity: 1;
+}
+

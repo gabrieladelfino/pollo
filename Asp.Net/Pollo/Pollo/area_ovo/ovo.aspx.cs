@@ -1,21 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Data.SqlClient;
+using System.Data;
 namespace Pollo
 {
     public partial class WebForm3 : System.Web.UI.Page
     {
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        int cont_ovo;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            string cod_usuario = (string)Session["cod_usuario"];
+            if (cod_usuario == null)
+            {
+                Response.Redirect("../index.aspx");
+            }
+        }
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
-            int cod_usuario = (int)Session["cod_usuario"];
-            if (txtTipo.Text.Length == 0)
+            string cod_usuario = (string)Session["cod_usuario"];
+
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+
+                //Verificando se tem Ovo com mesmo nome e tamanho repetido
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Ovo WHERE tipo= '" + txtTipo.Text + "' AND tamanho ='" + ddlTamanho.SelectedValue + "'", conexao))
+                {
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            cont_ovo = 1;
+                        }
+                    }
+                }
+            }
+                if (txtTipo.Text.Length == 0|| cont_ovo == 1)
             {
                 lblErro.Text = "Tipo Invalido";
                 txtTipo.Focus();
@@ -25,7 +52,7 @@ namespace Pollo
             string tamanho = ddlTamanho.SelectedValue;
             if (tamanho.Equals(""))
             {
-                lblErro.Text = "Tamanho Não Selecionada";
+                lblErro.Text = "Tamanho Não Selecionado";
                 ddlTamanho.Focus();
                 return;
             }
@@ -49,14 +76,14 @@ namespace Pollo
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
-
+                int cod_user = Convert.ToInt32(cod_usuario);
                 using (SqlCommand cmd = new SqlCommand("INSERT INTO Pollo_Ovo (tipo, tamanho, temperatura, tempo_dia, cod_usuario) VALUES (@tipo, @tamanho, @temperatura, @tempo, @cod_usuario)", conexao))
                 {
                     cmd.Parameters.AddWithValue("@tipo", txtTipo.Text);
                     cmd.Parameters.AddWithValue("@tamanho", tamanho);
                     cmd.Parameters.AddWithValue("@temperatura", txtTemperatura.Text);
                     cmd.Parameters.AddWithValue("@tempo", txtTempo.Text);
-                    cmd.Parameters.AddWithValue("@cod_usuario", cod_usuario);
+                    cmd.Parameters.AddWithValue("@cod_usuario", cod_user);
                     cmd.ExecuteNonQuery();
 
                     lblErro.Text = "Cadastro efetuado com sucesso";
@@ -71,7 +98,7 @@ namespace Pollo
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("../area_inicio/monitor");
         }
     }
 }
