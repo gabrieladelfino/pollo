@@ -159,7 +159,14 @@
         width: 100%;
         min-height: 10%;
         max-height: 15%;
-    }    
+    }
+
+    .midias {
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin: 50px;
+    }
 
     section.p{
         padding: 0;

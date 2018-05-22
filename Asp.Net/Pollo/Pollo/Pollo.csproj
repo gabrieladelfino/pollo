@@ -104,6 +104,10 @@
     <Content Include="imagens\botao\002.png" />
     <Content Include="imagens\botao\003.png" />
     <Content Include="imagens\botao\004.png" />
+    <Content Include="imagens\code\icons\face.png" />
+    <Content Include="imagens\code\icons\linkedin-icon.png" />
+    <Content Include="imagens\code\icons\p.png" />
+    <Content Include="imagens\code\icons\t.png" />
     <Content Include="imagens\code\img_dois.png" />
     <Content Include="imagens\code\img_um.jpg" />
     <Content Include="imagens\code\time\gabi.jpg" />
