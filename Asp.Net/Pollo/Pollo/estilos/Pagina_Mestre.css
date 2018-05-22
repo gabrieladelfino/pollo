@@ -46,7 +46,7 @@ header {
 
 .titulo-pagina {
     position: absolute;
-    top: 0;
+    top: 15px;
     margin: auto;
     margin-left: 10%;
     width: 80%;
@@ -59,11 +59,8 @@ header {
 }
 
 .titulo-pagina-p {
-    background: #fc0093;
-    background: -moz-linear-gradient(left, orange 10%, orange 71%, #ffee00 100%);
-    background: -webkit-linear-gradient(left, red 10%,orange 71%,#ffee00 100%);
-    background: linear-gradient(to top, orange 0%,#ff0000 71%,#ffee00 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fc0093', endColorstr='#ffee00',GradientType=1 );
+    background: -webkit-linear-gradient(top, #FA1905, #F99201);
+    background: linear-gradient(top, #878787, #000);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -176,6 +173,7 @@ img.menu-icon-pollo {
     width: 90%;
     margin: auto;
     padding: 30px 20px;
+    height: 450px;
 }
 
 /*BORDA*/

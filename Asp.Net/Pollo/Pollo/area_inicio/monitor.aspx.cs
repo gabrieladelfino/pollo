@@ -35,7 +35,7 @@ namespace Pollo
 
                             lblNomeChocadeira.Text = nome_chocadeira;
                             lblDiasRestantes.Text = "Dias restantes: " + tempo_dia;
-                            lblTemp.Text = temp + "º";
+                            lblTemp.Text = temp.ToString(System.Globalization.CultureInfo.InvariantCulture) + "º";
                         }
 
                     }

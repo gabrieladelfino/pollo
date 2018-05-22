@@ -5,15 +5,13 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="comp">
-        <div class="botao-add">
-            <img class="img-botao-add" src="../imagens/area_inicial/add/add.png" />
-        </div>
+    <div class="botao-add">
+        <img class="img-botao-add" src="../imagens/area_inicial/add/add.png" />
+    </div>
     
-        <div class="monitor" onmouseover="mostrar(this)" onmouseout="esconder(this)">
-            <asp:Label class="titulos_monitor" ID="lblNomeChocadeira" Text="" runat="server" />
-            <asp:Label class="titulos_monitor_temp" ID="lblTemp" Text="" runat="server" />
-            <asp:Label class="titulos_monitor" ID="lblDiasRestantes" Text="" runat="server" />
-        </div>
+    <div class="monitor" onmouseover="mostrar(this)" onmouseout="esconder(this)">
+        <asp:Label class="titulos_monitor" ID="lblNomeChocadeira" Text="" runat="server" />
+        <asp:Label class="titulos_monitor_temp" ID="lblTemp" Text="" runat="server" />
+        <asp:Label class="titulos_monitor" ID="lblDiasRestantes" Text="" runat="server" />
     </div>
 </asp:Content>

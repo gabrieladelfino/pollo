@@ -19,7 +19,7 @@ namespace Pollo.area_usuario
             string cod_usuario = (string)Session["cod_usuario"];
             if (cod_usuario != null)
             {
-                Response.Redirect("area_inicio/monitor.aspx");
+                Response.Redirect("index.aspx");
             }
         }
 

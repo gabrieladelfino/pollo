@@ -6,9 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
    
-        <h1>Cadastro Chocadeira </h1>
-        <br />
-
+       
         <div class="comp">
             <label class="lbl">Chocadeira</label>
             <asp:TextBox runat="server" ID="txtNomeChocadeira" class="txt"/>    
@@ -26,7 +24,17 @@
             <asp:TextBox runat="server" ID="txtQtdOvos" class="txt"/>
         </div>
 
-        <asp:Button Text="Prosseguir" runat="server" ID= "btnCadastrar" class="btn" onclick="btnCadastrar_Click"/>
-        <asp:Label Text="" runat="server" ID="lblErro" />
-    
+        <div class="comp">
+
+        </div>
+
+        <div class="comp">
+            <asp:Button Text="Cancelar" runat="server" ID="btnCancelar" class="btn" OnClick="btnCancelar_Click"/>
+            <asp:Button Text="Prosseguir" runat="server" ID= "btnCadastrar" class="btn" onclick="btnCadastrar_Click"/>
+            <asp:Label Text="" runat="server" ID="lblErro" />
+        </div>
+
+        <div id="cadastrados">
+
+        </div>
 </asp:Content>

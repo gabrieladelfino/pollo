@@ -13,7 +13,7 @@
         <asp:Label Text="Dia(s) restantes: " runat="server" class="lbl"/>
     </div>
    
-    <div class="comp" id="parametro">
+    <%--<div class="comp" id="parametro">
         <label id="param">Parâmetro</label>
         <asp:DropDownList runat="server" ID="ddlParametro" class="ddl">
             <asp:ListItem Text="" />
@@ -22,13 +22,13 @@
             <asp:ListItem Text="Dia" />
             <asp:ListItem Text="Mês" />
         </asp:DropDownList> 
-    </div>
+    </div>--%>
 
-    <div id="chart_div" style="width: 60%; height: 450px;"></div>
+    <div id="chart_div" style="width: 60%; height: 300px;"></div>
     
     <script type="text/javascript">
         var dados = [
-            ['Minuto', 'Temperatura'],
+            ['Minuto', 'Temp.'],
             <% for (int i = 0; i < Temperaturas.Count; i++) { %>
                     [ <%=Minutos[i] %>, <%=Temperaturas[i].ToString(System.Globalization.CultureInfo.InvariantCulture) %> ],
             <%} %>
