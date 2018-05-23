@@ -111,6 +111,9 @@
     <Content Include="imagens\code\img_dois.png" />
     <Content Include="imagens\code\img_um.jpg" />
     <Content Include="imagens\code\time\gabi.jpg" />
+    <Content Include="imagens\code\time\gaby.png" />
+    <Content Include="imagens\code\time\livia.png" />
+    <Content Include="imagens\code\time\lucas.jpg" />
     <Content Include="imagens\graph.png" />
     <Content Include="imagens\icon.png" />
     <Content Include="imagens\icones\grafico.png" />

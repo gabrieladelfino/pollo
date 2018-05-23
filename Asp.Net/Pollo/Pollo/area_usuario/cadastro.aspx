@@ -24,19 +24,19 @@
 			       
                     <div class="comp" id="info-usuario">
                         <label class="lbl">Nome Completo</label>
-                        <asp:TextBox class="txt" runat="server" ID="txtNome" />
+                        <asp:TextBox class="txt" runat="server" ID="txtNome"/>
                         <br />
 
                         <label class="lbl">Data nascimento</label>
-                        <asp:TextBox class="txt" runat="server"  ID="txtNasc"/>
+                        <asp:TextBox class="txt" runat="server"  ID="txtNasc" onkeyup="mascara_data(this)"/>
                         <br />
                         
                         <label class="lbl">CPF</label>
-                        <asp:TextBox class="txt" runat="server" ID ="txtCPF" />
+                        <asp:TextBox class="txt" runat="server" ID ="txtCPF" onkeyup="mascara_cpf(this)"/>
                         <br />
                         
                         <label class="lbl">Celular</label> 
-                        <asp:TextBox class="txt" runat="server" ID="txtCelular"/>
+                        <asp:TextBox class="txt" runat="server" ID="txtCelular" onclick="clicou_telefone(this)" onkeyup="mascara_telefone(this)"/>
                         <br />
                         <button type="button" class="btn" id="btnProximo_0" onclick="mostra_info_login()">Prosseguir</button>
                     </div>

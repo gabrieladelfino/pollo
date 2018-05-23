@@ -45,11 +45,11 @@ namespace Pollo
             }
         }
 
-        protected void btnSair_Click(object sender, EventArgs e)
-        {
-            string cod_usuario = (string)Session["cod_usuario"];
-            cod_usuario = null;
-            Response.Redirect("../index.aspx");
-        }
+        //protected void btnSair_Click(object sender, EventArgs e)
+        //{
+        //    string cod_usuario = (string)Session["cod_usuario"];
+        //    cod_usuario = null;
+        //    Response.Redirect("../index.aspx");
+        //}
     }
 }

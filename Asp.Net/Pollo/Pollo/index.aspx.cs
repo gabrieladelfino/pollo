@@ -64,8 +64,7 @@ namespace Pollo
             else
             {
                 //lblErro.Text = Session["cod_usuario"].ToString();
-                Server.Transfer("/area_inicio/monitor.aspx", true);
-                Server.Transfer("index.aspx", false);
+                Response.Redirect("area_inicio/monitor.aspx");
             }
         }
     }

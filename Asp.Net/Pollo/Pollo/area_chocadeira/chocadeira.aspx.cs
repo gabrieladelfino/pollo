@@ -103,6 +103,9 @@ namespace Pollo
                     cmd.ExecuteNonQuery();
                     lblErro.Text = "Cadastrado com sucesso";
 
+                    txtNomeChocadeira.Text = "";
+                    txtQtdOvos.Text = "";
+                    ddlCod_ovo.SelectedValue = "";
                 }
             }
         }

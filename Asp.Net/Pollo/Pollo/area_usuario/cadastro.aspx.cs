@@ -112,8 +112,8 @@ namespace Pollo.area_usuario
                 return;
             }
 
-            string pergunta;
-            pergunta = ddlPergunta.SelectedValue;
+            string pergunta = ddlPergunta.SelectedValue;
+
             if (pergunta.Equals(""))
             {
                 ddlPergunta.Focus();
@@ -140,7 +140,7 @@ namespace Pollo.area_usuario
                     cmd.Parameters.AddWithValue("@user_pollo", txtUser.Text);
                     cmd.Parameters.AddWithValue("@email", txtEmail.Text);
                     cmd.Parameters.AddWithValue("@senha", txtSenha.Text);
-                    cmd.Parameters.AddWithValue("@rec_pergunta", pergunta);
+                    cmd.Parameters.AddWithValue("@rec_pergunta", ddlPergunta.SelectedValue.ToString());
                     cmd.Parameters.AddWithValue("@rec_resposta", txtResposta.Text);
                     cmd.ExecuteNonQuery();
 
