@@ -49,7 +49,11 @@ namespace Pollo
         //{
         //    string cod_usuario = (string)Session["cod_usuario"];
         //    cod_usuario = null;
-        //    Response.Redirect("../index.aspx");
+        //    if (cod_usuario == null)
+        //    {
+        //        Response.Redirect("../index.aspx");
+        //    }
+            
         //}
     }
 }

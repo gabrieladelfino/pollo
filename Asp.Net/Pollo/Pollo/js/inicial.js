@@ -16,7 +16,8 @@ function abrirFrame(id){
 	if(tipo == 'analytics'){
         window.location.href = "../area_consulta/analytics.aspx";
 		esconder_menu();
-	}
+    }
+    
 }
 
 
