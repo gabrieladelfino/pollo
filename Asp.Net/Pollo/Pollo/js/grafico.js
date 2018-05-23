@@ -6,7 +6,6 @@ function drawChart() {
     //dados
     var data = google.visualization.arrayToDataTable(dados);
 
-    
     //titulos
     var options = {
         title: 'Média das temperaturas por minuto',

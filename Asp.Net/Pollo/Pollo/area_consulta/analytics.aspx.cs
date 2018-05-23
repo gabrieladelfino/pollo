@@ -25,6 +25,25 @@ namespace Pollo
                 Response.Redirect("../index.aspx");
             }
 
+            if (IsPostBack == false) {
+                using (SqlConnection conexao = new SqlConnection(linkServer))
+                {
+                    conexao.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("SELECT DISTINCT tbc.nome_chocadeira,tbo.tempo_dia FROM Pollo_Chocadeira AS tbc, Pollo_Ovo AS tbo WHERE tbc.cod_usuario = "+cod_usuario+" AND tbo.cod_usuario = "+cod_usuario, conexao))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read() == true)
+                            {
+                                txtChocadeira.Text = "Nome chocadeira: " + reader.GetString(0);
+                                txtDiasRestantes.Text = "Tempo de funcionamento: " + reader.GetInt32(1);
+                            }
+                        }
+                    }
+                }
+            }
+
             Temperaturas = new List<double>();
             Minutos = new List<int>();
 

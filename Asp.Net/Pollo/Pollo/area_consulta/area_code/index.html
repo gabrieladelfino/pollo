@@ -1,0 +1,140 @@
+﻿<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title> &lt;CODE&#47;&gt; </title>
+        <link rel="stylesheet" type="text/css" href="../estilos/code/desktop.css"/>
+        <link rel="stylesheet" type="text/css" href="../estilos/code/celular.css"/>
+        <link rel="stylesheet" type="text/css" href="../estilos/code/slider.css"/>
+        <link rel="stylesheet" type="text/css" href="../estilos/code/normalize.css"/>
+        <link rel="stylesheet" type="text/css" href="../estilos/code/scroll.css"/>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <header id="header">
+            <div class="logo"><a href="#apresentacao">&lt;&#47;&gt;</a></div>
+            <nav id="menu">
+                    <ul>
+                        <li><a href="#sobre">About</a></li>
+                        <li><a href="#time">Team</a></li>
+                        <li><a href="#rodape">Contato</a></li>
+                    </ul>
+                </nav>
+        </header>
+
+        <main>
+            
+             <!-- nossa apresentacao -->
+            <section id="apresentacao">
+                 <a class="font-logomarca" href="#apresentacao">&lt;CODE&#47;&gt;</a>
+                 <br/>
+                 <a class="button-logomarca" href="#sobre">Conheça</a>
+            </section>
+
+             <!-- parallax -->
+            <section class="p">
+                <div class="parallax" id="img_dois"></div>
+            </section>
+           
+            <!-- sobre nossa empresa -->
+            <section id="sobre">
+                <div class="diretrizes" id="missao">
+                    <h1 class="title">About the <a href="#">&lt;CODE&#47;&gt;</a></h1>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut lectus sed urna volutpat suscipit ac in orci. In in lobortis est. Maecenas sollicitudin ullamcorper tincidunt. Fusce finibus, lorem eget feugiat venenatis, nibh diam vestibulum felis, iaculis facilisis arcu dolor ac magna. Aenean suscipit tincidunt lorem egestas maximus. Nulla at nibh massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla vitae maximus mi, et auctor orci. Donec tincidunt diam non libero tincidunt iaculis. Pellentesque posuere sapien vitae purus luctus, a vulputate augue fermentum. Vestibulum id porttitor dui. Mauris sit amet tristique enim. Aenean fringilla dapibus risus ac sollicitudin.
+                    Proin dignissim, odio a pretium dapibus, odio libero ullamcorper magna, accumsan consectetur dolor nisl ac ipsum. Aliquam erat volutpat. Proin sit amet rutrum lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam sed mi nibh. In id mattis lectus. Morbi ac orci in velit condimentum condimentum. Sed tellus libero, auctor sit amet faucibus sed, porta vitae magna. Vivamus sapien libero, posuere non rutrum sit amet, semper vitae urna. Suspendisse vel metus dolor. Integer malesuada eros a cursus posuere. Fusce ultricies maximus sagittis. Ut sit amet laoreet nibh. Maecenas massa lectus, elementum id tellus lobortis, blandit fringilla arcu. Suspendisse potenti.
+                </div>
+
+                <!-- slider -->
+                <div class="slideshow-container">
+                    <div class="slide fade">
+                        <img src="imagens/code/slider/luz.jpg">
+                    </div>
+                    <div class="slide fade">
+                        <img src="imagens/code/slider/luz.jpg">
+                    </div>
+                    <div class="slide fade">
+                        <img src="imagens/code/slider/luz.jpg">
+                    </div>  
+                </div>
+
+                 <!-- indices -->
+                <div>
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                </div>
+            </section>
+
+            <!-- parallax -->
+            <section class="p">
+                <div class="parallax" id="img_um"></div>
+            </section>
+            
+             <!-- sobre nosso time -->
+            <section id="time">
+                <h1 class="time">About the <a href="#">&lt;TEAM&#47;&gt;</a></h1>
+                <div id="container-time">
+                    <div class="time-info" id="Bruna" onmouseover="mostra_nome()"></div>
+                    <div class="time-info" id="Elias" onmouseover="mostra_nome()"></div>
+                    <div class="time-info" id="Gabriela" onmouseover="mostra_nome()"></div>
+                    <div class="time-info" id="Livia" onmouseover="mostra_nome()"></div>
+                    <div class="time-info" id="Lucas" onmouseover="mostra_nome()"></div>
+                    <!--<div class="time-info" id="Mais" onmouseover="mostra_nome()"></div>-->
+                </div>
+            </section>
+        </main>
+ 
+        <footer>
+            <section class="p" id="rodape">
+                <div class="parallax" id="img_um"></div>
+                <div class="midias"><a href="../index.aspx"><img src="../imagens/code/icons/p.png" /></a></div>
+                <div class="midias"><a href="../index.aspx"><img src="../imagens/code/icons/face.png" /></a></div>
+                <div class="midias"><a href="../index.aspx"><img src="../imagens/code/icons/linkedin-icon.png" /></a></div>
+                <div class="midias"><a href="../index.aspx"><img src="../imagens/code/icons/t.png" /></a></div>
+            </section>
+            <section>
+                    
+            </section>
+        </footer>
+
+    <script type="text/javascript">
+        $(window).scroll(function(){ 
+            var top = $(window).scrollTop(); 
+            if(top > 10){
+                document.getElementById('header').style.position = 'fixed';
+                document.getElementById('header').style.zIndex = '9999';
+            }else{ 
+                document.getElementById('header').style.position = 'relative';            
+            }
+        });
+
+
+        var slideIndex = 0; 
+        showSlides();
+
+        function showSlides() {
+           
+            var i;
+            var slides = document.getElementsByClassName("slide");
+            var dots = document.getElementsByClassName("dot");
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }    
+            
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 2000); 
+        }
+    </script>
+
+    </body>
+</html>

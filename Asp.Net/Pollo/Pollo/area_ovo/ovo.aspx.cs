@@ -100,5 +100,10 @@ namespace Pollo
         {
             Response.Redirect("../area_inicio/monitor");
         }
+
+        protected void btnCancelar_Click1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

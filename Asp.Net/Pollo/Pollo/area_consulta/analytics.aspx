@@ -8,9 +8,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
     <div class="comp">
-        <asp:Label Text="Chocadeira: " runat="server" class="lbl"/>
-        <asp:Label Text="Data conexão: " runat="server" class="lbl"/>
-        <asp:Label Text="Dia(s) restantes: " runat="server" class="lbl"/>
+        <asp:Label Text="" ID="txtChocadeira" runat="server" class="lbl"/>
+        <asp:Label Text="" ID="txtDiasRestantes" runat="server" class="lbl"/>
     </div>
    
     <%--<div class="comp" id="parametro">
@@ -28,7 +27,7 @@
     
     <script type="text/javascript">
         var dados = [
-            ['Minuto', 'Temp.'],
+            ['Minuto', 'Temp.  '],
             <% for (int i = 0; i < Temperaturas.Count; i++) { %>
                     [ <%=Minutos[i] %>, <%=Temperaturas[i].ToString(System.Globalization.CultureInfo.InvariantCulture) %> ],
             <%} %>
