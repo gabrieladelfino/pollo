@@ -32,31 +32,26 @@
              
                 <main>
                     <div class="menu_pg" id="menu1">
-                        <div class="itemMenu-pollo" id="pollo" onclick="abrirFrame('pollo')">
-                            <img class="menu-icon-pollo" src="../imagens/pollo_bundinha.png" title="Chocadeiras">
-                            <p class="menu-title-pollo"> Pollo </p>
+                        <div class="itemMenu-pollo" id="pollo_icon">
+                            <asp:Button class="btn_menu" ID="pollo" OnClick="pollo_Click" runat="server"/>
+                        </div>
+                        <p class="menu-title-pollo"> Pollo </p>
+
+                        <div class="itemMenu" id="chocadeira_icon">
+                            <asp:Button class="btn_menu" Text="Chocadeiras" ID="chocadeira" OnClick="chocadeira_Click" runat="server"/>
                         </div>
                         
-                        <div class="itemMenu" id="chocadeira" onclick="abrirFrame('chocadeira')">
-                            <img class="menu-icon" src="../imagens/icones/incubadora.png" title="Chocadeiras">
-                            <p class="menu-title"> Chocadeiras </p>
+                        <div class="itemMenu" id="ovo_icon">
+                            <asp:Button class="btn_menu" Text="Ovo" ID="ovo" OnClick="ovo_Click"  runat="server" />
                         </div>
                         
-                        <div class="itemMenu" id="ovo" onclick="abrirFrame('ovo')">
-                            <img class="menu-icon" src="../imagens/icones/ovo.png" title="Ovo" onmouseover="troca_icon('ovo')" onmouseout="esconde_icon('ovo')">
-                            <p class="menu-title"> Ovos </p>
+                        <div class="itemMenu" id="analytics_icon">
+                            <asp:Button class="btn_menu" Text="Analytics" ID="analytics" OnClick="analytics_Click" runat="server"/>
                         </div>
-                        
-                        <div class="itemMenu" id="analytics" onclick="abrirFrame('analytics')">
-                            <img class="menu-icon" id="graph" src="../imagens/icones/grafico.png" title="Analytics" onmouseover="troca_icon('graph')" onmouseout="esconde_icon('graph')">
-                            <p class="menu-title"> Analytics </p> 
-                        </div>
-                        
-                        <div class="itemMenu-logout" id="logout" onclick="abrirFrame('logout')">
-                            <img class="menu-icon" src="../imagens/icones/turn-off.png" title="Sair">
-                            <p class="menu-title"> Sair </p>
-                            <asp:Button Text="Sair temporario" runat="server" ID="btnSair" OnClick="btnSair_Click" />
-                        </div>
+                      
+                        <div class="itemMenu-logout" id="logout_icon">
+                            <asp:Button class="btn_menu" Text="Sair" ID="logout" OnClick="logout_Click" runat="server" />
+                        </div> 
                     </div>
 
                     <div id="container">
