@@ -55,8 +55,8 @@
                         <div class="itemMenu-logout" id="logout" onclick="abrirFrame('logout')">
                             <img class="menu-icon" src="../imagens/icones/turn-off.png" title="Sair">
                             <p class="menu-title"> Sair </p>
+                            <asp:Button Text="Sair temporario" runat="server" ID="btnSair" OnClick="btnSair_Click" />
                         </div>
-                        <asp:Button Text="Sair temporario" runat="server" ID="btnSair" OnClick="btnSair_Click" />
                     </div>
 
                     <div id="container">
