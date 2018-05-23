@@ -30,7 +30,7 @@ namespace Pollo
                 {
                     conexao.Open();
 
-                    using (SqlCommand cmd = new SqlCommand("SELECT DISTINCT tbc.nome_chocadeira,tbo.tempo_dia FROM Pollo_Chocadeira AS tbc, Pollo_Ovo AS tbo WHERE tbc.cod_usuario = "+cod_usuario+" AND tbo.cod_usuario = "+cod_usuario, conexao))
+                    using (SqlCommand cmd = new SqlCommand("SELECT tbc.nome_chocadeira,tbo.tempo_dia FROM Pollo_Chocadeira AS tbc, Pollo_Ovo AS tbo WHERE tbc.cod_usuario = "+cod_usuario+" AND tbo.cod_usuario = "+cod_usuario, conexao))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {

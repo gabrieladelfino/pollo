@@ -148,12 +148,14 @@ namespace Pollo.area_usuario
                     txtNome.Text = "";
                     txtNasc.Text = "";
                     txtCelular.Text = "";
+                    txtCPF.Text = "";
                     txtUser.Text = "";
                     txtEmail.Text = "";
                     txtSenha.Text = "";
                     txtSenhaConfirm.Text = "";
                     ddlPergunta.SelectedValue = "";
                     txtResposta.Text = "";
+                    Response.Redirect("../index.aspx");
                 }
             }
         }

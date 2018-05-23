@@ -30,7 +30,7 @@ namespace Pollo
                 conexao.Open();
 
                 //Verificando se tem Ovo com mesmo nome e tamanho repetido
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Ovo WHERE tipo= '" + txtTipo.Text + "' AND tamanho ='" + ddlTamanho.SelectedValue + "'", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Ovo WHERE tipo= '" + txtTipo.Text + "' AND tamanho ='" + ddlTamanho.SelectedValue + "' AND cod_usuario = "+cod_usuario, conexao))
                 {
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -98,12 +98,10 @@ namespace Pollo
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../area_inicio/monitor");
-        }
-
-        protected void btnCancelar_Click1(object sender, EventArgs e)
-        {
-
+            txtTemperatura.Text = "";
+            txtTempo.Text = "";
+            txtTipo.Text = "";
+            ddlTamanho.SelectedValue = "";
         }
     }
 }

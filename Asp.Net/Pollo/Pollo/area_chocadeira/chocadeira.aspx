@@ -29,7 +29,7 @@
         </div>
 
         <div class="comp">
-            <asp:Button Text="Cancelar" runat="server" ID="btnCancelar" class="btn" OnClick="btnCancelar_Click"/>
+            <asp:Button Text="Limpar" runat="server" ID="btnCancelar" class="btn" OnClick="btnCancelar_Click"/>
             <asp:Button Text="Prosseguir" runat="server" ID= "btnCadastrar" class="btn" onclick="btnCadastrar_Click"/>
             <asp:Label Text="" runat="server" ID="lblErro" />
         </div>

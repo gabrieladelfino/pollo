@@ -53,7 +53,7 @@ namespace Pollo
                 conexao.Open();
 
                 //Verificando se tem Nome de Chocadeira repetido
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Chocadeira WHERE nome_chocadeira= '" + txtNomeChocadeira.Text + "'", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Chocadeira WHERE nome_chocadeira= '" + txtNomeChocadeira.Text + "' AND cod_usuario = "+cod_usuario, conexao))
                 {
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -109,7 +109,9 @@ namespace Pollo
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            txtNomeChocadeira.Text = "";
+            txtQtdOvos.Text = "";
+            ddlCod_ovo.SelectedValue = "";
         }
     }
 }
