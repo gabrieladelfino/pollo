@@ -40,13 +40,49 @@ namespace Pollo {
         protected global::System.Web.UI.WebControls.Label label;
         
         /// <summary>
-        /// Controle btnSair.
+        /// Controle pollo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSair;
+        protected global::System.Web.UI.WebControls.Button pollo;
+        
+        /// <summary>
+        /// Controle chocadeira.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button chocadeira;
+        
+        /// <summary>
+        /// Controle ovo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ovo;
+        
+        /// <summary>
+        /// Controle analytics.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button analytics;
+        
+        /// <summary>
+        /// Controle logout.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button logout;
         
         /// <summary>
         /// Controle ContentPlaceHolder1.

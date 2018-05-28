@@ -45,7 +45,27 @@ namespace Pollo
             }
         }
 
-        protected void btnSair_Click(object sender, EventArgs e)
+        protected void pollo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../area_inicio/monitor.aspx");
+        }
+
+        protected void chocadeira_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../area_chocadeira/chocadeira.aspx");
+        }
+
+        protected void ovo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../area_ovo/ovo.aspx");
+        }
+
+        protected void analytics_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../area_consulta/analytics.aspx");
+        }
+
+        protected void logout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
             Response.Redirect("../index.aspx");
