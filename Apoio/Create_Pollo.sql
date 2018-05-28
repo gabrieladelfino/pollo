@@ -1,13 +1,13 @@
 CREATE TABLE Pollo_Usuario (
 cod_usuario		INT 	PRIMARY KEY 	IDENTITY(1000,1),
 nome 			VARCHAR(50),
-data_nasc 		DATE, 
-cpf 			VARCHAR(14),
+data_nasc 		VARCHAR(10), 
+sexo			VARCHAR(10),
 celular 	    VARCHAR(14),
 user_pollo		VARCHAR(30),
 email 			VARCHAR(50),
 senha 			VARCHAR(50),
-rec_pergunta 	VARCHAR(50),
+cod_pergunta 	INT 	FOREIGN KEY 	REFERENCES Pollo_Pergunta(cod_pergunta)
 rec_resposta 	VARCHAR(50)
 );
 
@@ -26,10 +26,21 @@ cod_chocadeira 	INT 	PRIMARY KEY 	IDENTITY (1000,1),
 nome_chocadeira VARCHAR (50),
 cod_ovo 		INT 	FOREIGN KEY 	REFERENCES Pollo_Ovo(cod_ovo),
 quantidade_ovos INT,
+inicio			DATE,
+final			DATE,	
 cod_usuario		INT 	FOREIGN KEY 	REFERENCES Pollo_Usuario(cod_usuario)
+	
 );
 
+CREATE TABLE Pollo_Pergunta(
+cod_pergunta	INT		PRIMARY KEY 	IDENTITY(1,1),
+pergunta		VARCHAR(50)
+);
 
-Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+CREATE TABLE Pollo_Tamanho_Ovo(
+cod_tamanho	INT		PRIMARY KEY 		IDENTITY(1,1),
+tamanho		VARCHAR(50),
+cod_usuario		INT 	FOREIGN KEY 	REFERENCES Pollo_Usuario(cod_usuario)
+);
 
 
