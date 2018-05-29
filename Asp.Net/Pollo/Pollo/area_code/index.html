@@ -73,12 +73,87 @@
             <section id="time">
                 <h1 class="time">About the <a href="#">&lt;TEAM&#47;&gt;</a></h1>
                 <div id="container-time">
-                    <div class="time-info" id="Bruna" onmouseover="mostra_nome()"></div>
-                    <div class="time-info" id="Elias" onmouseover="mostra_nome()"></div>
-                    <div class="time-info" id="Gabriela" onmouseover="mostra_nome()"></div>
-                    <div class="time-info" id="Livia" onmouseover="mostra_nome()"></div>
-                    <div class="time-info" id="Lucas" onmouseover="mostra_nome()"></div>
-                    <!--<div class="time-info" id="Mais" onmouseover="mostra_nome()"></div>-->
+                    
+                    <div class="time-info" id="Bruna" onmouseover="mostra_nome_Bruna()">
+                        <div class="info" id="infoBruna">
+                           <p>
+                                <a href="" class="nome-time">&lt;Bruna Paz&#47;&gt;</a>
+                                <br />20 anos
+                                <br />São Bernado/SP
+                                <br>
+                                <br />Hobbies:
+                                <br />Desenvolver;
+                                <br />Criar fotos;
+                                <br />Documentar;
+                                <br />E fazer muitos #tweets.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="time-info" id="Elias" onmouseover="mostra_nome_Elias()">
+                        <div class="info" id="infoElias">
+                            <p>
+                                <a href="" class="nome-time">&lt;Elias Angelo&#47;&gt;</a>
+                                <br />19 anos
+                                <br />São João de Meriti/RJ
+                                <br />
+                                <br />Hobbies:
+                                <br />Desenvolver;
+                                <br />Opinar;
+                                <br />Documentar;
+                                <br />E usar Crocs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="time-info" id="Gabriela" onmouseover="mostra_nome_Gabriela()">
+                        <div class="info" id="infoGabriela">
+                            <p>
+                                <a href="" class="nome-time">&lt;Gabriela Garcia&#47;&gt;</a>
+                                <br />18 anos
+                                <br />São Paulo/SP
+                                <br />
+                                <br />Hobbies:
+                                <br />Desenvolver;
+                                <br />Estilizar;
+                                <br />Dar push;
+                                <br />E contar pixels.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="time-info" id="Livia" onmouseover="mostra_nome_Livia('Livia')">
+                        <div class="info" id="infoLivia">
+                            <p>
+                                <a href="" class="nome-time">&lt;Livia Sayuri&#47;&gt;</a>
+                                <br />17 anos
+                                <br />Ota-Shi Gunma/Japão
+                                <br />
+                                <br />Hobbies:
+                                <br />Desenvolver;
+                                <br />Modelar banco de dados;
+                                <br />Desenhar ícones;
+                                <br />E ser um amorzinho.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="time-info" id="Lucas" onmouseover="mostra_nome_Lucas()">
+                        <div class="info" id="infoLucas">
+                            <p>
+                                <a href="" class="nome-time">&lt;Lucas Antunes&#47;&gt;</a>
+                                <br />18 anos
+                                <br />São Paulo/SP
+                                <br />
+                                <br />Hobbies:
+                                <br />Questionar;
+                                <br />Desenvolver;
+                                <br />Documentar;
+                                <br />E entrar em choque.
+                            </p>
+                        </div>
+                    </div>
+                    
                 </div>
             </section>
         </main>
@@ -91,50 +166,65 @@
                 <div class="midias"><a href="../index.aspx"><img src="../imagens/code/icons/linkedin-icon.png" /></a></div>
                 <div class="midias"><a href="../index.aspx"><img src="../imagens/code/icons/t.png" /></a></div>
             </section>
-            <section>
-                    
-            </section>
         </footer>
+        <script type="text/javascript">
+            $(window).scroll(function () {
+                var top = $(window).scrollTop();
+                if (top > 10) {
+                    document.getElementById('header').style.position = 'fixed';
+                    document.getElementById('header').style.zIndex = '9999';
+                } else {
+                    document.getElementById('header').style.position = 'relative';
+                }
+            });
 
-    <script type="text/javascript">
-        $(window).scroll(function(){ 
-            var top = $(window).scrollTop(); 
-            if(top > 10){
-                document.getElementById('header').style.position = 'fixed';
-                document.getElementById('header').style.zIndex = '9999';
-            }else{ 
-                document.getElementById('header').style.position = 'relative';            
+
+            var slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+
+                var i;
+                var slides = document.getElementsByClassName("slide");
+                var dots = document.getElementsByClassName("dot");
+
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+
+                if (slideIndex > slides.length) {
+                    slideIndex = 1
+                }
+
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+                setTimeout(showSlides, 2000);
             }
-        });
 
-
-        var slideIndex = 0; 
-        showSlides();
-
-        function showSlides() {
-           
-            var i;
-            var slides = document.getElementsByClassName("slide");
-            var dots = document.getElementsByClassName("dot");
-            
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slideIndex++;
-            
-            if (slideIndex > slides.length) {
-                slideIndex = 1
-            }    
-            
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
+            function mostra_nome_Bruna() {
+                document.getElementById('infoBruna').style.display = 'block';
             }
 
-            slides[slideIndex-1].style.display = "block";  
-            dots[slideIndex-1].className += " active";
-            setTimeout(showSlides, 2000); 
-        }
-    </script>
+            function mostra_nome_Lucas() {
+                document.getElementById('infoLucas').style.display = 'block';
+            }
 
+            function mostra_nome_Elias() {
+                document.getElementById('infoElias').style.display = 'block';
+            }
+
+            function mostra_nome_Gabriela() {
+                document.getElementById('infoGabriela').style.display = 'block';
+            }
+
+            function mostra_nome_Livia() {
+                document.getElementById('infoLivia').style.display = 'block';
+            }
+        </script>
     </body>
 </html>

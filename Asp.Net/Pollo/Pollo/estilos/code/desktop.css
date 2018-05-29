@@ -1,177 +1,193 @@
 
 /* Desktop grande */
 @media (max-width: 2000px){
-    body{
-        color: white;
-        background-color:#070719;
-    }
+body{
+    color: white;
+    background-color:#070719;
+}
 
-    header{
-        width: 100%;
-        height: 10%;
-        background-color:#070719;
-        -webkit-box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
-        -moz-box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
-        box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
-    }
+header{
+    width: 100%;
+    height: 10%;
+    background-color:#070719;
+    -webkit-box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
+    -moz-box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
+    box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
+}
 
-    #menu{
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        line-height: 80px;
-    }
-    #menu ul {
-        float: right;
-        font-size: 1.2vw;
-    }
+#menu{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 80px;
+}
+#menu ul {
+    float: right;
+    font-size: 1.2vw;
+}
 
-    #menu ul li { 
-        display: inline;
-    }
+#menu ul li { 
+    display: inline;
+}
 
-    #menu ul li a {
-        margin: 0 35;
-        height: 100%;
-        display: inline-block;
-    }
+#menu ul li a {
+    margin: 0 35px;
+    height: 100%;
+    display: inline-block;
+}
 
-    .logo{
-        margin: 0 35;
-        height: 100%;
-        float: left;
-        text-align: center;
-        line-height: 80px;
-        font-size: 1.5vw;
-    }
+.logo{
+    margin: 0 35px;
+    height: 100%;
+    float: left;
+    text-align: center;
+    line-height: 80px;
+    font-size: 1.5vw;
+}
 
-    a:hover {
-        color: #FFFF00 !important;
-    }
+a:hover {
+    color: #FFFF00 !important;
+}
 
-    h1.title{
-        padding: 10 0;
-        margin: 10 0;
-        font-size: 2vw;
-    }
-    main{
-        width: 100%;
-        height: auto;
-        width: 100%;
-        height: auto;
-        text-align: center;
-    }
+h1.title{
+    padding: 10px 0;
+    margin: 10px 0;
+    font-size: 2vw;
+}
+main{
+    width: 100%;
+    height: auto;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
 
-    section{
-        padding: 5% 0;
-        width: 100%;
-        height: auto;
-        line-height: 6;
-        float: left;
-    }
+section{
+    padding: 5% 0;
+    width: 100%;
+    height: auto;
+    line-height: 6;
+    float: left;
+}
 
-    section#apresentacao{
-        /* background: indigo; */
-    }
+section#apresentacao{
+    /* background: indigo; */
+}
 
-    a.font-logomarca{
-        font-size: 5vw;
-    }
+a.font-logomarca{
+    font-size: 5vw;
+}
 
-    a.button-logomarca{
-        font-size: 1.5vw;
-        padding: 30 40;
-    }
+a.button-logomarca{
+    font-size: 1.5vw;
+    padding: 30px 40px;
+}
 
-    a.button-logomarca:hover{
-        border: solid 2px #FFFF00 !important;
-        color: white !important;
-        border-radius: 2px;
-    }
+a.button-logomarca:hover{
+    border: solid 2px #FFFF00 !important;
+    color: white !important;
+    border-radius: 2px;
+}
 
-    section#sobre{
-        /* background: hotpink; */
-    }
+section#sobre{
+    /* background: hotpink; */
+}
 
-    .diretrizes, #missao{
-        width: 45%;
-        height: auto;
-        margin: 50px;
-        float: left;
-        font-size: 1vw;
-        text-align: justify;
-        line-height: 1.2;
-        letter-spacing: 1px;
-    }
+.diretrizes, #missao{
+    width: 45%;
+    height: auto;
+    margin: 50px;
+    float: left;
+    font-size: 1vw;
+    text-align: justify;
+    line-height: 1.2;
+    letter-spacing: 1px;
+}
 
-    section#time{
-         /*background: lawngreen;*/ 
-    }
+section#time{
+    /*background: lawngreen;*/ 
+}
 
-    h1.time{
-        font-size: 2vw;
-        line-height: 1.2;
-        letter-spacing: 1px;
-        padding: 10px 0;
-        margin: 10px 0;
-    }
+h1.time{
+    font-size: 2vw;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    padding: 10px 0;
+    margin: 10px 0;
+}
 
-    #container-time{
-        width: 80%;
-        height: 100%;
-        margin: auto;
-        padding: 60px;
-    }
+#container-time{
+    width: 95%;
+    height: 100%;
+    margin: auto;
+    padding: 80px 60px;
+}
 
-    .time-info{
-        width: 25%;
-        height: 50%;
-        margin: 30px;
-        background: yellow;
-        background-size: 100%;
-        float: left;
-        -webkit-box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
-        -moz-box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
-        box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
-    }
-    
-    #Bruna{
-        background-image: url('../../imagens/code/time/bruna.png'); 
-    }
+.time-info{
+    width: 25%;
+    height: 60%;
+    margin: 30px;
+    background-size: 100%;
+    float: left;
+    -webkit-box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
+    -moz-box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
+    box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
+}
 
-    #Elias{
-        background-image: url('../../imagens/code/time/elias.png'); 
-    }
+.info {
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    text-align: justify;
+    opacity: 0.9;
+    line-height: 30px;
+    font-size: 1.5vw;
+    background-color: gray;
+    padding: 15px;
+    display: none;
+}
 
-    #Gabriela{
-        background-image: url('../../imagens/code/time/gaby.png'); 
-    }
+.nome-time{
+    font-size: 2vw;
+    padding: 25px 0;
+}
+#Bruna{
+    background-image: url('../../imagens/code/time/bruna.png'); 
+}
 
-    #Livia{
-        background-image: url('../../imagens/code/time/livia.png'); 
-    }
+#Elias{
+    background-image: url('../../imagens/code/time/elias.png'); 
+}
 
-    #Lucas{
-        background-image: url('../../imagens/code/time/lucas.png'); 
-    }
+#Gabriela{
+    background-image: url('../../imagens/code/time/gaby.png'); 
+}
 
-    footer{
-        width: 100%;
-        min-height: 10%;
-        max-height: 15%;
-    }
+#Livia{
+    background-image: url('../../imagens/code/time/livia.png'); 
+}
 
-    .midias {
-        width: 50px;
-        height: 50px;
-        float: left;
-        margin: 50px;
-    }
+#Lucas{
+    background-image: url('../../imagens/code/time/lucas.png'); 
+}
 
-    section.p{
-        padding: 0;
-        margin: 0;
-    }
+footer{
+    width: 100%;
+    min-height: 10%;
+    max-height: 15%;
+}
+
+.midias {
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin: 50px;
+}
+
+section.p{
+    padding: 0;
+    margin: 0;
+}
 }
 
 .parallax {
@@ -188,5 +204,5 @@
 }
 
 #img_dois{
-    background-image: url('../../imagens/code/img_dois.png'); 
+background-image: url('../../imagens/code/img_dois.png'); 
 }
