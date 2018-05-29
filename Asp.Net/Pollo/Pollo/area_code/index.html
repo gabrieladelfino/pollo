@@ -74,7 +74,7 @@
                 <h1 class="time">About the <a href="#">&lt;TEAM&#47;&gt;</a></h1>
                 <div id="container-time">
                     
-                    <div class="time-info" id="Bruna" onmouseover="mostra_nome_Bruna()">
+                    <div class="time-info" id="Bruna" onmouseover="mostra_Bruna()" onmouseout="esconde_Bruna()">
                         <div class="info" id="infoBruna">
                            <p>
                                 <a href="" class="nome-time">&lt;Bruna Paz&#47;&gt;</a>
@@ -90,7 +90,7 @@
                         </div>
                     </div>
 
-                    <div class="time-info" id="Elias" onmouseover="mostra_nome_Elias()">
+                    <div class="time-info" id="Elias" onmouseover="mostra_Elias()" onmouseout="esconde_Elias()">
                         <div class="info" id="infoElias">
                             <p>
                                 <a href="" class="nome-time">&lt;Elias Angelo&#47;&gt;</a>
@@ -106,7 +106,7 @@
                         </div>
                     </div>
 
-                    <div class="time-info" id="Gabriela" onmouseover="mostra_nome_Gabriela()">
+                    <div class="time-info" id="Gabriela" onmouseover="mostra_Gabriela()" onmouseout="esconde_Gabriela()">
                         <div class="info" id="infoGabriela">
                             <p>
                                 <a href="" class="nome-time">&lt;Gabriela Garcia&#47;&gt;</a>
@@ -122,7 +122,7 @@
                         </div>
                     </div>
 
-                    <div class="time-info" id="Livia" onmouseover="mostra_nome_Livia('Livia')">
+                    <div class="time-info" id="Livia" onmouseover="mostra_Livia()" onmouseout="esconde_Livia()">
                         <div class="info" id="infoLivia">
                             <p>
                                 <a href="" class="nome-time">&lt;Livia Sayuri&#47;&gt;</a>
@@ -138,7 +138,7 @@
                         </div>
                     </div>
 
-                    <div class="time-info" id="Lucas" onmouseover="mostra_nome_Lucas()">
+                    <div class="time-info" id="Lucas" onmouseover="mostra_Lucas()" onmouseout="esconde_Lucas()">
                         <div class="info" id="infoLucas">
                             <p>
                                 <a href="" class="nome-time">&lt;Lucas Antunes&#47;&gt;</a>
@@ -206,24 +206,48 @@
                 setTimeout(showSlides, 2000);
             }
 
-            function mostra_nome_Bruna() {
+
+            //-------------------------------------------------------
+            function mostra_Bruna() {
                 document.getElementById('infoBruna').style.display = 'block';
             }
 
-            function mostra_nome_Lucas() {
+            function mostra_Lucas() {
                 document.getElementById('infoLucas').style.display = 'block';
             }
 
-            function mostra_nome_Elias() {
+            function mostra_Elias() {
                 document.getElementById('infoElias').style.display = 'block';
             }
 
-            function mostra_nome_Gabriela() {
+            function mostra_Gabriela() {
                 document.getElementById('infoGabriela').style.display = 'block';
             }
 
-            function mostra_nome_Livia() {
+            function mostra_Livia() {
                 document.getElementById('infoLivia').style.display = 'block';
+            }
+
+          //-----------------------------------------------------------------------------------
+
+            function esconde_Bruna() {
+                document.getElementById('infoBruna').style.display = 'none';
+            }
+
+            function esconde_Lucas() {
+                document.getElementById('infoLucas').style.display = 'none';
+            }
+
+            function esconde_Elias() {
+                document.getElementById('infoElias').style.display = 'none';
+            }
+
+            function esconde_Gabriela() {
+                document.getElementById('infoGabriela').style.display = 'none';
+            }
+
+            function esconde_Livia() {
+                document.getElementById('infoLivia').style.display = 'none';
             }
         </script>
     </body>
