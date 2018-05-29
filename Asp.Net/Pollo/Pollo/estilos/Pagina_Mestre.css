@@ -133,7 +133,7 @@ main {
     background-color: aqua;
 }
 
-.itemMenu-logout {
+/*.itemMenu-logout {
     width: 90%;
     height: 10%;
     margin: auto;
@@ -141,8 +141,8 @@ main {
     padding: 10px;
     background-repeat: no-repeat;
     background-size: 20%;
-    background-color: blueviolet;
-}
+    background-color: aqua;
+}*/
 
 p.menu-title {
     width: 70%;
@@ -175,23 +175,27 @@ p.menu-title-pollo {
 }
 
 #chocadeira_icon {
-    background-image: url('../imagens/icones/incubadora.png');
+    background-image: url('../imagens/icones/incubator.png');
+}
+
+#chocadeira_icon:hover {
+    background-image: url('../imagens/icones/incubator_cor.png');
 }
 
 #ovo_icon {
-    background-image: url('../imagens/icones/ovo.png');
+    background-image: url('../imagens/icones/eggs.png');
 }
 
 #ovo_icon:hover {
-    background-image: url('../imagens/icones/ovoh.png');
+    background-image: url('../imagens/icones/eggs_cor.png');
 }
 
 #analytics_icon {
-    background-image: url('../imagens/icones/grafico.png');
+    background-image: url('../imagens/icones/graphs.png');
 }
 
 #analytics_icon:hover {
-    background-image: url('../imagens/icones/graficoh.png');
+    background-image: url('../imagens/icones/graphs_cor.png');
 }
 
 #logout_icon {

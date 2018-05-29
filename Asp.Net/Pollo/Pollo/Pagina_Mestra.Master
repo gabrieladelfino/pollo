@@ -49,7 +49,7 @@
                             <asp:Button class="btn_menu" Text="Analytics" ID="analytics" OnClick="analytics_Click" runat="server"/>
                         </div>
                       
-                        <div class="itemMenu-logout" id="logout_icon">
+                        <div class="itemMenu" id="logout_icon">
                             <asp:Button class="btn_menu" Text="Sair" ID="logout" OnClick="logout_Click" runat="server" />
                         </div> 
                     </div>

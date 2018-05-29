@@ -72,14 +72,25 @@ module.exports.ArduinoData = {List: serial.List}
     var TYPES = require('tedious').TYPES;  
 
     function inserirRegistro(media) {  
-        request = new Request("INSERT INTO Pollo_Media_Minuto VALUES(CURRENT_TIMESTAMP,@media);", function(err) {  
-         if (err) {  
-            console.log(err);
-			console.log("Erro");
+        var request = new Request("INSERT INTO Pollo_Media_Minuto VALUES(CURRENT_TIMESTAMP,@media);\n" +
+		"DECLARE\n"+
+		"@total INT, @media_hora FLOAT \n"+
+
+		"SELECT @total = COUNT(*) FROM Pollo_Media_Minuto;\n"+
+		"SELECT @media_hora = AVG(temperatura) FROM Pollo_Media_Minuto WHERE minuto <= 60;\n"+
+				
+		"IF @total >= 60\n"+
+		"BEGIN\n"
+		"	INSERT INTO Pollo_Media_Hora VALUES(@media_hora);\n"+
+		"END"
+		, function(err) {  
+			if (err) {  
+				console.log(err);
+				console.log("Erro");
+			} else {
+				console.log("Funcionou");
 			}
-		else
-			console.log("Funcionou");
-        });  
+        });
         request.addParameter('media', TYPES.Float, media);  
         connection.execSql(request);  
     }  
