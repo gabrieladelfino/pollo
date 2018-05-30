@@ -5,13 +5,17 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
     <div class="botao-add">
         <img class="img-botao-add" src="../imagens/area_inicial/add/add.png" />
     </div>
-    
-    <div class="monitor" onmouseover="mostrar(this)" onmouseout="esconder(this)">
-        <asp:Label class="titulos_monitor" ID="lblNomeChocadeira" Text="" runat="server" />
-        <asp:Label class="titulos_monitor_temp" ID="lblTemp" Text="" runat="server" />
-        <asp:Label class="titulos_monitor" ID="lblDiasRestantes" Text="" runat="server" />
-    </div>
+   
+    <script type="text/javascript">
+        var id = <% int idc = idChocadeira.Count(); %>
+        alert(id);
+
+        var nome = <% int nomec = nomeChocadeira.Count; %>
+        alert(nome);
+    </script>
+
 </asp:Content>
