@@ -85,6 +85,7 @@
     <Content Include="area_consulta\consulta.aspx" />
     <Content Include="area_consulta\grafico_google.aspx" />
     <Content Include="area_usuario\cadastro.aspx" />
+    <Content Include="area_usuario\recuperacao_senha.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="estilos\analytics.css" />
     <Content Include="estilos\cadastro.css" />
@@ -164,6 +165,13 @@
     </Compile>
     <Compile Include="area_usuario\cadastro.aspx.designer.cs">
       <DependentUpon>cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="area_usuario\recuperacao_senha.aspx.cs">
+      <DependentUpon>recuperacao_senha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="area_usuario\recuperacao_senha.aspx.designer.cs">
+      <DependentUpon>recuperacao_senha.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

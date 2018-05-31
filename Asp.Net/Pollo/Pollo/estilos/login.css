@@ -1,7 +1,7 @@
-@font-face {
+/*@font-face {
     src: url("../fontes/Domotika.ttf");
     font-family: Poet;
-}
+}*/
 
 *{
 	margin: 0;
@@ -11,11 +11,6 @@
 body {
     color: #fff !important;
     overflow: hidden;
-    /*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQklEQVQoU2M8cXh7moWt5ywGPACkhhEqn8bAwIBLMVgOppABm8nIYnCFIJORJdA1oijE507yFBJlNbGeIRw8xAY4AHX0MVuEgUAXAAAAAElFTkSuQmCC);*/
-    /*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAhUlEQVQoU2NkYGCY+f8u03MGPIBR+Z8kI0ielZV15q8bf7EqZtNglgTJgRWCAAsLy7PfN//NQjaYVZ0pDSYGVwhVAHcGyDpkJ6ErZGBmZvYFafpz678xsulkK5zJwMCQju4MEB/FM3/+/JFCtg7Zg/Dg+f37N8wklBCFBR1IIbJ1uIJ9JgDO/DotqtnpXAAAAABJRU5ErkJggg==);*/
-    /* LINK REAL OFICIAL:
-        data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAP0lEQVQoU2NkQAXGaPyzID4jFkVgCQYGBpAGDEVwQSSNYDGYSdgUwNQagxThUwBWSF1FKD5B8y1YDjkIcPoOACXaDHAhYWneAAAAAElFTkSuQmCC
-    */
     background-image: url("../imagens/fundo.png");
 }
 
