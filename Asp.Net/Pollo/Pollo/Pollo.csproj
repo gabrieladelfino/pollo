@@ -127,6 +127,7 @@
     <Content Include="imagens\icones\incubator_cor.png" />
     <Content Include="imagens\icones\turn-off.png" />
     <Content Include="imagens\list.png" />
+    <Content Include="imagens\logo_pollo.PNG" />
     <Content Include="imagens\pollo.png" />
     <Content Include="imagens\pollo_bundinha.png" />
     <Content Include="imagens\user.png" />
@@ -220,6 +221,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fontes\Bebas.otf" />
+    <Content Include="fontes\PoetsenOne-Regular.ttf" />
+    <Content Include="fontes\Domotika.ttf" />
     <None Include="packages.config" />
     <Content Include="Pagina_Mestra.Master" />
     <None Include="Web.Debug.config">

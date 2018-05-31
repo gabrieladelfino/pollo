@@ -17,11 +17,11 @@
             </header>
             <main>
                 <div id="form">
+                    
                     <div id="logo">
-				        <img src="../imagens/pollo_bundinha.png"/>
+				        <img src="../imagens/logo_pollo.PNG"/>
 		            </div>
-                     <%--<p class="pollo">Pollo</p>--%>
-			       
+                  
                     <div class="comp" id="info-usuario">
                         <label class="lbl">Nome Completo</label>
                         <asp:TextBox class="txt" runat="server" ID="txtNome"/>

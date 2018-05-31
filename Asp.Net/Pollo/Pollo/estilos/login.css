@@ -1,4 +1,8 @@
-/* CORPO */
+@font-face {
+    src: url("../fontes/Domotika.ttf");
+    font-family: Poet;
+}
+
 *{
 	margin: 0;
 	padding: 0;
@@ -30,34 +34,36 @@ main {
 }
 
 img{
-	width: 35%;
-    height: 90%;
-    margin: 0 30%;
+	width: 80%;
+    height: 10%;
+    margin: 0 10%;
 }
 
 /*TITULO*/
 
-.pollo{
-	width: 100%;
-	padding: 10px 0;
+/*.pollo {
+    width: 100%;
+    padding: 10px 0;
 }
 
-p{
-	font-size: 4vw;
-	font-family: arial;
-	text-align: center;
-	color: #3D2520;
-}
+p {
+    font-size: 4.2vw;
+    font-family: Poet;
+    text-align: center;
+    color: #3C221E;
+    letter-spacing: 4px;
+}*/
 
 /* FORMULÁRIO */
 
 #form {
     width: 25%;
     height: auto;
-    background: -moz-linear-gradient(-45deg, #ff5454 0%, #ffee00 92%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg, #ff5454 0%,#ffee00 92%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg, #ff5454 0%,#ffee00 92%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5454', endColorstr='#ffee00',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: #d98324;
+    background: -moz-linear-gradient(top, #d98324 2%, #fad735 77%); 
+    background: -webkit-linear-gradient(top, #d98324 2%,#fad735 77%); 
+    background: linear-gradient(to bottom, #d98324 2%,#fad735 77%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d98324', endColorstr='#fad735',GradientType=0 ); 
     padding: 30px 25px 30px 25px;
     border-radius: 10px;
     margin: auto;
@@ -92,37 +98,48 @@ p{
 
 
 /*ATRIBUTOS FORM*/
-.lbl{
-	width: 100%;
-	text-align: justify;
-	font-family:arial;
-	font-size: 1.2vw;
-	color: #3D2520;
-	background: none;
-	font-weight: bold;
-	margin: 0;
+.lbl {
+    width: 100%;
+    text-align: justify;
+    font-family: arial;
+    font-size: 1.2vw;
+    color: #3C221E;
+    background: none;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+.btn {
+    width: auto;
+    padding: 10px;
+    color: #424242;
+    font-size: 1vw;
+    border-radius: 10px;
+    outline: none;
+    font-weight: bold;
+    border: solid 2px;
+    border-color: white;
+    border-color: #424242;
+    background-color: transparent;
 }
 
 .txt {
     width: 93.4%;
+    background-color: white;
 }
 
 .ddl {
-    width:100%;
+    width: 100%;
+    background-color: white;
 }
 
-.btn {
-    width: auto;
-    padding: 30px;
-}
-
-.txt, .ddl, .btn{
+.txt, .ddl{
     height: 2%;
     margin: 10px 0;
     padding: 10px;
     color: #424242;
     font-size: 1vw;
-    background-color: white;
     border-radius: 10px;
     outline: none;
     font-weight: bold;
@@ -130,7 +147,7 @@ p{
     border-color: white;
 }
 
-.txt, .ddl, .btn {
+.txt, .ddl {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -webkit-box-shadow: -5px 5px 5px -5px rgba(82,79,82,0.49);
@@ -157,13 +174,13 @@ p{
     font-size: 1vw;
 }
 
-a{
-	text-decoration: none;
-	color: #3D2520;
+a {
+    text-decoration: none;
+    color: #3C221E;
 }
 
-a:hover{
-	color: #795548;
-	opacity: 1;
+a:hover {
+    color: #d98324;
+    opacity: 1;
 }
 
