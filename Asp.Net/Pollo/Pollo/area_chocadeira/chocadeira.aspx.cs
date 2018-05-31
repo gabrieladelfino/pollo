@@ -15,7 +15,7 @@ namespace Pollo
         int cod_ovo;
         int cont_chocadeira;
         protected void Page_Load(object sender, EventArgs e)
-        { 
+        {
             string cod_usuario = (string)Session["cod_usuario"];
             if (cod_usuario == null)
             {
@@ -28,7 +28,7 @@ namespace Pollo
                 {
 
                     conexao.Open();
-                    using (SqlCommand cmd = new SqlCommand("SELECT Cod_Ovo, Tipo, Tamanho FROM Pollo_Ovo", conexao))
+                    using (SqlCommand cmd = new SqlCommand("SELECT cod_ovo, tipo, tamanho FROM Pollo_Ovo", conexao))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -53,7 +53,7 @@ namespace Pollo
                 conexao.Open();
 
                 //Verificando se tem Nome de Chocadeira repetido
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Chocadeira WHERE nome_chocadeira= '" + txtNomeChocadeira.Text + "' AND cod_usuario = "+cod_usuario, conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Chocadeira WHERE nome_chocadeira= '" + txtNomeChocadeira.Text + "' AND cod_usuario = " + cod_usuario, conexao))
                 {
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -65,7 +65,7 @@ namespace Pollo
                     }
                 }
             }
-                if (txtNomeChocadeira.Text.Length == 0 || cont_chocadeira == 1)
+            if (txtNomeChocadeira.Text.Length == 0 || cont_chocadeira == 1)
             {
                 lblErro.Text = "Nome invalido";
                 txtNomeChocadeira.Focus();
@@ -101,7 +101,7 @@ namespace Pollo
                     cmd.Parameters.AddWithValue("@quantidade_ovos", qtd_ovo);
                     cmd.Parameters.AddWithValue("@cod_usuario", cod_user);
                     cmd.ExecuteNonQuery();
-                    lblErro.Text = "Cadastrado com sucesso "+cod_user;
+                    lblErro.Text = "Cadastrado com sucesso";
 
                     txtNomeChocadeira.Text = "";
                     txtQtdOvos.Text = "";
