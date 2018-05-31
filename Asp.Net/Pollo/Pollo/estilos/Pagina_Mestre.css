@@ -224,10 +224,11 @@ img.menu-icon-pollo {
 /*CONTAINER*/
 
 #container {
-    width: 90%;
+    width: 90vw;
+    height: 80vh;
     margin: auto;
-    padding: 30px 20px;
-    height: 450px;
+    padding: 20px;
+    background-color:aqua;
 }
 
 /*BORDA*/

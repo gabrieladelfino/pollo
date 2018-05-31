@@ -101,7 +101,7 @@ namespace Pollo
                     cmd.Parameters.AddWithValue("@quantidade_ovos", qtd_ovo);
                     cmd.Parameters.AddWithValue("@cod_usuario", cod_user);
                     cmd.ExecuteNonQuery();
-                    lblErro.Text = "Cadastrado com sucesso";
+                    lblErro.Text = "Cadastrado com sucesso "+cod_user;
 
                     txtNomeChocadeira.Text = "";
                     txtQtdOvos.Text = "";
