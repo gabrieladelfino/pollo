@@ -16,25 +16,25 @@
     
     <div class="medias">
         <div class="info-media" id="media">
-
+            <label class="lbl">Média</label>
         </div>
         <div class="info-media" id="mediana">
-
+            <label class="lbl">Mediana</label>
         </div>
         <div class="info-media" id="p-quartil">
-
+             <label class="lbl">1° Quartil</label>
         </div>
         <div class="info-media" id="s-quartil">
-
+            <label class="lbl">2° Quartil</label>
         </div>
         <div class="info-media" id="t-quartil">
-
+            <label class="lbl">3° Quartil</label>
         </div>
         <div class="info-media" id="min">
-
+            <label class="lbl">Min.</label>
         </div>
         <div class="info-media" id="max">
-
+            <label class="lbl">Max</label>
         </div>
     </div>
 
