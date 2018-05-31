@@ -11,20 +11,35 @@
         <asp:Label Text="" ID="txtChocadeira" runat="server" class="lbl"/>
         <asp:Label Text="" ID="txtDiasRestantes" runat="server" class="lbl"/>
     </div>
-   
-    <%--<div class="comp" id="parametro">
-        <label id="param">Parâmetro</label>
-        <asp:DropDownList runat="server" ID="ddlParametro" class="ddl">
-            <asp:ListItem Text="" />
-            <asp:ListItem Text="Minuto" />
-            <asp:ListItem Text="Hora" />
-            <asp:ListItem Text="Dia" />
-            <asp:ListItem Text="Mês" />
-        </asp:DropDownList> 
-    </div>--%>
 
-    <div id="chart_div" style="width: 60%; height: 300px;"></div>
+    <div id="chart_div"></div>
     
+    <div class="medias">
+        <div class="info-media" id="media">
+
+        </div>
+        <div class="info-media" id="mediana">
+
+        </div>
+        <div class="info-media" id="p-quartil">
+
+        </div>
+        <div class="info-media" id="s-quartil">
+
+        </div>
+        <div class="info-media" id="t-quartil">
+
+        </div>
+        <div class="info-media" id="min">
+
+        </div>
+        <div class="info-media" id="max">
+
+        </div>
+    </div>
+
+    <%--SCRIPTS--%>
+
     <script type="text/javascript">
         var dados = [
             ['Minuto', 'Temp.  '],
@@ -33,7 +48,7 @@
             <%} %>
             ];
     </script>
-
     <script type="text/javascript" src="../js/grafico.js"></script>
+
 </asp:Content>
 
