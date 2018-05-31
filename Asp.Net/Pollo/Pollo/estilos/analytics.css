@@ -1,48 +1,24 @@
-﻿.comp {
-    width: 100%;
-    height: 100px;
-    display: block;
-    padding: 20px 0;
-    margin: 20px 0;
-}
-
-#parametro {
-    height: 50px;
-    margin: 20px 0;
-}
-
-/*LABELS E DDL*/
-
-#param {
+﻿.lbl {
     width: auto;
     height: auto;
-    font-family: arial;
-    font-size: 1.2vw;
-    color: #3D2520;
-    float: left;
-    margin: 10px 0;
-    padding: 0 20px 0 0;
-}
-
-.lbl {
-    width: 100%;
-    height: auto;
-    font-family: arial;
-    font-size: 1.5vw;
-    color: #3D2520;
-    float: left;
-    margin: 10px 0;
-    font-weight: bold;
-}
-
-.ddl {
-    width: auto;
-    height: 25px;
     font-family: arial;
     font-size: 1vw;
     color: #3D2520;
     float: left;
-    margin: 10px 0;
+    margin: 10px;
+    font-weight: bold;
+    border-bottom: solid 2px orange;
+    text-align: center;
+}
+
+.lblTemp {
+    text-align: center;
+    font-size: 3.6vw;
+    background: -webkit-linear-gradient(top, #00FF7F, #D2B48C);
+    background: linear-gradient(top, #878787, #000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 10px;
 }
 
 /*GRAFICO*/
@@ -51,22 +27,24 @@
     height: 60%;
     background-color: transparent;
     float: left;
-    margin: 20px 0;
+    margin: 2.5% 0;
 }
 
 /*MEDIAS*/
 .medias {
-    background-color: blueviolet;
     width: 50%;
-    height: 60%;
+    height: 70%;
     float: left;
     margin: 20px 30px;
+    padding: 0 30px;
 }
 
-.info-media{
+.info {
     width: 25%;
-    height: 20%;
+    height: 30%;
     background-color: #FAFAFA;
-    margin: 30px;
+    margin: 20px;
     float: left;
+    border-radius: 20px;
+    padding: 10px;
 }

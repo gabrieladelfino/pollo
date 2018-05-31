@@ -30,14 +30,17 @@ namespace Pollo
                 {
                     conexao.Open();
 
-                    using (SqlCommand cmd = new SqlCommand("SELECT tbc.nome_chocadeira,tbo.tempo_dia FROM Pollo_Chocadeira AS tbc, Pollo_Ovo AS tbo WHERE tbc.cod_usuario = "+cod_usuario+" AND tbo.cod_usuario = "+cod_usuario, conexao))
+                    using (SqlCommand cmd = new SqlCommand("SELECT temperatura FROM Pollo_Media_Minuto", conexao))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read() == true)
                             {
-                                txtChocadeira.Text = "Nome chocadeira: " + reader.GetString(0);
-                                txtDiasRestantes.Text = "Tempo de funcionamento: " + reader.GetInt32(1);
+                                media.Text = "" + reader.GetDouble(0);
+                                mediana.Text = "" + reader.GetDouble(0);
+                                max.Text = ""+reader.GetDouble(0);
+                                pQuartil.Text = "" + reader.GetDouble(0);
+                                desvPadrao.Text = "" + reader.GetDouble(0);
                             }
                         }
                     }
