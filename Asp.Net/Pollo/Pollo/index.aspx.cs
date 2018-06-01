@@ -24,24 +24,26 @@ namespace Pollo
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            #region Verificação de campos
             if (txtUser.Text.Length == 0)
             {
                 //lblErro.Text = "User Invalido!";
                 txtUser.Focus();
                 return;
             }
+           
             if (txtSenha.Text.Length == 0)
             {
                 //lblErro.Text = "Senha Invalida!";
                 txtSenha.Focus();
                 return;
             }
-
+            #endregion
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT Cod_Usuario FROM Pollo_Usuario WHERE user_pollo= '" + txtUser.Text + "' AND senha ='" + txtSenha.Text + "'", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT Cod_Usuario FROM Pollo_Usuario WHERE (user_pollo= '" + txtUser.Text + "' AND senha = '" + txtSenha.Text + "') OR (email = '" + txtUser.Text + "' AND senha = '" + txtSenha.Text + "')", conexao))
                 {
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -57,13 +59,11 @@ namespace Pollo
             }
             if (cont_login != 1)
             {
-                //lblErro.Text = "Usuario e Senha invalido!";
                 txtUser.Focus();
                 return;
             }
             else
             {
-                //lblErro.Text = Session["cod_usuario"].ToString();
                 Response.Redirect("area_inicio/monitor.aspx");
             }
         }

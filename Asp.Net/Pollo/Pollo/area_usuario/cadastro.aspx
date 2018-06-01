@@ -34,9 +34,9 @@
                         <label class="lbl">Sexo</label>
                         <asp:DropDownList class="ddl" runat="server" ID="ddlSexo">
                             <asp:ListItem            Text=""  />
-                            <asp:ListItem Value= "1" Text="Feminino"  />
-                            <asp:ListItem Value= "2" Text="Masculino" />
-                            <asp:ListItem Value= "3" Text="Outro" />
+                            <asp:ListItem Value= "F" Text="Feminino"  />
+                            <asp:ListItem Value= "M" Text="Masculino" />
+                            <asp:ListItem Value= "O" Text="Outro" />
                         </asp:DropDownList>
                         <br />
                         
