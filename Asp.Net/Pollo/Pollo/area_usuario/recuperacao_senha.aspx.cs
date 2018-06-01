@@ -62,7 +62,7 @@ namespace Pollo.area_usuario
                         while (reader.Read() == true)
                         {
                             cod_pergunta = reader.GetInt32(0);
-                            resposta = reader.GetString(1).ToUpper();
+                            resposta = reader.GetString(1);
                         }
                     }
                 }
@@ -77,13 +77,14 @@ namespace Pollo.area_usuario
                     }
                 }
                 txtPergunta.Text = pergunta;
+                txtResposta.Text = resposta;
                 #endregion
             }
         }
         protected void txtResposta_TextChanged(object sender, EventArgs e)
         {
             #region Verificando se a resposta coincide
-            if (txtResposta.Text.ToUpper() == resposta)
+            if (txtResposta.Text.Equals(resposta))
             {
                 txtNovaSenha.Enabled = true;
                 txtConfirmarSenha.Enabled = true;
