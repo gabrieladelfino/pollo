@@ -13,10 +13,10 @@ namespace Pollo.area_usuario
     {
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         int cod_pergunta;
-        string resposta;
         string pergunta;
         int cont_senha;
         int cod_user;
+        int cont_resposta;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,31 +41,21 @@ namespace Pollo.area_usuario
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
-                #region Identificando usuario
-                using (SqlCommand cmd = new SqlCommand("SELECT cod_usuario FROM Pollo_Usuario WHERE user_pollo = '" + txtUsuario.Text + "' OR email = '" + txtUsuario.Text + "'", conexao))
+                #region Identificando usuario e obtendo o codigo da pergunta
+                using (SqlCommand cmd = new SqlCommand("SELECT cod_usuario, cod_pergunta FROM Pollo_Usuario WHERE user_pollo = '" + txtUsuario.Text + "' OR email = '" + txtUsuario.Text + "'", conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read() == true)
                         {
                             cod_user = reader.GetInt32(0);
+                            cod_pergunta = reader.GetInt32(1);
                             txtResposta.Enabled = true;
                         }
                     }
                 }
                 #endregion
-                #region Obtendo a pergunta de recuperação e a senha
-                using (SqlCommand cmd = new SqlCommand("SELECT cod_pergunta, rec_resposta FROM Pollo_Usuario WHERE cod_usuario =" + cod_user, conexao))
-                {
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read() == true)
-                        {
-                            cod_pergunta = reader.GetInt32(0);
-                            resposta = reader.GetString(1);
-                        }
-                    }
-                }
+                #region Obtendo a pergunta com base no codigo
                 using (SqlCommand cmd = new SqlCommand("SELECT pergunta FROM Pollo_Pergunta WHERE cod_pergunta =" + cod_pergunta, conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -77,14 +67,30 @@ namespace Pollo.area_usuario
                     }
                 }
                 txtPergunta.Text = pergunta;
-                txtResposta.Text = resposta;
                 #endregion
             }
         }
         protected void txtResposta_TextChanged(object sender, EventArgs e)
         {
-            #region Verificando se a resposta coincide
-            if (txtResposta.Text.Equals(resposta))
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+                #region Verificando se a resposta está correta
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE user_pollo = '" + txtUsuario.Text + "' OR email = '" + txtUsuario.Text + "' AND rec_resposta = '" + txtResposta.Text + "'", conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            cont_resposta = 1;
+                            txtResposta.Enabled = true;
+                        }
+                    }
+                }
+            }
+                #endregion
+                #region Verificando se a resposta coincide
+                if (cont_resposta == 1)
             {
                 txtNovaSenha.Enabled = true;
                 txtConfirmarSenha.Enabled = true;
