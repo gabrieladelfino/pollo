@@ -40,13 +40,13 @@ namespace Pollo.area_usuario {
         protected global::System.Web.UI.WebControls.TextBox txtNasc;
         
         /// <summary>
-        /// Controle txtCPF.
+        /// Controle ddlSexo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCPF;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
         
         /// <summary>
         /// Controle txtCelular.

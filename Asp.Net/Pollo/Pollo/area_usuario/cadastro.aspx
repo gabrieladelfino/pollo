@@ -31,8 +31,13 @@
                         <asp:TextBox class="txt" runat="server"  ID="txtNasc" onkeyup="mascara_data(this)"/>
                         <br />
                         
-                        <label class="lbl">CPF</label>
-                        <asp:TextBox class="txt" runat="server" ID ="txtCPF" onkeyup="mascara_cpf(this)"/>
+                        <label class="lbl">Sexo</label>
+                        <asp:DropDownList class="ddl" runat="server" ID="ddlSexo">
+                            <asp:ListItem            Text=""  />
+                            <asp:ListItem Value= "F" Text="Feminino"  />
+                            <asp:ListItem Value= "M" Text="Masculino" />
+                            <asp:ListItem Value= "O" Text="Outro" />
+                        </asp:DropDownList>
                         <br />
                         
                         <label class="lbl">Celular</label> 
@@ -65,10 +70,6 @@
                         <label class="lbl">Pergunta para recuperação</label>
                         <asp:DropDownList class="ddl" runat="server" ID="ddlPergunta">
                             <asp:ListItem Text="" />
-                            <asp:ListItem Text="Qual o nome do seu primeiro animal de estimação?" />
-                            <asp:ListItem Text="Qual o nome da sua primeira professora?" />
-                            <asp:ListItem Text="Qual o nome de solteira da sua mãe?" />
-                            <asp:ListItem Text="Qual o nome do seu filme preferido?" />
                             </asp:DropDownList>
                         <br />
 

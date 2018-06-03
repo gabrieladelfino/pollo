@@ -15,9 +15,6 @@
         <label class="lbl">Tamanho</label>
         <asp:DropDownList runat="server" ID="ddlTamanho" class="ddl">
         <asp:ListItem Text="" />
-        <asp:ListItem Text="Pequeno" />
-        <asp:ListItem Text="Medio" />
-        <asp:ListItem Text="Grande" />
         </asp:DropDownList> 
     </div>
 
@@ -32,7 +29,7 @@
     </div>
    
     <div class="comp">
-        <asp:Button Text="Limpar" runat="server" ID="btnCancelar" class="btn" OnClick="btnCancelar_Click"/>
+        <asp:Button Text="Limpar" runat="server" ID="btnLimpar" class="btn" OnClick="btnLimpar_Click"/>
         <asp:Button Text="Prosseguir" runat="server" ID="btnCadastrar" class="btn" OnClick="btnCadastrar_Click"/>
         <asp:Label Text="" runat="server" ID="lblErro" class="lbl"/>
     </div>
