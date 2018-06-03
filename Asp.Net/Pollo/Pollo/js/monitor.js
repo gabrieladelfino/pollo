@@ -5,18 +5,22 @@
 //depois busque o estilo dele e um atributo "display" e sete ele como 'block'
 //todas as outras linhas repito isso para os elementos filhos do menu, no caso os botoes
 
-function mostrar() {
-    document.getElementById('menu').style.display = 'block';
-    document.getElementById('salvar').style.display = 'block';
-    document.getElementById('editar').style.display = 'block';
-    document.getElementById('excluir').style.display = 'block';
-    document.getElementById('relatorio').style.display = 'block';
-}
+//function mostrar() {
+//    document.getElementById('menu').style.display = 'block';
+//    document.getElementById('salvar').style.display = 'block';
+//    document.getElementById('editar').style.display = 'block';
+//    document.getElementById('excluir').style.display = 'block';
+//    document.getElementById('relatorio').style.display = 'block';
+//}
 
-function esconder() {
-    document.getElementById('menu').style.display = 'none';
-    document.getElementById('salvar').style.display = 'none';
-    document.getElementById('editar').style.display = 'none';
-    document.getElementById('excluir').style.display = 'none';
-    document.getElementById('relatorio').style.display = 'none';
+//function esconder() {
+//    document.getElementById('menu').style.display = 'none';
+//    document.getElementById('salvar').style.display = 'none';
+//    document.getElementById('editar').style.display = 'none';
+//    document.getElementById('excluir').style.display = 'none';
+//    document.getElementById('relatorio').style.display = 'none';
+//}
+
+function addChocadeira() {
+    window.location.href = "../area_chocadeira/chocadeira.aspx";
 }

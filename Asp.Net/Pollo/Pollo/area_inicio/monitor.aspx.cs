@@ -17,6 +17,7 @@ namespace Pollo
         string linkServer = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         int i;
         string final;
+        int tempo = 0;
         Chocadeira c;
         List<Chocadeira> cc;
 
@@ -37,15 +38,11 @@ namespace Pollo
                 Response.Redirect("../index.aspx");
             }
             #endregion
+
             if (IsPostBack == false) {
                 ListarChocadeiras();
                 CriarDiv();
             }
-            else
-            {
-
-            }
-           
         }
 
         public void CriarDiv(){
@@ -93,33 +90,46 @@ namespace Pollo
                         {
                             c.codChocadeira = reader.GetInt32(0);
                             c.nomeChocadeira = reader.GetString(1);
-                            //c.tempoDiaOvo = reader.GetInt32(2);
                             c.temperatura = reader.GetDouble(3);
-                        }
-                    }
-                }
-                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT (VARCHAR, final) FROM Pollo_Chocadeira", conexao))
-                {
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read() == true)
-                        {
-                           final = reader.GetString(0);
-                        }
-                    }
-                }
-                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT (INT, '"+ final + "' - GETDATE())", conexao))
-                {
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read() == true)
-                        {
-                            c.tempoDiaOvo = reader.GetInt32(0);
+                            c.tempoDiaOvo = DiasRestantes();
                             cc.Add(c);
                         }
                     }
                 }
+                
             }
+        }
+
+        public int DiasRestantes()
+        {
+            using (SqlConnection conexao = new SqlConnection(linkServer))
+            {
+                conexao.Open();
+                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT (VARCHAR, final) FROM Pollo_Chocadeira WHERE cod_chocadeira = "+c.codChocadeira, conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            final = reader.GetString(0);
+                        }
+                    }
+
+                }
+
+                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT (INT, '" + final + "' - GETDATE())", conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            tempo = reader.GetInt32(0);
+                        }
+                    }
+                }
+            }
+
+            return tempo;
         }
         
     }

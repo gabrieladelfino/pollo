@@ -49,7 +49,6 @@ namespace Pollo.area_usuario
                             cod_user = reader.GetInt32(0);
                             cod_pergunta = reader.GetInt32(1);
                             txtResposta.Enabled = true;
-                            lblErro.Text = "Achou usuario: " + cod_user;
                         }
                     }
                 }
@@ -69,6 +68,7 @@ namespace Pollo.area_usuario
                 #endregion
             }
         }
+
         protected void txtResposta_TextChanged(object sender, EventArgs e)
         {
             using (SqlConnection conexao = new SqlConnection(linkserver))
@@ -148,16 +148,36 @@ namespace Pollo.area_usuario
                     conexao.Open();
                     using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Usuario SET senha = @senha WHERE cod_usuario = @cod_user", conexao))
                     {
-                        lblErro.Text = "Editou: " + txtNovaSenha.Text + ", cod: " + cod_user;
                         cmd.Parameters.AddWithValue("@senha", nova_senha);
-                        cmd.Parameters.AddWithValue("@cod_user", cod_user);
+                        cmd.Parameters.AddWithValue("@cod_user", PegarCod());
                         cmd.ExecuteNonQuery();
                     }
                 }
             }
          
-        }            
+        }
         #endregion
-    } 
+        public int PegarCod()
+        {
+            #region Verificando se a resposta está correta
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+                
+                using (SqlCommand cmd = new SqlCommand("SELECT cod_usuario FROM Pollo_Usuario WHERE user_pollo = '" + txtUsuario.Text + "' OR email = '" + txtUsuario.Text + "' AND rec_resposta = '" + txtResposta.Text + "'", conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            cod_user = reader.GetInt32(0);
+                        }
+                    }
+                }
+            }
+            return cod_user;
+            #endregion
+        }
+    }
 }
     
