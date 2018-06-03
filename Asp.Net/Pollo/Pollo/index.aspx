@@ -17,11 +17,9 @@
             <main>
                 <div id="form">
                     <div id="logo">
-				        <img src="imagens/logo_pollo.PNG"/>
+				        <img src="imagens/logo.PNG"/>
 		            </div>
                     
-                    <%--<p class="pollo">Pollo</p>--%>
-			       
                     <div class="comp">
                         <label class="lbl">Digite seu nome</label>
 			            <br/>
@@ -38,6 +36,8 @@
 			            <asp:Button runat="server" text="Login" ID="btnLogar" class="btn" OnClick="btnLogin_Click"/>
 			            <br/><br />
 			            <label  class="lbl"><a href="../area_usuario/cadastro.aspx">Não é cadastrado ainda?</a></label>
+                        <br />
+                          <label  class="lbl"><a href="area_usuario/recuperacao_senha.aspx">Esqueceu sua senha?</a></label>
                     </div>
                 </div>
             </main>

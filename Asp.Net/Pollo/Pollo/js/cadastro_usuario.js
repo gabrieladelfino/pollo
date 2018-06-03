@@ -39,15 +39,49 @@ function mascara_telefone(campo) {
         campo.value += ')';
     } if (campo.value.length == 9) {
         campo.value += '-';
+    } 
+}
+
+function verificar(campo) {
+    if (campo.value.length <= 0) {
+        campo.style.borderColor = 'rgba(215, 44, 44, 0.5)';
+    }
+    if (campo.value == "") {
+        campo.style.borderColor = 'rgba(215, 44, 44, 0.5)';
+    }
+    else {
+        campo.style.borderColor = 'rgba(30, 217, 44, 0.5)';
     }
 }
 
-function mascara_cpf(campo, evt) {
-    if (campo.value.length == 3) {
-        campo.value += '.';
-    } if (campo.value.length == 7) {
-        campo.value += '.';
-    } if (campo.value.length == 11) {
-        campo.value += '-';
+function somenteLetras(e) {
+    var tecla = new Number();
+    if (window.event) {
+        tecla = e.keyCode;
+    }
+    else if (e.evt) {
+        tecla = e.which;
+    }
+    else {
+        return true;
+    }
+    if ((tecla >= "48") && (tecla <= "57")) {
+        return false;
+    }
+}
+
+function somenteNumeros(e) {
+    var tecla = new Number();
+    if (window.event) {
+        tecla = e.keyCode;
+    }
+    else if (e.which) {
+        tecla = e.which;
+    }
+    else {
+        return true;
+    }
+    if ((tecla >= "97") && (tecla <= "122")) {
+        return false;
     }
 }

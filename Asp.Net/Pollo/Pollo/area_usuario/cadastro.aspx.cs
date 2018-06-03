@@ -92,8 +92,7 @@ namespace Pollo.area_usuario
                     txtNome.Focus();
                     return;
                 }
-
-
+              
                 if (DateTime.TryParse(txtNasc.Text, out nascimento) == false)
                 {
                     txtNasc.Focus();
@@ -190,7 +189,7 @@ namespace Pollo.area_usuario
                     txtResposta.Text = "";
                     #endregion
                     #endregion
-                    Response.Redirect("../index.aspx");
+                Response.Redirect("../index.aspx");
                 }
             }
         }
