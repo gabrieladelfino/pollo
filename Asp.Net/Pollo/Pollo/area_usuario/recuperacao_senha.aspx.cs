@@ -27,16 +27,11 @@ namespace Pollo.area_usuario
             #endregion
             if (IsPostBack == false)
             {
-                txtPergunta.Enabled = false;
-                txtResposta.Enabled = false;
-                txtNovaSenha.Enabled = false;
-                txtConfirmarSenha.Enabled = false;
+                txtPergunta.CssClass = "txt_disable";
+                txtResposta.CssClass = "txt_disable";
+                txtNovaSenha.CssClass = "txt_disable";
+                txtConfirmarSenha.CssClass = "txt_disable";
             }
-        }
-
-        protected void txtResposta_PreRender(object sender, EventArgs e)
-        {
-            lblResp.Text = Server.HtmlEncode(txtResposta.Text);
         }
 
         protected void txtUsuario_TextChanged(object sender, EventArgs e)
@@ -53,7 +48,7 @@ namespace Pollo.area_usuario
                         {
                             cod_user = reader.GetInt32(0);
                             cod_pergunta = reader.GetInt32(1);
-                            txtResposta.Enabled = true;
+                            txtResposta.CssClass = "txt";
                         }
                     }
                 }
@@ -88,7 +83,7 @@ namespace Pollo.area_usuario
                         while (reader.Read() == true)
                         {
                             cont_resposta = 1;
-                            txtResposta.Enabled = true;
+                            txtResposta.CssClass = "txt";
                         }
                     }
                 }
@@ -98,13 +93,13 @@ namespace Pollo.area_usuario
             #region Verificando se a resposta coincide
             if (cont_resposta == 1)
             {
-                txtNovaSenha.Enabled = true;
-                txtConfirmarSenha.Enabled = true;
+                txtNovaSenha.CssClass = "txt";
+                txtConfirmarSenha.CssClass = "txt";
             }
             else
             {
-                txtNovaSenha.Enabled = false;
-                txtConfirmarSenha.Enabled = false;
+                txtNovaSenha.CssClass = "txt_disable";
+                txtConfirmarSenha.CssClass = "txt_disable";
             }
             #endregion
         }

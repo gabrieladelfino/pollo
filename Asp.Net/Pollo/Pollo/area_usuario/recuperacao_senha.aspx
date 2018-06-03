@@ -11,10 +11,8 @@
 <body>
     <form id="form1" runat="server">
         <div id="form">
-            <asp:ScriptManager ID='ScriptManager1' runat='server' EnablePageMethods='true' />
-
             <div id="logo">
-				<img src="../imagens/logo_pollo.PNG"/>
+				<img src="../imagens/logo.PNG"/>
 		    </div>
 
             <label class="lbl">Email/User</label>
@@ -28,7 +26,6 @@
             <label class="lbl">Resposta</label>
             <asp:TextBox class="txt"  runat="server" ID="txtResposta" OnTextChanged="txtResposta_TextChanged" AutoPostBack="true"/>
             <br />
-            <asp:Label Text="text" ID="lblResp" runat="server"/>
 
             <label class="lbl">Nova senha</label>
             <asp:TextBox class="txt" type="password" runat="server" ID="txtNovaSenha" />
@@ -41,7 +38,6 @@
             <asp:Button Text="Recuperar" class="btn" runat="server" ID="btnRecuperar" Onclick="btnRecuperar_Click"/>
             <asp:Label Text="" ID="lblErro" runat="server" />
         </div>
-            
     </form>
 </body>
 </html>
