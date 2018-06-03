@@ -71,6 +71,8 @@ namespace Pollo.area_usuario
 
         protected void txtResposta_TextChanged(object sender, EventArgs e)
         {
+            lblResp.Text = Server.HtmlEncode(txtResposta.Text);
+
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();

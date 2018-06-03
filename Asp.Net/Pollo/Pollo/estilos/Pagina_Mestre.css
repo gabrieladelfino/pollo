@@ -116,33 +116,42 @@ main {
 
 .itemMenu {
     width: 90%;
-    height: 10%;
+    height: 8%;
     margin: 35px auto;
     font-family: arial;
     padding: 10px;
     background-repeat: no-repeat;
     background-size: 25%;
-    background-color: none;
+    background-size: 80px;
+    background-position: left;
 }
 
 .itemMenu-pollo {
     width: 50%;
-    height: 20%;
-    margin: auto;
+    height: 25%;
+    margin: auto auto 25px auto;
     background-repeat: no-repeat;
-    background-color: aqua;
+    background-position: center;
+    background-size: 350px;
+    padding: 10px;
 }
 
-/*.itemMenu-logout {
+#pollo_icon {
+    background-image: url('../imagens/isologo.PNG');
+}
+
+
+.itemMenu-logout {
     width: 90%;
-    height: 10%;
-    margin: auto;
+    height: 8%;
+    margin: 10px;
     bottom: 0;
     padding: 10px;
     background-repeat: no-repeat;
-    background-size: 20%;
-    background-color: aqua;
-}*/
+    background-size: 80px;
+    position: absolute;
+    background-position: left;
+}
 
 p.menu-title {
     width: 70%;
@@ -170,10 +179,6 @@ p.menu-title-pollo {
     letter-spacing: 2px;
 }
 
-#pollo_icon {
-    background-image: url('../imagens/pollo_bundinha.png');
-}
-
 #chocadeira_icon {
     background-image: url('../imagens/icones/incubator.png');
 }
@@ -191,11 +196,11 @@ p.menu-title-pollo {
 }
 
 #analytics_icon {
-    background-image: url('../imagens/icones/graphs.png');
+    background-image: url('../imagens/icones/graph.png');
 }
 
 #analytics_icon:hover {
-    background-image: url('../imagens/icones/graphs_cor.png');
+    background-image: url('../imagens/icones/graph_cor.png');
 }
 
 #logout_icon {

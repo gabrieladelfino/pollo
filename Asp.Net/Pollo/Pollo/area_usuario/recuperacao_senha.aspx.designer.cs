@@ -49,6 +49,15 @@ namespace Pollo.area_usuario {
         protected global::System.Web.UI.WebControls.TextBox txtResposta;
         
         /// <summary>
+        /// Controle lblResp.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResp;
+        
+        /// <summary>
         /// Controle txtNovaSenha.
         /// </summary>
         /// <remarks>

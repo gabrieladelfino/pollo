@@ -16,7 +16,7 @@
 		    </div>
 
             <label class="lbl">Email/User</label>
-            <asp:TextBox class="txt"  runat="server" ID="txtUsuario" OnTextChanged="txtUsuario_TextChanged"/>
+            <asp:TextBox class="txt"  runat="server" ID="txtUsuario" On="txtUsuario_TextChanged"/>
             <br />
 
             <label class="lbl">Pergunta</label>
@@ -24,8 +24,9 @@
             <br />
 
             <label class="lbl">Resposta</label>
-            <asp:TextBox class="txt"  runat="server" ID="txtResposta" OnTextChanged="txtResposta_TextChanged"/>
+            <asp:TextBox class="txt"  runat="server" ID="txtResposta" OnTextChanged="txtResposta_TextChanged" AutoPostBack="true"/>
             <br />
+            <asp:Label Text="text" ID="lblResp" runat="server"/>
 
             <label class="lbl">Nova senha</label>
             <asp:TextBox class="txt" type="password" runat="server" ID="txtNovaSenha" />
