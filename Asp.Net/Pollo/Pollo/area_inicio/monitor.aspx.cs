@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+
 
 namespace Pollo
 {
@@ -14,6 +16,7 @@ namespace Pollo
     {
         string linkServer = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         int i;
+        string final;
         Chocadeira c;
         List<Chocadeira> cc;
 
@@ -27,6 +30,13 @@ namespace Pollo
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            #region Verificando se o usuario está logado
+            string cod_usuario = (string)Session["cod_usuario"];
+            if (cod_usuario == null)
+            {
+                Response.Redirect("../index.aspx");
+            }
+            #endregion
             if (IsPostBack == false) {
                 ListarChocadeiras();
                 CriarDiv();
@@ -83,8 +93,28 @@ namespace Pollo
                         {
                             c.codChocadeira = reader.GetInt32(0);
                             c.nomeChocadeira = reader.GetString(1);
-                            c.tempoDiaOvo = reader.GetInt32(2);
+                            //c.tempoDiaOvo = reader.GetInt32(2);
                             c.temperatura = reader.GetDouble(3);
+                        }
+                    }
+                }
+                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT (VARCHAR, final) FROM Pollo_Chocadeira", conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                           final = reader.GetString(0);
+                        }
+                    }
+                }
+                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT (INT, '"+ final + "' - GETDATE())", conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            c.tempoDiaOvo = reader.GetInt32(0);
                             cc.Add(c);
                         }
                     }

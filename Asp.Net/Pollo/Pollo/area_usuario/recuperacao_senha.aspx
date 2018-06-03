@@ -15,17 +15,17 @@
 				<img src="../imagens/logo_pollo.PNG"/>
 		    </div>
 
-            <label class="lbl">Pergunta para recuperação</label>
-            <asp:DropDownList class="ddl" runat="server" ID="ddlPergunta">
-                <asp:ListItem Text="" />
-                <asp:ListItem Text="Qual o nome do seu primeiro animal de estimação?" />
-                <asp:ListItem Text="Qual o nome da sua primeira professora?" />
-                <asp:ListItem Text="Qual o nome de solteira da sua mãe?" />
-                <asp:ListItem Text="Qual o nome do seu filme preferido?" />
-            </asp:DropDownList>
+            
+            <label class="lbl">Email/User</label>
+            <asp:TextBox class="txt"  runat="server" ID="txtUsuario" OnTextChanged="txtUsuario_TextChanged" />
+            <br />
+
+            <label class="lbl">Pergunta</label>
+            <asp:TextBox class="txt"  runat="server" ID="txtPergunta" />
+            <br />
 
             <label class="lbl">Resposta</label>
-            <asp:TextBox class="txt" type="password" runat="server" ID="txtResposta" />
+            <asp:TextBox class="txt"  runat="server" ID="txtResposta" OnTextChanged="txtResposta_TextChanged" />
             <br />
 
             <label class="lbl">Nova senha</label>
