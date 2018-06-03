@@ -13,48 +13,75 @@ namespace Pollo {
     public partial class WebForm4 {
         
         /// <summary>
-        /// Controle max.
+        /// Controle btnMaxMin.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label max;
+        protected global::System.Web.UI.WebControls.Button btnMaxMin;
         
         /// <summary>
-        /// Controle pQuartil.
+        /// Controle lblMaxMin.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pQuartil;
+        protected global::System.Web.UI.WebControls.Label lblMaxMin;
         
         /// <summary>
-        /// Controle media.
+        /// Controle btnQuartil.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label media;
+        protected global::System.Web.UI.WebControls.Button btnQuartil;
         
         /// <summary>
-        /// Controle mediana.
+        /// Controle lblQuartil.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label mediana;
+        protected global::System.Web.UI.WebControls.Label lblQuartil;
         
         /// <summary>
-        /// Controle desvPadrao.
+        /// Controle btnMedia.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label desvPadrao;
+        protected global::System.Web.UI.WebControls.Button btnMedia;
+        
+        /// <summary>
+        /// Controle lblMedia.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMedia;
+        
+        /// <summary>
+        /// Controle btnDesv.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDesv;
+        
+        /// <summary>
+        /// Controle lblDesv.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDesv;
     }
 }

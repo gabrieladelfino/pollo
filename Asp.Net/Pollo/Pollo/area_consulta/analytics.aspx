@@ -12,29 +12,24 @@
     
     <div class="medias">
         <div class="info">
-            <label class="lbl">< Max ></label>
+            <asp:Button Text="< Max >" ID="btnMaxMin" class="lbl" OnClick="btnMaxMin_Click"  runat="server"/>
             <br />
-            <asp:Label Text="" class="lblTemp" ID="max" runat="server" />
+            <asp:Label Text="" class="lblTemp" ID="lblMaxMin" runat="server" />
         </div>
         <div class="info">
-            <label class="lbl">< 1° Quartil ></label>
+            <asp:Button Text="< 1° Quartil >" ID="btnQuartil" class="lbl" OnClick="btnQuartil_Click" runat="server"/>
             <br />
-            <asp:Label Text="" class="lblTemp" ID="pQuartil" runat="server" />
+            <asp:Label Text="" class="lblTemp" ID="lblQuartil" runat="server" />
         </div>
         <div class="info">
-            <label class="lbl">Média</label>
+            <asp:Button Text="< Média >" ID="btnMedia" class="lbl" OnClick="btnMedia_Click" runat="server" />
             <br />
-            <asp:Label Text="" class="lblTemp" ID="media" runat="server" />
+            <asp:Label Text="" class="lblTemp" ID="lblMedia" runat="server" />
         </div>
         <div class="info">
-            <label class="lbl">Mediana</label>
+            <asp:Button Text="< Desv. Padrão >" ID="btnDesv" class="lbl" OnClick="btnDesv_Click" runat="server" />
             <br />
-            <asp:Label Text="" class="lblTemp" ID="mediana" runat="server" />
-        </div>
-        <div class="info">
-            <label class="lbl">Desv. Padrão</label>
-            <br />
-            <asp:Label Text="" class="lblTemp" ID="desvPadrao" runat="server" />
+            <asp:Label Text="" class="lblTemp" ID="lblDesv" runat="server" />
         </div>
     </div>
 
@@ -44,7 +39,7 @@
         var dados = [
             ['Minuto', 'Temp.  '],
             <% for (int i = 0; i < Temperaturas.Count; i++) { %>
-                    [ <%=Minutos[i] %>, <%=Temperaturas[i].ToString(System.Globalization.CultureInfo.InvariantCulture) %> ],
+                [ <%=Minutos[i] %>, <%=Temperaturas[i].ToString(System.Globalization.CultureInfo.InvariantCulture) %> ],
             <%} %>
         ];
     </script>
