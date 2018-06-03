@@ -19,7 +19,7 @@ namespace Pollo.area_usuario
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            #region Verificação usuario logado
+            #region Verificando se o usuario está logado
             string cod_usuario = (string)Session["cod_usuario"];
             if (cod_usuario != null)
             {

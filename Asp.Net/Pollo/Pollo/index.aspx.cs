@@ -15,26 +15,26 @@ namespace Pollo
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         protected void Page_Load(object sender, EventArgs e)
         {
+            #region Verificando se o usuario está logado
             string cod_usuario = (string)Session["cod_usuario"];
             if (cod_usuario != null)
             {
                 Response.Redirect("area_inicio/monitor.aspx");
             }
+            #endregion
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             #region Verificação de campos
             if (txtUser.Text.Length == 0)
-            {
-                //lblErro.Text = "User Invalido!";
+            {               
                 txtUser.Focus();
                 return;
             }
            
             if (txtSenha.Text.Length == 0)
             {
-                //lblErro.Text = "Senha Invalida!";
                 txtSenha.Focus();
                 return;
             }
@@ -42,7 +42,7 @@ namespace Pollo
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
-
+                #region Verificando dados para logar
                 using (SqlCommand cmd = new SqlCommand("SELECT Cod_Usuario FROM Pollo_Usuario WHERE (user_pollo= '" + txtUser.Text + "' AND senha = '" + txtSenha.Text + "') OR (email = '" + txtUser.Text + "' AND senha = '" + txtSenha.Text + "')", conexao))
                 {
 
@@ -56,7 +56,9 @@ namespace Pollo
                         }
                     }
                 }
+                #endregion
             }
+            #region Logando
             if (cont_login != 1)
             {
                 txtUser.Focus();
@@ -66,6 +68,7 @@ namespace Pollo
             {
                 Response.Redirect("area_inicio/monitor.aspx");
             }
+            #endregion
         }
     }
 }

@@ -13,34 +13,57 @@ namespace Pollo
     {
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         int cod_ovo;
+        string tipo;
+        int cod_tamanho;
         int cont_chocadeira;
+        int tempo;
+        DateTime inicio;
+        DateTime final;
         protected void Page_Load(object sender, EventArgs e)
         {
+            #region Verificando se o usuario está logado
             string cod_usuario = (string)Session["cod_usuario"];
             if (cod_usuario == null)
             {
                 Response.Redirect("../index.aspx");
             }
-
+            #endregion
             if (IsPostBack == false)
             {
                 using (SqlConnection conexao = new SqlConnection(linkserver))
                 {
 
                     conexao.Open();
-                    using (SqlCommand cmd = new SqlCommand("SELECT cod_ovo, tipo, tamanho FROM Pollo_Ovo", conexao))
+
+                    #region Alimentando a ddl do tipo de ovo
+                    #region Selecionando cod, tipo e cod do tamanho
+                    using (SqlCommand cmd = new SqlCommand("SELECT cod_ovo, tipo, cod_tamanho FROM Pollo_Ovo WHERE cod_usuario= 1000 OR cod_usuario=" + cod_usuario, conexao))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read() == true)
                             {
                                 cod_ovo = reader.GetInt32(0);
-                                string tipo = reader.GetString(1);
-                                string tamanho = reader.GetString(2);
+                                tipo = reader.GetString(1);
+                                cod_tamanho = reader.GetInt32(2);
+                            }
+                        }
+                    }
+                    #endregion
+                    #region Identificando o tamanho com o codigo
+                    using (SqlCommand cmd = new SqlCommand("SELECT tamanho FROM Pollo_Tamanho_Ovo WHERE cod_tamanho =" + cod_tamanho , conexao))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read() == true)
+                            {
+                                string tamanho = reader.GetString(0);
                                 ddlCod_ovo.Items.Add(new ListItem(tipo + " " + tamanho, cod_ovo + ""));
                             }
                         }
                     }
+                    #endregion
+                    #endregion
                 }
             }
         }
@@ -52,7 +75,7 @@ namespace Pollo
             {
                 conexao.Open();
 
-                //Verificando se tem Nome de Chocadeira repetido
+                #region Verificando se tem Nome de Chocadeira repetido
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Chocadeira WHERE nome_chocadeira= '" + txtNomeChocadeira.Text + "' AND cod_usuario = " + cod_usuario, conexao))
                 {
 
@@ -64,7 +87,9 @@ namespace Pollo
                         }
                     }
                 }
+                #endregion
             }
+            #region Verificação cadastro
             if (txtNomeChocadeira.Text.Length == 0 || cont_chocadeira == 1)
             {
                 lblErro.Text = "Nome invalido";
@@ -87,18 +112,57 @@ namespace Pollo
                 txtQtdOvos.Focus();
                 return;
             }
-
+            #endregion
 
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
                 cod_ovo = Convert.ToInt32(ovo);
                 int cod_user = Convert.ToInt32(cod_usuario);
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO Pollo_Chocadeira (nome_chocadeira, cod_ovo, quantidade_ovos, cod_usuario) VALUES (@nome_chocadeira, @cod_ovo, @quantidade_ovos, @cod_usuario)", conexao))
+
+                #region Verificando a quantidade de dias do ovo selecionado
+                using (SqlCommand cmd = new SqlCommand("SELECT tempo_dia FROM Pollo_Ovo WHERE cod_ovo = " + ovo , conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                          tempo = reader.GetInt32(0);
+                        }
+                    }
+                }
+                #endregion
+                #region Obtendo o dia de hoje
+                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(DATE, GETDATE())", conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            inicio = reader.GetDateTime(0);
+                        }
+                    }
+                }
+                #endregion
+                #region Obtendo o dia final de incubação
+                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(DATE, GETDATE()+" + tempo + ")", conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            final = reader.GetDateTime(0);
+                        }
+                    }
+                }
+                #endregion
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO Pollo_Chocadeira (nome_chocadeira, cod_ovo, quantidade_ovos, inicio, final, cod_usuario) VALUES (@nome_chocadeira, @cod_ovo, @quantidade_ovos, @inicio, @final, @cod_usuario)", conexao))
                 {
                     cmd.Parameters.AddWithValue("@nome_chocadeira", txtNomeChocadeira.Text);
                     cmd.Parameters.AddWithValue("@cod_ovo", ovo);
                     cmd.Parameters.AddWithValue("@quantidade_ovos", qtd_ovo);
+                    cmd.Parameters.AddWithValue("@inicio", inicio);
+                    cmd.Parameters.AddWithValue("@final", final);
                     cmd.Parameters.AddWithValue("@cod_usuario", cod_user);
                     cmd.ExecuteNonQuery();
                     lblErro.Text = "Cadastrado com sucesso";
