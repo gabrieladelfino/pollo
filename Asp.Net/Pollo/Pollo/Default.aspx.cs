@@ -11,8 +11,7 @@ namespace Pollo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Server.Transfer("area_code/index.html", true);
-            Server.Transfer("Default.aspx", false);
+            Response.Redirect("area_code/index.html");
         }
     }
 }

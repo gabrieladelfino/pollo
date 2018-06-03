@@ -18,13 +18,13 @@ namespace Pollo
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            #region Verificando se o usuario está logado
             string cod_usuario = (string)Session["cod_usuario"];
             if (cod_usuario == null)
             {
                 Response.Redirect("../index.aspx");
             }
-
+            #endregion
             if (IsPostBack == false) {
                 using (SqlConnection conexao = new SqlConnection(linkServer))
                 {
