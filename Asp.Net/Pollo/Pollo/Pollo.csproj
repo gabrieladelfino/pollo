@@ -138,6 +138,7 @@
     <Content Include="js\cadastro_usuario.js" />
     <Content Include="js\inicial.js" />
     <Content Include="js\monitor.js" />
+    <Content Include="js\recuperacao_senha.js" />
     <Content Include="Web.config" />
     <Content Include="area_chocadeira\chocadeira.aspx" />
     <Content Include="area_ovo\ovo.aspx" />

@@ -34,6 +34,11 @@ namespace Pollo.area_usuario
             }
         }
 
+        protected void txtResposta_PreRender(object sender, EventArgs e)
+        {
+            lblResp.Text = Server.HtmlEncode(txtResposta.Text);
+        }
+
         protected void txtUsuario_TextChanged(object sender, EventArgs e)
         {
             using (SqlConnection conexao = new SqlConnection(linkserver))
@@ -71,12 +76,11 @@ namespace Pollo.area_usuario
 
         protected void txtResposta_TextChanged(object sender, EventArgs e)
         {
-            lblResp.Text = Server.HtmlEncode(txtResposta.Text);
-
+            #region Verificando se a resposta está correta
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
-                #region Verificando se a resposta está correta
+
                 using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE user_pollo = '" + txtUsuario.Text + "' OR email = '" + txtUsuario.Text + "' AND rec_resposta = '" + txtResposta.Text + "'", conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -180,6 +184,8 @@ namespace Pollo.area_usuario
             return cod_user;
             #endregion
         }
+
+       
     }
 }
     

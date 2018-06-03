@@ -131,6 +131,10 @@ namespace Pollo
 
             return tempo;
         }
-        
+
+        protected void txtPesquisar_TextChanged(object sender, EventArgs e)
+        {
+          
+        }
     }
 }
