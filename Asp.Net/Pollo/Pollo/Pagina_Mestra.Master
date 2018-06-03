@@ -34,10 +34,10 @@
                     <div class="menu_pg" id="menu1">
                         <div class="itemMenu-pollo" id="pollo_icon">
                             <asp:Button class="btn_menu" ID="pollo" OnClick="pollo_Click" runat="server"/>
-                        </div>
-                        <p class="menu-title-pollo"> Pollo </p>
+                            </div>
+                            <p class="menu-title-pollo"> Pollo </p>
 
-                        <div class="itemMenu" id="chocadeira_icon">
+                            <div class="itemMenu" id="chocadeira_icon">
                             <asp:Button class="btn_menu" Text="Chocadeiras" ID="chocadeira" OnClick="chocadeira_Click" runat="server"/>
                         </div>
                         
