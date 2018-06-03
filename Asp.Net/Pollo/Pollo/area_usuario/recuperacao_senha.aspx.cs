@@ -12,11 +12,9 @@ namespace Pollo.area_usuario
     public partial class recuperacao_senha : System.Web.UI.Page
     {
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        int cod_pergunta;
-        string pergunta;
-        int cont_senha;
-        int cod_user;
-        int cont_resposta;
+
+        int cod_pergunta, cont_senha, cod_user, cont_resposta;
+        string pergunta, nova_senha;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -51,6 +49,7 @@ namespace Pollo.area_usuario
                             cod_user = reader.GetInt32(0);
                             cod_pergunta = reader.GetInt32(1);
                             txtResposta.Enabled = true;
+                            lblErro.Text = "Achou usuario: " + cod_user;
                         }
                     }
                 }
@@ -88,57 +87,77 @@ namespace Pollo.area_usuario
                     }
                 }
             }
-                #endregion
-                #region Verificando se a resposta coincide
-                if (cont_resposta == 1)
+            #endregion
+
+            #region Verificando se a resposta coincide
+            if (cont_resposta == 1)
             {
                 txtNovaSenha.Enabled = true;
                 txtConfirmarSenha.Enabled = true;
             }
+            else
+            {
+                txtNovaSenha.Enabled = false;
+                txtConfirmarSenha.Enabled = false;
+            }
             #endregion
         }
 
-       
+
         protected void btnRecuperar_Click(object sender, EventArgs e)
         {
+            #region Update nova senha
+
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
-                #region Update nova senha
-                if (txtNovaSenha.Text != txtConfirmarSenha.Text)
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE senha = '" + txtNovaSenha.Text + "' AND cod_usuario = " + cod_user, conexao))
                 {
-                    txtConfirmarSenha.Focus();
-                    return;
-                }
-                else
-                {
-                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE senha = '" + txtNovaSenha.Text + "' AND cod_usuario = " + cod_user, conexao))
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        while (reader.Read() == true)
                         {
-         
-                           while (reader.Read() == true)
-                            {
-                                cont_senha = 1;
-                            }
+                            cont_senha = 1;
                         }
                     }
-                    if (cont_senha == 1)
-                    {
-                        txtNovaSenha.Focus();
-                        return;
-                        //DA UM JEITO DE AVISAR O USUARIO QUE ESSA ERA UMA SENHA QUE ELE JÁ UTILIZOU
-                    }
-                    else
-                    {
-                        using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Usuario SET senha = '" + txtNovaSenha.Text + "' WHERE cod_usuario =" + cod_user, conexao))
-                        {
-                        }
-                    }
-
-                    #endregion
                 }
             }
-        }
-    }
+
+            if (cont_senha == 1)
+            {
+                txtNovaSenha.Focus();
+                return;
+            }
+
+            if (txtNovaSenha.Text != txtConfirmarSenha.Text)
+            {
+                txtConfirmarSenha.Focus();
+                return;
+            }
+
+            if (txtNovaSenha.Text.Equals(""))
+            {
+
+            }
+
+            else
+            {
+                nova_senha = (txtNovaSenha.Text).ToString();
+                using (SqlConnection conexao = new SqlConnection(linkserver))
+                {
+                    conexao.Open();
+                    using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Usuario SET senha = @senha WHERE cod_usuario = @cod_user", conexao))
+                    {
+                        lblErro.Text = "Editou: " + txtNovaSenha.Text + ", cod: " + cod_user;
+                        cmd.Parameters.AddWithValue("@senha", nova_senha);
+                        cmd.Parameters.AddWithValue("@cod_user", cod_user);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+         
+        }            
+        #endregion
+    } 
 }
+    

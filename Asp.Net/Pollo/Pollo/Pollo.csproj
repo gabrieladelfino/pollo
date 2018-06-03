@@ -134,7 +134,6 @@
     <Content Include="imagens\user.png" />
     <Content Include="index.aspx" />
     <Content Include="js\cadastro_usuario.js" />
-    <Content Include="js\grafico.js" />
     <Content Include="js\inicial.js" />
     <Content Include="js\monitor.js" />
     <Content Include="Web.config" />

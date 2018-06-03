@@ -15,9 +15,8 @@
 				<img src="../imagens/logo_pollo.PNG"/>
 		    </div>
 
-            
             <label class="lbl">Email/User</label>
-            <asp:TextBox class="txt"  runat="server" ID="txtUsuario" OnTextChanged="txtUsuario_TextChanged" />
+            <asp:TextBox class="txt"  runat="server" ID="txtUsuario" OnTextChanged="txtUsuario_TextChanged"/>
             <br />
 
             <label class="lbl">Pergunta</label>
@@ -25,7 +24,7 @@
             <br />
 
             <label class="lbl">Resposta</label>
-            <asp:TextBox class="txt"  runat="server" ID="txtResposta" OnTextChanged="txtResposta_TextChanged" />
+            <asp:TextBox class="txt"  runat="server" ID="txtResposta" OnTextChanged="txtResposta_TextChanged"/>
             <br />
 
             <label class="lbl">Nova senha</label>
@@ -37,6 +36,7 @@
             <br />
 
             <asp:Button Text="Recuperar" class="btn" runat="server" ID="btnRecuperar" Onclick="btnRecuperar_Click"/>
+            <asp:Label Text="" ID="lblErro" runat="server" />
         </div>
     </form>
 </body>
