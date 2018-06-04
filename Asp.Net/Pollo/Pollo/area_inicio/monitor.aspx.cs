@@ -18,6 +18,7 @@ namespace Pollo
         int i;
         string final;
         int tempo = 0;
+        double temperatura_atual, temperatura_ideal;
         Chocadeira c;
         List<Chocadeira> cc;
 
@@ -58,7 +59,18 @@ namespace Pollo
 
                 Label lblTemperatura = new Label();
                 lblTemperatura.Text = "" + cc.ElementAt(i).temperatura;
-                lblTemperatura.CssClass = "titulos_monitor_temp";
+
+                if ((temperatura_ideal - 1) < temperatura_atual){
+                    lblTemperatura.CssClass = "titulos_monitor_temp_frio";
+                }else if ((temperatura_ideal+1) > temperatura_atual)
+                {
+                    lblTemperatura.CssClass = "titulos_monitor_temp_quente";
+                }
+                else
+                {
+                    lblTemperatura.CssClass = "titulos_monitor_temp_neutro";
+                }
+
                 monitor.Controls.Add(lblTemperatura);
 
                 Label lblTempoRestante = new Label();
@@ -82,7 +94,7 @@ namespace Pollo
             {
                 conexao.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT tbc.cod_chocadeira, tbc.nome_chocadeira, tbo.tempo_dia, tbm.temperatura FROM Pollo_Chocadeira AS tbc, Pollo_Ovo AS tbo, Pollo_Usuario AS tbu, Pollo_Media_Minuto AS tbm WHERE tbu.cod_usuario = " + cod_user + " AND tbo.cod_usuario = " + cod_user + " AND tbm.minuto = (SELECT MAX(minuto) FROM Pollo_Media_Minuto)", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT tbc.cod_chocadeira, tbc.nome_chocadeira, tbo.tempo_dia, tbm.temperatura, tbo.temperatura FROM Pollo_Chocadeira AS tbc, Pollo_Ovo AS tbo, Pollo_Usuario AS tbu, Pollo_Media_Minuto AS tbm WHERE tbu.cod_usuario = " + cod_user + " AND tbo.cod_usuario = " + cod_user + " AND tbm.minuto = (SELECT MAX(minuto) FROM Pollo_Media_Minuto)", conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -91,6 +103,8 @@ namespace Pollo
                             c.codChocadeira = reader.GetInt32(0);
                             c.nomeChocadeira = reader.GetString(1);
                             c.temperatura = reader.GetDouble(3);
+                            temperatura_atual = reader.GetDouble(3);
+                            temperatura_ideal = reader.GetDouble(4);
                             c.tempoDiaOvo = DiasRestantes();
                             cc.Add(c);
                         }

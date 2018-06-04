@@ -134,6 +134,7 @@ main {
     background-position: center;
     background-size: 350px;
     padding: 10px;
+    box-sizing:border-box;
 }
 
 #pollo_icon {

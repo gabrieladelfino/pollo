@@ -1,7 +1,7 @@
 ﻿/* BOTAO DE ADD */
 .botao-add {
-    width: 9vw;
-    height: 19vh;
+    width: 14vw;
+    height: 29vh;
     padding: 10px;
     margin: 0 40px;
     float: left;
@@ -21,8 +21,8 @@
 
 /*MONITOR*/
 .monitor {
-    width: 10vw;
-    height: 20vh;
+    width: 15vw;
+    height: 30vh;
     background-color: #FAFAFA;
     padding: 10px;
     margin: 0 40px;
@@ -42,7 +42,43 @@
     text-align: center;
 }
 
-.titulos_monitor_temp {
+#monitores {
+    width: 90vw;
+    margin: auto;
+    padding: 30px 20px;
+    height: 450px;
+}
+
+
+.titulos_monitor_temp_neutro {
+    width: 100%;
+    margin: 10px 0px;
+    float: left;
+    padding: 20px 0px;
+    text-align: center;
+    font-size: 60px;
+    background: -webkit-linear-gradient(top, #00FF7F, #D2B48C);
+    background: linear-gradient(top, #878787, #000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 3s;
+}
+
+.titulos_monitor_temp_quente {
+    width: 100%;
+    margin: 10px 0px;
+    float: left;
+    padding: 20px 0px;
+    text-align: center;
+    font-size: 60px;
+    background: -webkit-linear-gradient(top, #FA1905, #F99201);
+    background: linear-gradient(top, #878787, #000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 3s;
+}
+
+.titulos_monitor_temp_frio {
     width: 100%;
     margin: 10px 0px;
     float: left;
@@ -54,13 +90,7 @@
     background: linear-gradient(top, #878787, #000);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-
-#monitores {
-    width: 90vw;
-    margin: auto;
-    padding: 30px 20px;
-    height: 450px;
+    transition: 3s;
 }
 
 /*
