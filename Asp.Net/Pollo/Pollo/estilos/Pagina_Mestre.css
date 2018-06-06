@@ -127,14 +127,14 @@ main {
 }
 
 .itemMenu-pollo {
-    width: 50%;
-    height: 25%;
+    width: 70%;
+    height: 30%;
     margin: auto auto 25px auto;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 350px;
     padding: 10px;
-    box-sizing:border-box;
+    margin-top: 20px;
 }
 
 #pollo_icon {

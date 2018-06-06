@@ -33,7 +33,7 @@ namespace Pollo
             {
                 conexao.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT minuto,temperatura FROM Pollo_Media_Minuto", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT minuto,temperatura FROM Pollo_Media_Minuto WHERE cod_chocadeira= 1003", conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {

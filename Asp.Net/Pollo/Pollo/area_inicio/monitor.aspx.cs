@@ -105,7 +105,7 @@ namespace Pollo
                             c.temperatura = reader.GetDouble(3);
                             temperatura_atual = reader.GetDouble(3);
                             temperatura_ideal = reader.GetDouble(4);
-                            c.tempoDiaOvo = DiasRestantes();
+                            c.tempoDiaOvo =  DiasRestantes();
                             cc.Add(c);
                         }
                     }

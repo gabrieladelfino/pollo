@@ -48,7 +48,7 @@
 
                     <div class="comp" id="info-login">
                         <label class="lbl">User</label>
-                        <asp:TextBox class="txt" runat="server" ID="txtUser" maxlength="10" onkeyup="verificar(this)" onkeypress="return somenteLetras(event)"/>
+                        <asp:TextBox class="txt" runat="server" ID="txtUser"  onkeyup="verificar(this)" onkeypress="return somenteLetras(event)"/>
                         <br />
                         
                         <label class="lbl">Email</label>
@@ -56,11 +56,11 @@
                         <br />
 
                         <label class="lbl">Senha</label>
-                        <asp:TextBox class="txt" type="password" maxlength="8" runat="server" ID="txtSenha" onkeyup="verificar(this)" />
+                        <asp:TextBox class="txt" type="password" runat="server" ID="txtSenha" onkeyup="verificar(this)" />
                         <br /> 
                         
                         <label class="lbl">Confirmação de senha</label>
-                        <asp:TextBox class="txt" type="password" maxlength="8" runat="server" ID="txtSenhaConfirm" onkeyup="verificar(this)" />
+                        <asp:TextBox class="txt" type="password"  runat="server" ID="txtSenhaConfirm" onkeyup="verificar(this)" />
                         <br />
                         <button type="button" class="btn" id="btnAnterior_1" onclick="mostra_info_usuario()">Voltar</button>
                         <button type="button" class="btn" id="btnProximo_1" onclick="mostra_info_recuperacao_senha()">Prosseguir</button>
