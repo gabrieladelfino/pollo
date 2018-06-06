@@ -11,6 +11,7 @@
         <asp:ContentPlaceHolder ID="head" runat="server">     
         </asp:ContentPlaceHolder>
         <script lang="javascript" src="../js/inicial.js"></script>
+        <script src="https://wchat.freshchat.com/js/widget.js"></script>
         <title></title>
     </head>
     
@@ -64,6 +65,12 @@
                 <footer>
                     <div class="border"></div>
                 </footer>
+                <script>
+  window.fcWidget.init({
+    token: "c397a11d-9a1e-4236-b72e-46fc012dce16",
+    host: "https://wchat.freshchat.com"
+  });
+</script>
             </div>
         </form>
     </body>
