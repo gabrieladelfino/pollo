@@ -57,6 +57,11 @@ namespace Pollo
                 lblNome.CssClass = "titulos_monitor";
                 monitor.Controls.Add(lblNome);
 
+                Button botoes = new Button();
+                botoes.CssClass = "botoes";
+                botoes.Click += CriarBotoes;
+                monitor.Controls.Add(botoes);
+
                 Label lblTemperatura = new Label();
                 lblTemperatura.Text = "" + cc.ElementAt(i).temperatura;
 
@@ -74,12 +79,20 @@ namespace Pollo
                 monitor.Controls.Add(lblTemperatura);
 
                 Label lblTempoRestante = new Label();
-                lblTempoRestante.Text = "" + cc.ElementAt(i).tempoDiaOvo;
-                lblTempoRestante.CssClass = "titulos_monitor";
+                lblTempoRestante.Text = "Dias restantes: " + cc.ElementAt(i).tempoDiaOvo;
+                lblTempoRestante.CssClass = "titulos_monitor_tempo";
                 monitor.Controls.Add(lblTempoRestante);
 
                 monitores.Controls.Add(monitor);
             }
+        }
+
+
+        protected void CriarBotoes(object sender, EventArgs e)
+        {
+            Panel p = new Panel();
+            p.CssClass = "monitor";
+            monitores.Controls.Add(p);
         }
 
         public void ListarChocadeiras()
@@ -150,5 +163,7 @@ namespace Pollo
         {
           
         }
+
+       
     }
 }

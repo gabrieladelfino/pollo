@@ -120,6 +120,7 @@
     <Content Include="imagens\code\time\livia.png" />
     <Content Include="imagens\code\time\lucas.jpg" />
     <Content Include="imagens\code\time\lucas.png" />
+    <Content Include="imagens\icones\edit.png" />
     <Content Include="imagens\icones\eggs.png" />
     <Content Include="imagens\icones\eggs_cor.png" />
     <Content Include="imagens\icones\graph.png" />
