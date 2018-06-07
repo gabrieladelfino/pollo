@@ -117,6 +117,9 @@
     background-color: darkgrey;
 }
 
+
+/*REGISTROS*/
+
 .painel {
     width: 30%;
     height: 100%;
@@ -135,15 +138,23 @@
     top: 0;
 }
 
-.botoes{
-    width: 20%;
-    height: 100%;
+.nome {
+    width: 40%;
+    height: auto;
     background-color: mediumvioletred;
+    margin: 0 10px;
+    padding: 10px;
+    float: left;
+    text-align: center;
 }
 
-.nome {
+.botao {
+    width: 20%;
+    height: auto;
+    background-color: mediumvioletred;
+    margin: 0 5px;
+    padding: 10px;
+    float: left;
     text-align: center;
-    width: 80%;
-    height: 100%;
-    background-color: aliceblue;
+    border: none;
 }

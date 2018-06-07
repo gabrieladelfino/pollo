@@ -214,9 +214,15 @@ namespace Pollo
                 lblNome.CssClass = "nome";
                 linha.Controls.Add(lblNome);
 
-                Panel editar = new Panel();
-                editar.CssClass = "botoes";
+                Button editar = new Button();
+                editar.Text = "Editar";
+                editar.CssClass = "botao";
                 linha.Controls.Add(editar);
+            
+                Button excluir = new Button();
+                excluir.Text = "Excluir";
+                excluir.CssClass = "botao";
+                linha.Controls.Add(excluir);
             }
         }
 
