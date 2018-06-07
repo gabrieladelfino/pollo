@@ -12,7 +12,6 @@ namespace Pollo.area_usuario
     public partial class recuperacao_senha : System.Web.UI.Page
     {
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-
         int cod_pergunta, cont_senha, cod_user, cont_resposta;
         string pergunta,senha;
 
@@ -25,12 +24,15 @@ namespace Pollo.area_usuario
                 Response.Redirect("index.aspx");
             }
             #endregion
+           
             if (IsPostBack == false)
             {
+                #region Desabilitando os Text
                 txtPergunta.CssClass = "txt_disable";
                 txtResposta.CssClass = "txt_disable";
                 txtNovaSenha.CssClass = "txt_disable";
                 txtConfirmarSenha.CssClass = "txt_disable";
+                #endregion
             }
         }
 
@@ -111,6 +113,13 @@ namespace Pollo.area_usuario
         protected void btnRecuperar_Click(object sender, EventArgs e)
         {
             #region Verificação senhas
+
+            if (txtResposta.Text.Length == 0)
+            {
+                txtResposta.Focus();
+                return;
+            }
+
             if (txtNovaSenha.Text.Length == 0)
             {
                 txtNovaSenha.Focus();
@@ -127,13 +136,13 @@ namespace Pollo.area_usuario
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT senha FROM Pollo_Usuario WHERE cod_usuario = " + cod_user, conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT senha FROM Pollo_Usuario WHERE cod_usuario = " + PegarCod(), conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read() == true)
                         {
-                            senha = reader.GetString(0);                        
+                            senha = reader.GetString(0);
                         }
                     }
                 }
