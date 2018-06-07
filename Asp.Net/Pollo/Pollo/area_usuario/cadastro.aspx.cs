@@ -137,11 +137,14 @@ namespace Pollo.area_usuario
                     txtSenha.Focus();
                     return;
                 }
+                #region Verificando se as senhas coincidem
                 if (txtSenha.Text != txtSenhaConfirm.Text)
                 {
                     txtSenhaConfirm.Focus();
                     return;
                 }
+                #endregion
+
                 #endregion
 
                 #region Verificação terceira parte cadastro

@@ -108,7 +108,20 @@ namespace Pollo.area_usuario
         protected void btnRecuperar_Click(object sender, EventArgs e)
         {
             #region Update nova senha
+            #region Verificação senhas
+            if (txtNovaSenha.Text.Length == 0)
+            {
+                txtNovaSenha.Focus();
+                return;
+            }
 
+            if (txtConfirmarSenha.Text.Length == 0)
+            {
+                txtConfirmarSenha.Focus();
+                return;
+            }
+            #endregion
+            #region Verificando se a senha antiga é igual a nova senha
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
@@ -123,40 +136,33 @@ namespace Pollo.area_usuario
                     }
                 }
             }
-
+            #endregion
             if (cont_senha == 1)
             {
                 txtNovaSenha.Focus();
                 return;
             }
-
+            #region Verificando se as senhas coincidem
             if (txtNovaSenha.Text != txtConfirmarSenha.Text)
             {
                 txtConfirmarSenha.Focus();
                 return;
             }
+            #endregion
 
-            if (txtNovaSenha.Text.Equals(""))
-            {
-
-            }
-
-            else
-            {
-                nova_senha = (txtNovaSenha.Text).ToString();
+           //     nova_senha = (txtNovaSenha.Text).ToString();
                 using (SqlConnection conexao = new SqlConnection(linkserver))
                 {
                     conexao.Open();
                     using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Usuario SET senha = @senha WHERE cod_usuario = @cod_user", conexao))
                     {
-                        cmd.Parameters.AddWithValue("@senha", nova_senha);
+                        cmd.Parameters.AddWithValue("@senha", txtNovaSenha.Text);
                         cmd.Parameters.AddWithValue("@cod_user", PegarCod());
                         cmd.ExecuteNonQuery();
                     }
                 }
             }
-         
-        }
+
         #endregion
         public int PegarCod()
         {
