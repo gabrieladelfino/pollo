@@ -7,39 +7,38 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
   
-    <div class="comp">
-        <label class="lbl">Tipo</label>
-        <asp:TextBox runat="server" ID="txtTipo" class="txt" onkeyup="verificar(this)" onkeypress="return somenteLetras(event)" /> 
+    <div id="cadastrados" class="painel" runat="server">  
+            
     </div>
 
-     <div class="comp">
-        <label class="lbl">Tamanho</label>
-        <asp:DropDownList runat="server" ID="ddlTamanho" class="ddl" onkeyup="verificar(this)" onclick="verificar(this)">
-        <asp:ListItem Text="" />
-        </asp:DropDownList> 
-    </div>
+    <div class="componente">
+        <div class="comp">
+            <label class="lbl">Tipo</label>
+            <asp:TextBox runat="server" ID="txtTipo" class="txt" onkeyup="verificar(this)" onkeypress="return somenteLetras(event)" /> 
+        </div>
 
-     <div class="comp">
-        <label class="lbl">Temperatura</label>
-        <asp:TextBox runat="server" ID="txtTemperatura" class="txt" onkeyup="verificar(this)" onkeypress="return somenteNumeros(event)" />
-    </div>
+         <div class="comp">
+            <label class="lbl">Tamanho</label>
+            <asp:DropDownList runat="server" ID="ddlTamanho" class="ddl" onkeyup="verificar(this)" onclick="verificar(this)">
+            <asp:ListItem Text="" />
+            </asp:DropDownList> 
+        </div>
 
-     <div class="comp">
-         <label class="lbl">Tempo de incubação (dias)</label>
-         <asp:TextBox runat="server" ID="txtTempo" class="txt" onkeyup="verificar(this)" onkeypress="return somenteNumeros(event)" />
-    </div>
+         <div class="comp">
+            <label class="lbl">Temperatura</label>
+            <asp:TextBox runat="server" ID="txtTemperatura" class="txt" onkeyup="verificar(this)" onkeypress="return somenteNumeros(event)" />
+        </div>
+
+         <div class="comp">
+             <label class="lbl">Tempo de incubação (dias)</label>
+             <asp:TextBox runat="server" ID="txtTempo" class="txt" onkeyup="verificar(this)" onkeypress="return somenteNumeros(event)" />
+        </div>
    
-    <div class="comp">
-        <asp:Button Text="Limpar" runat="server" ID="btnLimpar" class="btn" OnClick="btnLimpar_Click"/>
-        <asp:Button Text="Prosseguir" runat="server" ID="btnCadastrar" class="btn" OnClick="btnCadastrar_Click"/>
-        <asp:Label Text="" runat="server" ID="lblErro" class="lbl"/>
+        <div class="comp">
+            <asp:Button Text="Limpar" runat="server" ID="btnLimpar" class="btn" OnClick="btnLimpar_Click"/>
+            <asp:Button Text="Prosseguir" runat="server" ID="btnCadastrar" class="btn" OnClick="btnCadastrar_Click"/>
+            <asp:Label Text="" runat="server" ID="lblErro" class="lbl"/>
+        </div>
     </div>
 
-    <div class="comp">
-
-    </div>
-
-    <div id="cadastrados">
-
-    </div>
 </asp:Content>

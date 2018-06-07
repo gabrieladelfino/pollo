@@ -13,6 +13,15 @@ namespace Pollo {
     public partial class WebForm3 {
         
         /// <summary>
+        /// Controle cadastrados.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cadastrados;
+        
+        /// <summary>
         /// Controle txtTipo.
         /// </summary>
         /// <remarks>

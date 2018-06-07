@@ -11,8 +11,17 @@ namespace Pollo
     public partial class WebForm3 : System.Web.UI.Page
     {
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        int cod_tamanho;
-        int cont_ovo;
+        int cod_tamanho, cont_ovo, i;
+
+        Ovo o;
+        List<Ovo> oo;
+
+        public struct Ovo
+        {
+            public string tipo;
+            public int codOvo;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             #region Verificando se o usuario está logado
@@ -24,6 +33,8 @@ namespace Pollo
             #endregion
             if (IsPostBack == false)
             {
+                ListarRegistros();
+                CriarRegistros();
                 using (SqlConnection conexao = new SqlConnection(linkserver))
                 {
                     conexao.Open();
@@ -52,6 +63,7 @@ namespace Pollo
 
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
+               
                 conexao.Open();
 
                 #region Verificando se tem Ovo com mesmo nome e tamanho repetido
@@ -141,6 +153,59 @@ namespace Pollo
             txtTipo.Text = "";
             ddlTamanho.SelectedValue = "";
             #endregion
+        }
+
+        public void CriarRegistros()
+        {
+            for (i = 0; i < oo.Count; i++)
+            {
+                Panel linha = new Panel();
+                linha.CssClass = "linha";
+                cadastrados.Controls.Add(linha);
+
+                Label lblNome = new Label();
+                lblNome.Text = "" + oo.ElementAt(i).tipo;
+                lblNome.CssClass = "nome";
+                linha.Controls.Add(lblNome);
+
+                Button editar = new Button();
+                editar.Text = "Editar";
+                editar.CssClass = "botao";
+                linha.Controls.Add(editar);
+
+                Button excluir = new Button();
+                excluir.Text = "Excluir";
+                excluir.CssClass = "botao";
+                linha.Controls.Add(excluir);
+            }
+        }
+
+        public void ListarRegistros()
+        {
+            string cod_usuario = (string)Session["cod_usuario"];
+            int cod_user = Convert.ToInt32(cod_usuario);
+
+            o = new Ovo();
+            oo = new List<Ovo>();
+
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+
+                using (SqlCommand cmd = new SqlCommand("SELECT  tbo.cod_ovo, tbo.tipo FROM Pollo_Ovo AS tbo, Pollo_Usuario AS tbu WHERE tbu.cod_usuario = " + cod_user, conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            o.codOvo = reader.GetInt32(0);
+                            o.tipo = reader.GetString(1);
+                            oo.Add(o);
+                        }
+                    }
+                }
+
+            }
         }
     }
 }

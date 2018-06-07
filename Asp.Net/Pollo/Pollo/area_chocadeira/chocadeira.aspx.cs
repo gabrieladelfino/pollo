@@ -214,16 +214,28 @@ namespace Pollo
                 lblNome.CssClass = "nome";
                 linha.Controls.Add(lblNome);
 
-                Button editar = new Button();
-                editar.Text = "Editar";
-                editar.CssClass = "botao";
-                linha.Controls.Add(editar);
+                Button btnEditar = new Button();
+                btnEditar.Text = "Editar";
+                btnEditar.CssClass = "botao";
+                btnEditar.Click += Editar;
+                linha.Controls.Add(btnEditar);
             
-                Button excluir = new Button();
-                excluir.Text = "Excluir";
-                excluir.CssClass = "botao";
-                linha.Controls.Add(excluir);
+                Button btnExcluir = new Button();
+                btnExcluir.Text = "Excluir";
+                btnExcluir.CssClass = "botao";
+                btnExcluir.Click += Excluir;
+                linha.Controls.Add(btnExcluir);
             }
+        }
+
+        public void Editar(object sender, EventArgs e)
+        {
+
+        }
+
+        public void Excluir(object sender, EventArgs e)
+        {
+
         }
 
         public void ListarRegistros()
@@ -246,7 +258,6 @@ namespace Pollo
                         {
                             c.codChocadeira = reader.GetInt32(0);
                             c.nomeChocadeira = reader.GetString(1);
-                            txtNomeChocadeira.Text = "Nome: "+reader.GetString(1);
                             cc.Add(c);
                         }
                     }

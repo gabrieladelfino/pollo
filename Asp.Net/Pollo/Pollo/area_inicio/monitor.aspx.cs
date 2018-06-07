@@ -59,6 +59,11 @@ namespace Pollo
                 lblNome.CssClass = "titulos_monitor";
                 monitor.Controls.Add(lblNome);
 
+                Button btnEditar = new Button();
+                btnEditar.CssClass = "botoes";
+                btnEditar.Click += Editar;
+                monitor.Controls.Add(btnEditar);
+
                 Label lblTemperatura = new Label();
                 lblTemperatura.Text = "" + cc.ElementAt(i).temperatura;
 
@@ -82,6 +87,11 @@ namespace Pollo
 
                 monitores.Controls.Add(monitor);
             }
+        }
+
+        public void Editar(object sender, EventArgs e)
+        {
+           
         }
 
         public void ListarChocadeiras()
