@@ -64,6 +64,7 @@ namespace Pollo.area_usuario
                         }
                     }
                 }
+                txtResposta.Focus();
                 txtPergunta.Text = pergunta;
                 #endregion
             }
@@ -76,7 +77,7 @@ namespace Pollo.area_usuario
             {
                 conexao.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE user_pollo = '" + txtUsuario.Text + "' OR email = '" + txtUsuario.Text + "' AND rec_resposta = '" + txtResposta.Text + "'", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE (user_pollo = '" + txtUsuario.Text + "' OR email = '" + txtUsuario.Text + "') AND rec_resposta = '" + txtResposta.Text + "'", conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -102,6 +103,8 @@ namespace Pollo.area_usuario
                 txtConfirmarSenha.CssClass = "txt_disable";
             }
             #endregion
+            
+            txtNovaSenha.Focus();
         }
 
 
