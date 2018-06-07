@@ -215,7 +215,7 @@ namespace Pollo
 
                 Panel editar = new Panel();
                 editar.CssClass = "botoes";
-                linha.Controls.Add(linha);
+                linha.Controls.Add(editar);
 
                 painel.Controls.Add(linha);
             }
