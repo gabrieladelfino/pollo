@@ -35,13 +35,6 @@
 }
 
 /*CADASTRO*/
-#cadastrados {
-    width: 30%;
-    height: 100%;
-    margin: 0 70%;
-    background-color: #FAFAFA;
-}
-
 .componente {
     width: 100%;
     height: 100%;
@@ -121,3 +114,22 @@
     background-color: darkgrey;
 }
 
+.cadastrados {
+    width: 30%;
+    height: 100%;
+    margin: 0 70%;
+    background-color: orangered;
+}
+
+.linha{
+    width: 100%;
+    height: 25px;
+    background-color: aqua;
+    float: left;
+}
+
+.botoes{
+    width: 20px;
+    height: 100%;
+    background-color: aqua;
+}

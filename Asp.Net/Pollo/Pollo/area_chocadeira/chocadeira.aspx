@@ -36,7 +36,8 @@
             <asp:Label Text="" runat="server" ID="lblErro" />
         </div>
 
-        <div id="cadastrados">
+        <asp:Panel ID="painel" runat="server" CssClass="cadastrados">  
 
-        </div>
+        </asp:Panel>
+      
 </asp:Content>

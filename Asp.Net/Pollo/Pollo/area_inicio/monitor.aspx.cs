@@ -12,7 +12,6 @@ using System.Data;
 
 namespace Pollo
 {
-    //oi mexi
     public partial class WebForm1 : System.Web.UI.Page
     {
         string linkServer = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
@@ -22,6 +21,8 @@ namespace Pollo
         double temperatura_atual, temperatura_ideal;
         Chocadeira c;
         List<Chocadeira> cc;
+        Panel monitor;
+
 
         public struct Chocadeira
         {
@@ -50,18 +51,13 @@ namespace Pollo
         public void CriarDiv(){
             for (i= 0; i<cc.Count; i++)
             {
-                Panel monitor = new Panel();
+                monitor = new Panel();
                 monitor.CssClass = "monitor";
 
                 Label lblNome = new Label();
                 lblNome.Text = ""+cc.ElementAt(i).nomeChocadeira;
                 lblNome.CssClass = "titulos_monitor";
                 monitor.Controls.Add(lblNome);
-
-                Button botoes = new Button();
-                botoes.CssClass = "botoes";
-                botoes.Click += CriarBotoes;
-                monitor.Controls.Add(botoes);
 
                 Label lblTemperatura = new Label();
                 lblTemperatura.Text = "" + cc.ElementAt(i).temperatura;
@@ -86,14 +82,6 @@ namespace Pollo
 
                 monitores.Controls.Add(monitor);
             }
-        }
-
-
-        protected void CriarBotoes(object sender, EventArgs e)
-        {
-            Panel p = new Panel();
-            p.CssClass = "monitor";
-            monitores.Controls.Add(p);
         }
 
         public void ListarChocadeiras()

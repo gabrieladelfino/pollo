@@ -12,15 +12,26 @@ namespace Pollo
     public partial class WebForm2 : System.Web.UI.Page
     {
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        int cod_ovo;
+        int cod_ovo, i;
         string tipo;
         int cod_tamanho;
         int cont_chocadeira;
         int tempo;
         DateTime inicio;
         DateTime final;
+
+        Chocadeira c;
+        List<Chocadeira> cc;
+       
+        public struct Chocadeira
+        {
+            public string nomeChocadeira;
+            public int codChocadeira;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
             #region Verificando se o usuario está logado
             string cod_usuario = (string)Session["cod_usuario"];
             if (cod_usuario == null)
@@ -28,8 +39,13 @@ namespace Pollo
                 Response.Redirect("../index.aspx");
             }
             #endregion
+            
             if (IsPostBack == false)
             {
+
+                ListarRegistros();
+                CriarRegistros();
+
                 using (SqlConnection conexao = new SqlConnection(linkserver))
                 {
 
@@ -51,7 +67,7 @@ namespace Pollo
                     }
                     #endregion
                     #region Identificando o tamanho com o codigo
-                    using (SqlCommand cmd = new SqlCommand("SELECT tamanho FROM Pollo_Tamanho_Ovo WHERE cod_tamanho =" + cod_tamanho , conexao))
+                    using (SqlCommand cmd = new SqlCommand("SELECT tamanho FROM Pollo_Tamanho_Ovo WHERE cod_tamanho =" + cod_tamanho, conexao))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -121,13 +137,13 @@ namespace Pollo
                 int cod_user = Convert.ToInt32(cod_usuario);
 
                 #region Verificando a quantidade de dias do ovo selecionado
-                using (SqlCommand cmd = new SqlCommand("SELECT tempo_dia FROM Pollo_Ovo WHERE cod_ovo = " + ovo , conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT tempo_dia FROM Pollo_Ovo WHERE cod_ovo = " + ovo, conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read() == true)
                         {
-                          tempo = reader.GetInt32(0);
+                            tempo = reader.GetInt32(0);
                         }
                     }
                 }
@@ -183,5 +199,56 @@ namespace Pollo
             txtQtdOvos.Text = "";
             ddlCod_ovo.SelectedValue = "";
         }
+
+
+        public void CriarRegistros()
+        {
+            for (i = 0; i < cc.Count; i++)
+            {
+                Panel linha = new Panel();
+                linha.CssClass = "linha";
+
+                Label lblNome = new Label();
+                lblNome.Text = "" + cc.ElementAt(i).nomeChocadeira;
+                lblNome.CssClass = "lbl";
+                linha.Controls.Add(lblNome);
+
+                Panel editar = new Panel();
+                editar.CssClass = "botoes";
+                linha.Controls.Add(linha);
+
+                painel.Controls.Add(linha);
+            }
+        }
+
+        public void ListarRegistros()
+        {
+            string cod_usuario = (string)Session["cod_usuario"];
+            int cod_user = Convert.ToInt32(cod_usuario);
+
+            c = new Chocadeira();
+            cc = new List<Chocadeira>();
+
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+
+                using (SqlCommand cmd = new SqlCommand("SELECT tbc.cod_chocadeira, tbc.nome_chocadeira FROM Pollo_Chocadeira AS tbc, Pollo_Usuario AS tbu WHERE tbu.cod_usuario = "+cod_user, conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            c.codChocadeira = reader.GetInt32(0);
+                            c.nomeChocadeira = reader.GetString(1);
+                            txtNomeChocadeira.Text = "Nome: "+reader.GetString(1);
+                            cc.Add(c);
+                        }
+                    }
+                }
+
+            }
+        }
+
     }
 }

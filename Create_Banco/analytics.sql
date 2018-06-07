@@ -12,6 +12,6 @@ SELECT TOP 1 temperatura FROM Pollo_Media_Minuto GROUP BY temperatura HAVING COU
 --DESV
 SELECT ROUND(STDEV(temperatura),2) FROM Pollo_Media_Minuto
 
---MAX
+--MAX e MIN
 SELECT ROUND(MAX(temperatura),2) FROM Pollo_Media_Minuto
 SELECT ROUND(MIN(temperatura),2) FROM Pollo_Media_Minuto

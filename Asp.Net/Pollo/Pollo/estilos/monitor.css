@@ -33,6 +33,11 @@
     box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);
 }
 
+.monitor:hover{
+    background-color: aqua;
+    visibility: hidden;
+}
+
 .titulos_monitor {
     width: auto;
     margin: 5px;
