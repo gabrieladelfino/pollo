@@ -13,6 +13,15 @@ namespace Pollo {
     public partial class WebForm2 {
         
         /// <summary>
+        /// Controle cadastrados.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cadastrados;
+        
+        /// <summary>
         /// Controle txtNomeChocadeira.
         /// </summary>
         /// <remarks>
@@ -65,14 +74,5 @@ namespace Pollo {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErro;
-        
-        /// <summary>
-        /// Controle painel.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel painel;
     }
 }

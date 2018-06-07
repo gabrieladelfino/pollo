@@ -235,6 +235,8 @@ img.menu-icon-pollo {
     height: 80vh;
     margin: auto;
     padding: 20px;
+    background-color: transparent;
+    display: block;
 }
 
 /*BORDA*/

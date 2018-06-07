@@ -207,17 +207,16 @@ namespace Pollo
             {
                 Panel linha = new Panel();
                 linha.CssClass = "linha";
+                cadastrados.Controls.Add(linha);
 
                 Label lblNome = new Label();
                 lblNome.Text = "" + cc.ElementAt(i).nomeChocadeira;
-                lblNome.CssClass = "lbl";
+                lblNome.CssClass = "nome";
                 linha.Controls.Add(lblNome);
 
                 Panel editar = new Panel();
                 editar.CssClass = "botoes";
                 linha.Controls.Add(editar);
-
-                painel.Controls.Add(linha);
             }
         }
 
