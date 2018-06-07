@@ -21,7 +21,7 @@
 		            </div>
                     
                     <div class="comp">
-                        <label class="lbl">Digite seu nome</label>
+                        <label class="lbl">Digite seu user ou email</label>
 			            <br/>
 			            <asp:TextBox runat="server" class="txt" ID="txtUser" onkeyup="verificar(this)"/>
 			            <br/>

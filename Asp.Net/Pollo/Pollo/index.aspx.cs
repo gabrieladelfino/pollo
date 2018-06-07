@@ -11,8 +11,11 @@ namespace Pollo
 {   
     public partial class index : System.Web.UI.Page
     {
-        int cont_login;
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        string user, email, senha;
+        int cod_user;
+        int cont_login;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             #region Verificando se o usuario está logado
@@ -43,21 +46,30 @@ namespace Pollo
             {
                 conexao.Open();
                 #region Verificando dados para logar
-                using (SqlCommand cmd = new SqlCommand("SELECT Cod_Usuario FROM Pollo_Usuario WHERE (user_pollo= '" + txtUser.Text + "' AND senha = '" + txtSenha.Text + "') OR (email = '" + txtUser.Text + "' AND senha = '" + txtSenha.Text + "')", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT cod_Usuario, user_pollo, email, senha FROM Pollo_Usuario WHERE (user_pollo= '" + txtUser.Text + "' AND senha = '" + txtSenha.Text + "') OR (email = '" + txtUser.Text + "' AND senha = '" + txtSenha.Text + "')", conexao))
                 {
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read() == true)
                         {
-                            int cod_user = reader.GetInt32(0);
-                            Session["cod_usuario"] = cod_user + "";
-                            cont_login = 1;
+                            cod_user = reader.GetInt32(0);
+                            user = reader.GetString(1);
+                            email = reader.GetString(2);
+                            senha = reader.GetString(3);                            
                         }
                     }
                 }
                 #endregion
+
             }
+            #region Verificando Login
+            if ((user.Equals(txtUser.Text) && senha.Equals(txtSenha.Text)) || (email.Equals(txtUser.Text) && senha.Equals(txtSenha.Text)))
+             {
+                Session["cod_usuario"] = cod_user + "";
+                cont_login = 1;
+            }
+            #endregion
             #region Logando
             if (cont_login != 1)
             {
