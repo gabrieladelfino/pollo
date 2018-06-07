@@ -40,13 +40,13 @@ namespace Pollo {
         protected global::System.Web.UI.WebControls.TextBox txtQtdOvos;
         
         /// <summary>
-        /// Controle btnCancelar.
+        /// Controle btnLimpar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelar;
+        protected global::System.Web.UI.WebControls.Button btnLimpar;
         
         /// <summary>
         /// Controle btnCadastrar.

@@ -8,24 +8,24 @@
   
     <div class="comp">
         <label class="lbl">Tipo</label>
-        <asp:TextBox runat="server" ID="txtTipo" class="txt"/> 
+        <asp:TextBox runat="server" ID="txtTipo" class="txt" onkeyup="verificar(this)" onkeypress="return somenteLetras(event)" /> 
     </div>
 
      <div class="comp">
         <label class="lbl">Tamanho</label>
-        <asp:DropDownList runat="server" ID="ddlTamanho" class="ddl">
+        <asp:DropDownList runat="server" ID="ddlTamanho" class="ddl" onkeyup="verificar(this)" onclick="verificar(this)">
         <asp:ListItem Text="" />
         </asp:DropDownList> 
     </div>
 
      <div class="comp">
         <label class="lbl">Temperatura</label>
-        <asp:TextBox runat="server" ID="txtTemperatura" class="txt" />
+        <asp:TextBox runat="server" ID="txtTemperatura" class="txt" onkeyup="verificar(this)" onkeypress="return somenteNumeros(event)" />
     </div>
 
      <div class="comp">
          <label class="lbl">Tempo de incubação (dias)</label>
-         <asp:TextBox runat="server" ID="txtTempo" class="txt"/>
+         <asp:TextBox runat="server" ID="txtTempo" class="txt" onkeyup="verificar(this)" onkeypress="return somenteNumeros(event)" />
     </div>
    
     <div class="comp">

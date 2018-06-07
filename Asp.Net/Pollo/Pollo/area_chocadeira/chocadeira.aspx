@@ -9,19 +9,19 @@
        
         <div class="comp">
             <label class="lbl">Chocadeira</label>
-            <asp:TextBox runat="server" ID="txtNomeChocadeira" class="txt"/>    
+            <asp:TextBox runat="server" ID="txtNomeChocadeira" class="txt" onkeyup="verificar(this)" onkeypress="return somenteLetras(event)"/>    
         </div>
 
         <div class="comp">
             <label class="lbl">Ovo abrigado</label> 
-            <asp:DropDownList runat="server" ID="ddlCod_ovo" class="ddl">  
+            <asp:DropDownList runat="server" ID="ddlCod_ovo" class="ddl" onclick="verificar(this)" onkeyup="verificar(this)">   
                 <asp:ListItem Text="" />
             </asp:DropDownList> 
          </div>
 
         <div class="comp">
             <label class="lbl">Quantidade</label> 
-            <asp:TextBox runat="server" ID="txtQtdOvos" class="txt"/>
+            <asp:TextBox runat="server" ID="txtQtdOvos" class="txt" onkeyup="verificar(this)" onkeypress="return somenteNumeros(event)"/>
         </div>
 
         <div class="comp">
@@ -29,7 +29,7 @@
         </div>
 
         <div class="comp">
-            <asp:Button Text="Limpar" runat="server" ID="btnCancelar" class="btn" OnClick="btnCancelar_Click"/>
+            <asp:Button Text="Limpar" runat="server" ID="btnLimpar" class="btn" OnClick="btnLimpar_Click"/>
             <asp:Button Text="Prosseguir" runat="server" ID= "btnCadastrar" class="btn" onclick="btnCadastrar_Click"/>
             <br />
             <asp:Label Text="" runat="server" ID="lblErro" />

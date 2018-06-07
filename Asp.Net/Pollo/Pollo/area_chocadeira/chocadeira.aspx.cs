@@ -156,6 +156,7 @@ namespace Pollo
                     }
                 }
                 #endregion
+                #region Insert no banco
                 using (SqlCommand cmd = new SqlCommand("INSERT INTO Pollo_Chocadeira (nome_chocadeira, cod_ovo, quantidade_ovos, inicio, final, cod_usuario) VALUES (@nome_chocadeira, @cod_ovo, @quantidade_ovos, @inicio, @final, @cod_usuario)", conexao))
                 {
                     cmd.Parameters.AddWithValue("@nome_chocadeira", txtNomeChocadeira.Text);
@@ -171,10 +172,12 @@ namespace Pollo
                     txtQtdOvos.Text = "";
                     ddlCod_ovo.SelectedValue = "";
                 }
+                #endregion
             }
         }
 
-        protected void btnCancelar_Click(object sender, EventArgs e)
+
+        protected void btnLimpar_Click(object sender, EventArgs e)
         {
             txtNomeChocadeira.Text = "";
             txtQtdOvos.Text = "";
