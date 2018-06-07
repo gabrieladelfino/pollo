@@ -14,7 +14,7 @@ namespace Pollo.area_usuario
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         int cod_pergunta, cont_senha, cod_user, cont_resposta;
-        string pergunta, nova_senha;
+        string pergunta,senha;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -124,16 +124,20 @@ namespace Pollo.area_usuario
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE senha = '" + txtNovaSenha.Text + "' AND cod_usuario = " + cod_user, conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT senha FROM Pollo_Usuario WHERE cod_usuario = " + cod_user, conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read() == true)
                         {
-                            cont_senha = 1;
+                            senha = reader.GetString(0);                        
                         }
                     }
                 }
+            }
+            if (senha.Equals(txtNovaSenha.Text))
+            {
+                cont_senha = 1;
             }
            
             if (cont_senha == 1)
