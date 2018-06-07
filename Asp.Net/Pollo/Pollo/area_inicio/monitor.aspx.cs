@@ -12,6 +12,7 @@ using System.Data;
 
 namespace Pollo
 {
+    //oi mexi
     public partial class WebForm1 : System.Web.UI.Page
     {
         string linkServer = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
