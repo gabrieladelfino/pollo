@@ -107,7 +107,6 @@ namespace Pollo.area_usuario
 
         protected void btnRecuperar_Click(object sender, EventArgs e)
         {
-            #region Update nova senha
             #region Verificação senhas
             if (txtNovaSenha.Text.Length == 0)
             {
@@ -136,12 +135,14 @@ namespace Pollo.area_usuario
                     }
                 }
             }
-            #endregion
+           
             if (cont_senha == 1)
             {
                 txtNovaSenha.Focus();
+                //lblErro.Text="Senha já utilizada anteriormente";
                 return;
             }
+            #endregion
             #region Verificando se as senhas coincidem
             if (txtNovaSenha.Text != txtConfirmarSenha.Text)
             {
@@ -150,27 +151,35 @@ namespace Pollo.area_usuario
             }
             #endregion
 
-           //     nova_senha = (txtNovaSenha.Text).ToString();
-                using (SqlConnection conexao = new SqlConnection(linkserver))
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+                #region Update senha
+                using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Usuario SET senha = @senha WHERE cod_usuario = @cod_user", conexao))
                 {
-                    conexao.Open();
-                    using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Usuario SET senha = @senha WHERE cod_usuario = @cod_user", conexao))
-                    {
-                        cmd.Parameters.AddWithValue("@senha", txtNovaSenha.Text);
-                        cmd.Parameters.AddWithValue("@cod_user", PegarCod());
-                        cmd.ExecuteNonQuery();
-                    }
+                    cmd.Parameters.AddWithValue("@senha", txtNovaSenha.Text);
+                    cmd.Parameters.AddWithValue("@cod_user", PegarCod());
+                    cmd.ExecuteNonQuery();
                 }
+                #endregion
+                #region Limpando os campos
+                txtUsuario.Text = "";
+                txtPergunta.Text = "";
+                txtResposta.Text = "";
+                txtNovaSenha.Text = "";
+                txtConfirmarSenha.Text = "";
+                //lblErro.Text="Senha alterada com sucesso";
+                #endregion
             }
+        }
 
-        #endregion
         public int PegarCod()
         {
             #region Verificando se a resposta está correta
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
-                
+
                 using (SqlCommand cmd = new SqlCommand("SELECT cod_usuario FROM Pollo_Usuario WHERE user_pollo = '" + txtUsuario.Text + "' OR email = '" + txtUsuario.Text + "' AND rec_resposta = '" + txtResposta.Text + "'", conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -186,7 +195,6 @@ namespace Pollo.area_usuario
             #endregion
         }
 
-       
+
     }
 }
-    
