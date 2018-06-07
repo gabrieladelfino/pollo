@@ -23,13 +23,13 @@
                     <div class="comp">
                         <label class="lbl">Digite seu nome</label>
 			            <br/>
-			            <asp:TextBox runat="server" class="txt" ID="txtUser"/>
+			            <asp:TextBox runat="server" class="txt" ID="txtUser" onkeyup="verificar(this)"/>
 			            <br/>
 				 
 			            <br/>
 			            <label class="lbl">Digite sua senha</label>
 			            <br/>
-			            <asp:TextBox runat="server" type="password" class="txt" ID="txtSenha"/>
+			            <asp:TextBox runat="server" type="password" class="txt" ID="txtSenha" onkeyup="verificar(this)"/>
 			            <br/>
 			            <br/>
 

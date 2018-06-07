@@ -48,7 +48,7 @@
 
                     <div class="comp" id="info-login">
                         <label class="lbl">User</label>
-                        <asp:TextBox class="txt" runat="server" ID="txtUser"  onkeyup="verificar(this)" onkeypress="return somenteLetras(event)"/>
+                        <asp:TextBox class="txt" runat="server" ID="txtUser"  onkeyup="verificar(this)"/>
                         <br />
                         
                         <label class="lbl">Email</label>
