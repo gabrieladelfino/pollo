@@ -12,10 +12,13 @@ namespace Pollo
     {
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         int cod_tamanho, cont_ovo, i;
-
+        int btn_cod;
+        int identificador=0;
+        Button btnEditar;
+        Button btnExcluir;
         Ovo o;
         List<Ovo> oo;
-
+        
         public struct Ovo
         {
             public string tipo;
@@ -31,10 +34,11 @@ namespace Pollo
                 Response.Redirect("../index.aspx");
             }
             #endregion
+            ListarRegistros();
+            CriarRegistros();
             if (IsPostBack == false)
             {
-                ListarRegistros();
-                CriarRegistros();
+          
                 using (SqlConnection conexao = new SqlConnection(linkserver))
                 {
                     conexao.Open();
@@ -77,9 +81,9 @@ namespace Pollo
                             cont_ovo = 1;
                         }
                     }
-                }
-                #endregion
+                }     
             }
+            #endregion
             #region Verificação cadastro
             if (txtTipo.Text.Length == 0)
             {
@@ -168,15 +172,64 @@ namespace Pollo
                 lblNome.CssClass = "nome";
                 linha.Controls.Add(lblNome);
 
-                Button editar = new Button();
-                editar.Text = "Editar";
-                editar.CssClass = "botao";
-                linha.Controls.Add(editar);
+                btnEditar = new Button();
+                btnEditar.Text = "Editar";
+                btnEditar.CssClass = "botao";
+                //btnEditar.ID = "Ed" + oo.ElementAt(i).codOvo;
+                btnEditar.Click += Editar;
+                btn_cod = oo.ElementAt(i).codOvo;
+                linha.Controls.Add(btnEditar);
 
-                Button excluir = new Button();
-                excluir.Text = "Excluir";
-                excluir.CssClass = "botao";
-                linha.Controls.Add(excluir);
+                btnExcluir = new Button();
+                btnExcluir.Text = "Excluir";
+                btnExcluir.CssClass = "botao";
+                // excluir.ID = "Ex" + oo.ElementAt(i).codOvo;
+                btnExcluir.Click += Excluir;
+                btn_cod = oo.ElementAt(i).codOvo;
+                linha.Controls.Add(btnExcluir);
+            }
+        }
+
+        private void Excluir(object sender, EventArgs e)
+        {
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+
+                #region Deletando 
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM Pollo_Ovo WHERE cod_ovo = @cod_ovo" , conexao))
+                {
+                    cmd.Parameters.AddWithValue("@cod_ovo", btn_cod);
+                    cmd.ExecuteNonQuery();
+                    //Mostra pro usuario que foi deletado de alguma forma ou da uma mensagem de "você tem ctz?"
+                }
+                #endregion
+
+            }
+        }
+
+        private void Editar(object sender, EventArgs e)
+        {
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+
+                #region Alimentando os campos com o ovo selecionado
+                using (SqlCommand cmd = new SqlCommand("SELECT tipo, cod_tamanho ,temperatura, tempo_dia FROM Pollo_Ovo WHERE cod_ovo =" + btn_cod, conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            txtTipo.Text = reader.GetString(0);
+                            ddlTamanho.SelectedValue = "" + reader.GetInt32(1);
+                            txtTemperatura.Text = "" + reader.GetDouble(2);
+                            txtTempo.Text = "" + reader.GetInt32(3);
+                            identificador = 1;
+                        }
+                    }
+                }
+                #endregion
             }
         }
 
