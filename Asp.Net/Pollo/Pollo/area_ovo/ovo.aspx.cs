@@ -10,6 +10,7 @@ namespace Pollo
 {
     public partial class WebForm3 : System.Web.UI.Page
     {
+
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         int cod_tamanho, cont_ovo, i;
         int btn_cod;
