@@ -14,7 +14,8 @@
 body {
     color: #000 !important;
     overflow-x: hidden;
-    background-image: url('../imagens/noise.png');
+    color: #fff !important;
+    background-image: url("../imagens/fundo.png");
 }
 
 /*CABECALHO*/
@@ -84,10 +85,11 @@ main {
     position: absolute;
     float: left;
     top: 0;
-    background-image: url('../imagens/noise.png');
+    /* background-image: url('../imagens/noise.png');*/
+    color: #fff !important;
+    background-image: url("../imagens/fundo.png");
 }
-
-.submenu {
+    .submenu {
     display: none;
     float: left;
     width: 100%;

@@ -13,7 +13,10 @@ namespace Pollo
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         int cod_tamanho, cont_ovo, i;
         int btn_cod;
-        int identificador=0;
+        int cont_excluir;
+        int cod_chocadeira;
+        DateTime inicio;
+        DateTime final;
         Button btnEditar;
         Button btnExcluir;
         Ovo o;
@@ -37,8 +40,9 @@ namespace Pollo
             ListarRegistros();
             CriarRegistros();
             if (IsPostBack == false)
-            {
-          
+            {               
+                Session["status"] = false;
+                btnCadastrar.Text = "Cadatrar";
                 using (SqlConnection conexao = new SqlConnection(linkserver))
                 {
                     conexao.Open();
@@ -60,28 +64,41 @@ namespace Pollo
                 }
             }
         }
-
+        #region Botão Cadastrar
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
+            bool status = (bool)Session["status"];
             string cod_usuario = (string)Session["cod_usuario"];
 
-            using (SqlConnection conexao = new SqlConnection(linkserver))
+            #region Verificando se está editando para não fazer verificação de nome
+            if (!status)
             {
-               
+                using (SqlConnection conexao = new SqlConnection(linkserver))
+                {
+
                 conexao.Open();
 
                 #region Verificando se tem Ovo com mesmo nome e tamanho repetido
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Ovo WHERE tipo= '" + txtTipo.Text + "' AND cod_tamanho ='" + ddlTamanho.SelectedValue + "' AND cod_usuario = "+cod_usuario, conexao))
-                {
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+               
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Ovo WHERE tipo= '" + txtTipo.Text + "' AND cod_tamanho ='" + ddlTamanho.SelectedValue + "' AND cod_usuario = " + cod_usuario, conexao))
                     {
-                        while (reader.Read() == true)
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            cont_ovo = 1;
+                            while (reader.Read() == true)
+                            {
+                                cont_ovo = 1;
+                            }
                         }
                     }
-                }     
+                }
+                #endregion
+                if (cont_ovo == 1)
+                {
+                    lblErro.Text = "Ovo já cadastrado";
+                    txtTipo.Focus();
+                    return;
+                }
             }
             #endregion
             #region Verificação cadastro
@@ -91,12 +108,7 @@ namespace Pollo
                 txtTipo.Focus();
                 return;
             }
-            if (cont_ovo == 1)
-            {
-                lblErro.Text = "Ovo já cadastrado";
-                txtTipo.Focus();
-                return;
-            }
+           
 
             string tamanho = ddlTamanho.SelectedValue;
             if (tamanho.Equals(""))
@@ -122,33 +134,92 @@ namespace Pollo
                 return;
             }
             #endregion
-            #region Insert no banco
+            #region Insert/Update no banco
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
+               
                 conexao.Open();
                 int cod_user = Convert.ToInt32(cod_usuario);
                 cod_tamanho = Convert.ToInt32(tamanho);
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO Pollo_Ovo (tipo, cod_tamanho, temperatura, tempo_dia, cod_usuario) VALUES (@tipo, @cod_tamanho, @temperatura, @tempo, @cod_usuario)", conexao))
+                #region Update do editar
+                if (status)
                 {
-                    cmd.Parameters.AddWithValue("@tipo", txtTipo.Text);
-                    cmd.Parameters.AddWithValue("@cod_tamanho", cod_tamanho);
-                    cmd.Parameters.AddWithValue("@temperatura", txtTemperatura.Text);
-                    cmd.Parameters.AddWithValue("@tempo", txtTempo.Text);
-                    cmd.Parameters.AddWithValue("@cod_usuario", cod_user);
-                    cmd.ExecuteNonQuery();
+                    using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Ovo SET tipo = @tipo, cod_tamanho= @cod_tamanho , temperatura= @temperatura ,tempo_dia= @tempo WHERE cod_ovo=@cod_ovo", conexao))
+                    {
+                        cmd.Parameters.AddWithValue("@tipo", txtTipo.Text);
+                        cmd.Parameters.AddWithValue("@cod_tamanho", cod_tamanho);
+                        cmd.Parameters.AddWithValue("@temperatura", txtTemperatura.Text);
+                        cmd.Parameters.AddWithValue("@tempo", txtTempo.Text);
+                        cmd.Parameters.AddWithValue("@cod_ovo", btn_cod);
+                        cmd.ExecuteNonQuery();
 
-                    #region Limpando os campos
-                    lblErro.Text = "Cadastro efetuado com sucesso";
-                    txtTipo.Text = "";
-                    ddlTamanho.SelectedValue = "";
-                    txtTemperatura.Text = "";
-                    txtTempo.Text = "";
-                    #endregion
+                        #region Limpando os campos
+                        lblErro.Text = "Ovo editado com sucesso";
+                        txtTipo.Text = "";
+                        ddlTamanho.SelectedValue = "";
+                        txtTemperatura.Text = "";
+                        txtTempo.Text = "";
+                        #endregion
+                    }
+                    #region Verificando de se tem esse ovo em alguma chocadeira
+                    using (SqlCommand cmd = new SqlCommand("SELECT tbc.cod_chocadeira,tbo.tempo_dia,tbc.inicio FROM Pollo_Chocadeira AS tcb, Pollo_Ovo as tbo WHERE cod_ovo=" + btn_cod, conexao))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read() == true)
+                            {
+                                cod_chocadeira = reader.GetInt32(0);
+                                tempo= reader.GetInt32(1);
+                                inicio = reader.GetDateTime(2);
+                            }
+                        }
+                    }
+                    using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(DATE,"+ inicio + "+" + tempo + ") WHERE cod_ovo", conexao))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read() == true)
+                            {
+                                final = reader.GetDateTime(0);
+                            }
+                        }
+                    }
+                    using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_chocadeira SET final = @final WHERE cod_ovo=@cod_ovo", conexao))
+                    {
+                        cmd.Parameters.AddWithValue("@final", final);
+                        cmd.ExecuteNonQuery();
+                    }
+                        #endregion
+
+                    }
+                #endregion
+                #region Insert do cadastrar
+                else
+                {
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO Pollo_Ovo (tipo, cod_tamanho, temperatura, tempo_dia, cod_usuario) VALUES (@tipo, @cod_tamanho, @temperatura, @tempo, @cod_usuario)", conexao))
+                    {
+                        cmd.Parameters.AddWithValue("@tipo", txtTipo.Text);
+                        cmd.Parameters.AddWithValue("@cod_tamanho", cod_tamanho);
+                        cmd.Parameters.AddWithValue("@temperatura", txtTemperatura.Text);
+                        cmd.Parameters.AddWithValue("@tempo", txtTempo.Text);
+                        cmd.Parameters.AddWithValue("@cod_usuario", cod_user);
+                        cmd.ExecuteNonQuery();
+
+                        #region Limpando os campos
+                        lblErro.Text = "Cadastro efetuado com sucesso";
+                        txtTipo.Text = "";
+                        ddlTamanho.SelectedValue = "";
+                        txtTemperatura.Text = "";
+                        txtTempo.Text = "";
+                        #endregion
+                    }
                 }
+                #endregion
             }
             #endregion
         }
-
+        #endregion
+        #region Botão Limpar
         protected void btnLimpar_Click(object sender, EventArgs e)
         {
             #region Limpando os campos
@@ -158,7 +229,8 @@ namespace Pollo
             ddlTamanho.SelectedValue = "";
             #endregion
         }
-
+        #endregion
+        #region Criando panel, botões e label
         public void CriarRegistros()
         {
             for (i = 0; i < oo.Count; i++)
@@ -175,41 +247,64 @@ namespace Pollo
                 btnEditar = new Button();
                 btnEditar.Text = "Editar";
                 btnEditar.CssClass = "botao";
-                //btnEditar.ID = "Ed" + oo.ElementAt(i).codOvo;
                 btnEditar.Click += Editar;
                 btn_cod = oo.ElementAt(i).codOvo;
+                btnEditar.ID="0"+ oo.ElementAt(i).codOvo;
                 linha.Controls.Add(btnEditar);
 
                 btnExcluir = new Button();
                 btnExcluir.Text = "Excluir";
                 btnExcluir.CssClass = "botao";
-                // excluir.ID = "Ex" + oo.ElementAt(i).codOvo;
                 btnExcluir.Click += Excluir;
                 btn_cod = oo.ElementAt(i).codOvo;
+                btnExcluir.ID = "" + oo.ElementAt(i).codOvo;
                 linha.Controls.Add(btnExcluir);
             }
         }
+        #endregion
 
-        private void Excluir(object sender, EventArgs e)
+        #region Botão excluir
+        public void Excluir(object sender, EventArgs e)
         {
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
 
                 #region Deletando 
-                using (SqlCommand cmd = new SqlCommand("DELETE FROM Pollo_Ovo WHERE cod_ovo = @cod_ovo" , conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Chocadeira WHERE cod_ovo = " + btnEditar.ID, conexao))
                 {
-                    cmd.Parameters.AddWithValue("@cod_ovo", btn_cod);
-                    cmd.ExecuteNonQuery();
-                    //Mostra pro usuario que foi deletado de alguma forma ou da uma mensagem de "você tem ctz?"
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            cont_excluir = 1;
+                        }
+                    }
+                }
+                if (cont_excluir == 1)
+                {
+                    //Mostrar que o ovo não pode ser excluido pq ta em uso numa chocadeira
+                }
+                else
+                { 
+                    using (SqlCommand cmd = new SqlCommand("DELETE FROM Pollo_Ovo WHERE cod_ovo = @cod_ovo", conexao))
+                    {
+                       cmd.Parameters.AddWithValue("@cod_ovo", btn_cod);
+                       cmd.ExecuteNonQuery();
+                       //Mostra pro usuario que foi deletado de alguma forma ou da uma mensagem de "você tem ctz?"
+                    }
                 }
                 #endregion
-
             }
         }
-
-        private void Editar(object sender, EventArgs e)
+        #endregion
+        #region Botão editar
+        public void Editar(object sender, EventArgs e)
         {
+            txtTemperatura.Text = "";
+            txtTempo.Text = "";
+            txtTipo.Text = "";
+            ddlTamanho.SelectedValue = "";
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
@@ -225,14 +320,16 @@ namespace Pollo
                             ddlTamanho.SelectedValue = "" + reader.GetInt32(1);
                             txtTemperatura.Text = "" + reader.GetDouble(2);
                             txtTempo.Text = "" + reader.GetInt32(3);
-                            identificador = 1;
+                            btnCadastrar.Text = "Editar";
+                            Session["status"] = true;
                         }
                     }
                 }
                 #endregion
             }
         }
-
+         #endregion
+        #region Listar registros no painel
         public void ListarRegistros()
         {
             string cod_usuario = (string)Session["cod_usuario"];
@@ -260,5 +357,6 @@ namespace Pollo
 
             }
         }
+        #endregion
     }
 }

@@ -36,7 +36,7 @@
    
         <div class="comp">
             <asp:Button Text="Limpar" runat="server" ID="btnLimpar" class="btn" OnClick="btnLimpar_Click"/>
-            <asp:Button Text="Prosseguir" runat="server" ID="btnCadastrar" class="btn" OnClick="btnCadastrar_Click"/>
+            <asp:Button Text="" runat="server" ID="btnCadastrar" class="btn" OnClick="btnCadastrar_Click"/>
             <asp:Label Text="" runat="server" ID="lblErro" class="lbl"/>
         </div>
     </div>
