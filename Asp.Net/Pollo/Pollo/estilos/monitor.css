@@ -3,7 +3,7 @@
     width: 14vw;
     height: 29vh;
     padding: 10px;
-    margin: 0 40px;
+    margin: 30px 40px;
     float: left;
     border: dashed 4px gray;
     opacity: 0.5;
@@ -25,7 +25,7 @@
     height: 30vh;
     background-color: #FAFAFA;
     padding: 10px;
-    margin: 0 40px;
+    margin: 30px 40px;
     float: left;
     border-radius: 35px;
     -webkit-box-shadow: 15px 6px 72px -23px rgba(0,0,0,1);

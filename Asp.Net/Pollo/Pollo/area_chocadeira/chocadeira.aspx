@@ -8,7 +8,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
    
         <div id="cadastrados" class="painel" runat="server">  
-            
+           <h3 class="titulo-painel">Chocadeiras já cadastradas</h3>
         </div>
 
         <div class="componente">

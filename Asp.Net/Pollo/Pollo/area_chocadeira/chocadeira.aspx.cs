@@ -105,6 +105,7 @@ namespace Pollo
                 }
                 #endregion
             }
+
             #region Verificação cadastro
             if (txtNomeChocadeira.Text.Length == 0 || cont_chocadeira == 1)
             {
@@ -218,13 +219,13 @@ namespace Pollo
                 btnEditar.Text = "Editar";
                 btnEditar.CssClass = "botao";
                 btnEditar.Click += Editar;
-                linha.Controls.Add(btnEditar);
+               // linha.Controls.Add(btnEditar);
             
                 Button btnExcluir = new Button();
                 btnExcluir.Text = "Excluir";
                 btnExcluir.CssClass = "botao";
                 btnExcluir.Click += Excluir;
-                linha.Controls.Add(btnExcluir);
+               // linha.Controls.Add(btnExcluir);
             }
         }
 

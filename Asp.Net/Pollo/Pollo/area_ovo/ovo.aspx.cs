@@ -15,7 +15,6 @@ namespace Pollo
         int cod_tamanho, cont_ovo, i;
         int cont_excluir;
         int cod_chocadeira;
-        int[] vetor_cod = new int[0];
         int cod_ovo;
         int cont_egg;
         DateTime inicio;
@@ -67,6 +66,7 @@ namespace Pollo
                 }
             }
         }
+
         #region Botão Cadastrar
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
@@ -144,6 +144,7 @@ namespace Pollo
                 conexao.Open();
                 int cod_user = Convert.ToInt32(cod_usuario);
                 cod_tamanho = Convert.ToInt32(tamanho);
+
                 #region Update do editar
                 if (status)
                 {
@@ -244,6 +245,7 @@ namespace Pollo
 
 
         #endregion
+
         #region Botão Limpar
         protected void btnLimpar_Click(object sender, EventArgs e)
         {
@@ -258,11 +260,10 @@ namespace Pollo
         #region Criando panel, botões e label
         public void CriarRegistros()
         {
-            vetor_cod = new int[oo.Count];
+            
 
             for (i = 0; i < oo.Count; i++)
             {
-                vetor_cod[i] = oo.ElementAt(i).codOvo;
                 
                 Panel linha = new Panel();
                 linha.CssClass = "linha";
@@ -334,6 +335,7 @@ namespace Pollo
             txtTempo.Text = "";
             txtTipo.Text = "";
             ddlTamanho.SelectedValue = "";
+            
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
@@ -343,6 +345,7 @@ namespace Pollo
                 {
                     int cod_ovo = int.Parse(e.CommandArgument.ToString());
                     cmd.Parameters.AddWithValue("@cod_ovo", cod_ovo);
+
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                        

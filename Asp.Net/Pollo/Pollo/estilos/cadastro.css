@@ -119,42 +119,61 @@
 
 
 /*REGISTROS*/
+.titulo-painel {
+    margin: 10px;
+    text-align: center;
+    color: black;
+    background-color: #FAFAFA;
+    border-radius: 10px;
+    padding: 10px;
+}
 
 .painel {
     width: 30%;
     height: 100%;
     padding: 10px;
-    background-color: orangered;
     border-radius: 30px;
     float: left;
+    background: #d98324;
+    background: -moz-linear-gradient(top, #d98324 2%, #fad735 77%);
+    background: -webkit-linear-gradient(top, #d98324 2%,#fad735 77%);
+    background: linear-gradient(to bottom, #d98324 2%,#fad735 77%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d98324', endColorstr='#fad735',GradientType=0 );
 }
 
 .linha{
     width: 100%;
     height: 10%;
-    background-color: aqua;
-    margin: 10px 0;
-    padding: 20px 0;
-    top: 0;
+    padding: 10px 0;
+    margin: 20px 0;
 }
 
 .nome {
     width: 40%;
     height: auto;
-    background-color: mediumvioletred;
     margin: 0 10px;
     padding: 10px;
     float: left;
-    text-align: center;
+    background-color: #FAFAFA;
+    text-align: left;
+    color: black;
+    border: none;
+    border-radius: 10px;
 }
 
 .botao {
+    border-radius: 10px;
     width: 20%;
     height: auto;
-    background-color: mediumvioletred;
+    background-color: #FAFAFA;
     margin: 0 5px;
     padding: 10px;
     float: left;
     text-align: center;
     border: none;
+}
+
+.botao:hover{
+    background-color: yellow;
+    opacity: 0.8;
 }

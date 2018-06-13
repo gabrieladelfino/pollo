@@ -51,41 +51,55 @@ namespace Pollo
         public void CriarDiv(){
             for (i= 0; i<cc.Count; i++)
             {
+
                 monitor = new Panel();
                 monitor.CssClass = "monitor";
 
-                Label lblNome = new Label();
-                lblNome.Text = ""+cc.ElementAt(i).nomeChocadeira;
-                lblNome.CssClass = "titulos_monitor";
-                monitor.Controls.Add(lblNome);
-
-                Button btnEditar = new Button();
-                btnEditar.CssClass = "botoes";
-                btnEditar.Click += Editar;
-                monitor.Controls.Add(btnEditar);
-
-                Label lblTemperatura = new Label();
-                lblTemperatura.Text = "" + cc.ElementAt(i).temperatura;
-
-                if ((temperatura_ideal - 1) < temperatura_atual){
-                    lblTemperatura.CssClass = "titulos_monitor_temp_frio";
-                }else if ((temperatura_ideal+1) > temperatura_atual)
+                if (c.tempoDiaOvo < 1)
                 {
-                    lblTemperatura.CssClass = "titulos_monitor_temp_quente";
+                    monitor.Dispose();
                 }
                 else
                 {
-                    lblTemperatura.CssClass = "titulos_monitor_temp_neutro";
+
+
+
+                    Label lblNome = new Label();
+                    lblNome.Text = "" + cc.ElementAt(i).nomeChocadeira;
+                    lblNome.CssClass = "titulos_monitor";
+                    monitor.Controls.Add(lblNome);
+
+                    Button btnEditar = new Button();
+                    btnEditar.CssClass = "botoes";
+                    btnEditar.Click += Editar;
+                    monitor.Controls.Add(btnEditar);
+
+                    Label lblTemperatura = new Label();
+                    lblTemperatura.Text = "" + cc.ElementAt(i).temperatura;
+
+                    if ((temperatura_ideal - 1) < temperatura_atual)
+                    {
+                        lblTemperatura.CssClass = "titulos_monitor_temp_frio";
+                    }
+                    else if ((temperatura_ideal + 1) > temperatura_atual)
+                    {
+                        lblTemperatura.CssClass = "titulos_monitor_temp_quente";
+                    }
+                    else
+                    {
+                        lblTemperatura.CssClass = "titulos_monitor_temp_neutro";
+                    }
+
+                    monitor.Controls.Add(lblTemperatura);
+
+                    Label lblTempoRestante = new Label();
+                    lblTempoRestante.Text = "Dias restantes: " + cc.ElementAt(i).tempoDiaOvo;
+                    lblTempoRestante.CssClass = "titulos_monitor_tempo";
+                    monitor.Controls.Add(lblTempoRestante);
+
+                    monitores.Controls.Add(monitor);
                 }
 
-                monitor.Controls.Add(lblTemperatura);
-
-                Label lblTempoRestante = new Label();
-                lblTempoRestante.Text = "Dias restantes: " + cc.ElementAt(i).tempoDiaOvo;
-                lblTempoRestante.CssClass = "titulos_monitor_tempo";
-                monitor.Controls.Add(lblTempoRestante);
-
-                monitores.Controls.Add(monitor);
             }
         }
 
@@ -98,6 +112,7 @@ namespace Pollo
         {
             string cod_usuario = (string)Session["cod_usuario"];
             int cod_user = Convert.ToInt32(cod_usuario);
+            int cod_ovo = 0;
 
             c = new Chocadeira();
             cc = new List<Chocadeira>();
@@ -106,7 +121,7 @@ namespace Pollo
             {
                 conexao.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT tbc.cod_chocadeira, tbc.nome_chocadeira, tbo.tempo_dia, tbm.temperatura, tbo.temperatura FROM Pollo_Chocadeira AS tbc, Pollo_Ovo AS tbo, Pollo_Usuario AS tbu, Pollo_Media_Minuto AS tbm WHERE tbu.cod_usuario = " + cod_user + " AND tbo.cod_usuario = " + cod_user + " AND tbm.minuto = (SELECT MAX(minuto) FROM Pollo_Media_Minuto)", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT cod_chocadeira, nome_chocadeira, cod_ovo FROM Pollo_Chocadeira WHERE cod_usuario = "+cod_user, conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -114,15 +129,26 @@ namespace Pollo
                         {
                             c.codChocadeira = reader.GetInt32(0);
                             c.nomeChocadeira = reader.GetString(1);
-                            c.temperatura = reader.GetDouble(3);
-                            temperatura_atual = reader.GetDouble(3);
-                            temperatura_ideal = reader.GetDouble(4);
-                            c.tempoDiaOvo =  DiasRestantes();
+                            cod_ovo = reader.GetInt32(2);
+                        }
+                    }
+                }
+
+                using (SqlCommand cmd = new SqlCommand("SELECT tbo.temperatura, tbm.temperatura FROM Pollo_Ovo AS tbo, Pollo_Media_Minuto AS tbm WHERE cod_ovo = "+ cod_ovo +" AND tbm.minuto = (SELECT MAX(minuto) FROM Pollo_Media_Minuto)", conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            c.temperatura = reader.GetDouble(0);
+                            temperatura_ideal = reader.GetDouble(0);
+                            temperatura_atual = reader.GetDouble(1);
+                            c.tempoDiaOvo = DiasRestantes();
                             cc.Add(c);
                         }
                     }
                 }
-                
+
             }
         }
 
