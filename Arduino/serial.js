@@ -74,7 +74,7 @@ module.exports.ArduinoData = {List: serial.List}
     function inserirRegistro(temperatura) {  
         request = new Request("DECLARE\n"+
 "@total INT, @media_hora_60 FLOAT, @media_hora_120 FLOAT, @media_hora_180 FLOAT, @cont INT\n"+
-"SELECT @cont = i FROM Contador;\n"+
+"SELECT @cont = minuto FROM Contador;\n"+
 "SELECT @total = COUNT(*) FROM Pollo_Media_Minuto;\n"+
 "SELECT @media_hora_60 = AVG(temperatura) FROM Pollo_Media_Minuto WHERE minuto <= 60;\n"+
 "SELECT @media_hora_120 = AVG(temperatura) FROM Pollo_Media_Minuto WHERE minuto >=61 AND minuto <= 120;\n"+
@@ -86,18 +86,18 @@ module.exports.ArduinoData = {List: serial.List}
 "		INSERT INTO Pollo_Media_Minuto (temperatura) VALUES (@temperatura);\n"+
 "			IF @total = 1\n"+
 "			BEGIN\n"+
-"				UPDATE Contador SET i = 1; \n"+
+"				UPDATE Contador SET minuto = 1; \n"+
 "			END\n"+
 "			IF @total >1\n"+
 "			BEGIN\n"+
-"				UPDATE Contador SET i = i+1; \n"+
+"				UPDATE Contador SET minuto = minuto+1; \n"+
 "			END\n"+
 "	END\n"+
 	
 "IF @total = 180\n"+
 "	BEGIN\n"+
 "		UPDATE Pollo_Media_Minuto SET temperatura = @temperatura;\n"+
-"		UPDATE Contador SET i = i+1; ;\n"+
+"		UPDATE Contador SET minuto = minuto +1; ;\n"+
 "	END\n"+
 	
 "IF @cont = 60\n"+
@@ -113,7 +113,7 @@ module.exports.ArduinoData = {List: serial.List}
 "IF @cont = 180\n"+
 "    BEGIN\n"+
 "        INSERT INTO Pollo_Media_Hora VALUES(@media_hora_180);\n"+
-"		 UPDATE Contador SET i = 1;\n"+
+"		 UPDATE Contador SET minuto = 1;\n"+
 "    END", function(err) {  
          if (err) {  
             console.log(err);}  

@@ -124,6 +124,8 @@ h1.time{
 }
 
 .time-info{
+    background-repeat: no-repeat;
+    background-size: 100%;
     width: 25%;
     height: 60%;
     margin: 30px;
