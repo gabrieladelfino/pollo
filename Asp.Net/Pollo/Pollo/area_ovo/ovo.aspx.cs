@@ -13,16 +13,18 @@ namespace Pollo
 
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         int cod_tamanho, cont_ovo, i;
-        int btn_cod;
         int cont_excluir;
         int cod_chocadeira;
+        int[] vetor_cod = new int[0];
+        int cod_ovo;
+        int cont_egg;
         DateTime inicio;
         DateTime final;
         Button btnEditar;
         Button btnExcluir;
         Ovo o;
         List<Ovo> oo;
-        
+
         public struct Ovo
         {
             public string tipo;
@@ -41,7 +43,7 @@ namespace Pollo
             ListarRegistros();
             CriarRegistros();
             if (IsPostBack == false)
-            {               
+            {
                 Session["status"] = false;
                 btnCadastrar.Text = "Cadatrar";
                 using (SqlConnection conexao = new SqlConnection(linkserver))
@@ -49,7 +51,7 @@ namespace Pollo
                     conexao.Open();
 
                     #region Alimentando a ddl dos tamanhos
-                    using (SqlCommand cmd = new SqlCommand("SELECT cod_tamanho, tamanho FROM Pollo_Tamanho_Ovo WHERE cod_usuario= 1000 OR cod_usuario="+cod_usuario, conexao))
+                    using (SqlCommand cmd = new SqlCommand("SELECT cod_tamanho, tamanho FROM Pollo_Tamanho_Ovo WHERE cod_usuario= 1000 OR cod_usuario=" + cod_usuario, conexao))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -77,10 +79,10 @@ namespace Pollo
                 using (SqlConnection conexao = new SqlConnection(linkserver))
                 {
 
-                conexao.Open();
+                    conexao.Open();
 
-                #region Verificando se tem Ovo com mesmo nome e tamanho repetido
-               
+                    #region Verificando se tem Ovo com mesmo nome e tamanho repetido
+
                     using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Ovo WHERE tipo= '" + txtTipo.Text + "' AND cod_tamanho ='" + ddlTamanho.SelectedValue + "' AND cod_usuario = " + cod_usuario, conexao))
                     {
 
@@ -109,7 +111,7 @@ namespace Pollo
                 txtTipo.Focus();
                 return;
             }
-           
+
 
             string tamanho = ddlTamanho.SelectedValue;
             if (tamanho.Equals(""))
@@ -138,7 +140,7 @@ namespace Pollo
             #region Insert/Update no banco
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
-               
+
                 conexao.Open();
                 int cod_user = Convert.ToInt32(cod_usuario);
                 cod_tamanho = Convert.ToInt32(tamanho);
@@ -147,11 +149,12 @@ namespace Pollo
                 {
                     using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Ovo SET tipo = @tipo, cod_tamanho= @cod_tamanho , temperatura= @temperatura ,tempo_dia= @tempo WHERE cod_ovo=@cod_ovo", conexao))
                     {
+                        int cod_ovo = (int)Session["ovo"];
                         cmd.Parameters.AddWithValue("@tipo", txtTipo.Text);
                         cmd.Parameters.AddWithValue("@cod_tamanho", cod_tamanho);
                         cmd.Parameters.AddWithValue("@temperatura", txtTemperatura.Text);
                         cmd.Parameters.AddWithValue("@tempo", txtTempo.Text);
-                        cmd.Parameters.AddWithValue("@cod_ovo", btn_cod);
+                        cmd.Parameters.AddWithValue("@cod_ovo", cod_ovo);
                         cmd.ExecuteNonQuery();
 
                         #region Limpando os campos
@@ -163,37 +166,56 @@ namespace Pollo
                         #endregion
                     }
                     #region Verificando de se tem esse ovo em alguma chocadeira
-                    using (SqlCommand cmd = new SqlCommand("SELECT tbc.cod_chocadeira,tbo.tempo_dia,tbc.inicio FROM Pollo_Chocadeira AS tcb, Pollo_Ovo as tbo WHERE cod_ovo=" + btn_cod, conexao))
+                    using (SqlCommand cmd = new SqlCommand("SELECT tbc.cod_chocadeira, tbo.tempo_dia FROM Pollo_Chocadeira AS tbc , Pollo_Ovo AS tbo WHERE tbo.cod_ovo= @cod_ovo", conexao))
                     {
+                        Session["ovo"] = cod_ovo;
+                        cmd.Parameters.AddWithValue("@cod_ovo", cod_ovo);
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read() == true)
                             {
+                                cont_egg = 1;
                                 cod_chocadeira = reader.GetInt32(0);
-                                tempo= reader.GetInt32(1);
-                                inicio = reader.GetDateTime(2);
+                                tempo = reader.GetInt32(1);
                             }
                         }
                     }
-                    using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(DATE,"+ inicio + "+" + tempo + ") WHERE cod_ovo", conexao))
-                    {
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                    if (cont_egg == 1)
+                    { 
+                        using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(DATE, inicio) FROM Pollo_Chocadeira WHERE cod_ovo = @cod_ovo", conexao))
                         {
-                            while (reader.Read() == true)
+                            Session["ovo"] = cod_ovo;
+                            cmd.Parameters.AddWithValue("@cod_ovo", cod_ovo);
+                            using (SqlDataReader reader = cmd.ExecuteReader())
                             {
-                                final = reader.GetDateTime(0);
+                                while (reader.Read() == true)
+                                {
+                                    inicio = reader.GetDateTime(0);
+                                }
                             }
                         }
-                    }
-                    using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_chocadeira SET final = @final WHERE cod_ovo=@cod_ovo", conexao))
-                    {
-                        cmd.Parameters.AddWithValue("@final", final);
-                        cmd.ExecuteNonQuery();
-                    }
-                        #endregion
 
-                    }
+
+                        using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(DATE," + inicio + "+" + tempo + ")", conexao))
+                        {
+                            using (SqlDataReader reader = cmd.ExecuteReader())
+                            {
+                                while (reader.Read() == true)
+                                {
+                                    final = reader.GetDateTime(0);
+                                }
+                            }
+                        }
+                        using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Chocadeira SET final = @final WHERE cod_ovo=@cod_ovo", conexao))
+                        {
+                            cmd.Parameters.AddWithValue("@final", final);
+                            cmd.ExecuteNonQuery();
+                        }
+                  }
+                    #endregion
+                }
                 #endregion
+
                 #region Insert do cadastrar
                 else
                 {
@@ -217,8 +239,10 @@ namespace Pollo
                 }
                 #endregion
             }
-            #endregion
         }
+        #endregion
+
+
         #endregion
         #region Botão Limpar
         protected void btnLimpar_Click(object sender, EventArgs e)
@@ -234,46 +258,50 @@ namespace Pollo
         #region Criando panel, botões e label
         public void CriarRegistros()
         {
+            vetor_cod = new int[oo.Count];
+
             for (i = 0; i < oo.Count; i++)
             {
+                vetor_cod[i] = oo.ElementAt(i).codOvo;
+                
                 Panel linha = new Panel();
                 linha.CssClass = "linha";
                 cadastrados.Controls.Add(linha);
 
                 Label lblNome = new Label();
-                lblNome.Text = "" + oo.ElementAt(i).tipo;
+                lblNome.Text = oo.ElementAt(i).tipo.ToString();
                 lblNome.CssClass = "nome";
                 linha.Controls.Add(lblNome);
 
                 btnEditar = new Button();
                 btnEditar.Text = "Editar";
                 btnEditar.CssClass = "botao";
-                btnEditar.Click += Editar;
-                btn_cod = oo.ElementAt(i).codOvo;
-                btnEditar.ID="0"+ oo.ElementAt(i).codOvo;
+                btnEditar.Command += Editar;
+                btnEditar.CommandArgument = oo.ElementAt(i).codOvo.ToString();
                 linha.Controls.Add(btnEditar);
 
                 btnExcluir = new Button();
                 btnExcluir.Text = "Excluir";
                 btnExcluir.CssClass = "botao";
-                btnExcluir.Click += Excluir;
-                btn_cod = oo.ElementAt(i).codOvo;
-                btnExcluir.ID = "" + oo.ElementAt(i).codOvo;
+                btnExcluir.Command += Excluir;
+                btnExcluir.CommandArgument = oo.ElementAt(i).codOvo.ToString();
                 linha.Controls.Add(btnExcluir);
             }
         }
         #endregion
 
         #region Botão excluir
-        public void Excluir(object sender, EventArgs e)
+        public void Excluir(object sender, CommandEventArgs e)
         {
+            int cod_ovo = int.Parse(e.CommandArgument.ToString());
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
 
                 #region Deletando 
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Chocadeira WHERE cod_ovo = " + btnEditar.ID, conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Chocadeira WHERE cod_ovo = @cod_ovo", conexao))
                 {
+                    cmd.Parameters.AddWithValue("@cod_ovo", cod_ovo);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read() == true)
@@ -290,9 +318,9 @@ namespace Pollo
                 { 
                     using (SqlCommand cmd = new SqlCommand("DELETE FROM Pollo_Ovo WHERE cod_ovo = @cod_ovo", conexao))
                     {
-                       cmd.Parameters.AddWithValue("@cod_ovo", btn_cod);
-                       cmd.ExecuteNonQuery();
-                       //Mostra pro usuario que foi deletado de alguma forma ou da uma mensagem de "você tem ctz?"
+                        cmd.Parameters.AddWithValue("@cod_ovo", cod_ovo);
+                        cmd.ExecuteNonQuery();
+                        //Mostra pro usuario que foi deletado de alguma forma ou da uma mensagem de "você tem ctz?"
                     }
                 }
                 #endregion
@@ -300,7 +328,7 @@ namespace Pollo
         }
         #endregion
         #region Botão editar
-        public void Editar(object sender, EventArgs e)
+        public void Editar(object sender, CommandEventArgs e)
         {
             txtTemperatura.Text = "";
             txtTempo.Text = "";
@@ -311,10 +339,13 @@ namespace Pollo
                 conexao.Open();
 
                 #region Alimentando os campos com o ovo selecionado
-                using (SqlCommand cmd = new SqlCommand("SELECT tipo, cod_tamanho ,temperatura, tempo_dia FROM Pollo_Ovo WHERE cod_ovo =" + btn_cod, conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT tipo, cod_tamanho ,temperatura, tempo_dia FROM Pollo_Ovo WHERE cod_ovo = @cod_ovo", conexao))
                 {
+                    int cod_ovo = int.Parse(e.CommandArgument.ToString());
+                    cmd.Parameters.AddWithValue("@cod_ovo", cod_ovo);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
+                       
                         while (reader.Read() == true)
                         {
                             txtTipo.Text = reader.GetString(0);
@@ -323,6 +354,7 @@ namespace Pollo
                             txtTempo.Text = "" + reader.GetInt32(3);
                             btnCadastrar.Text = "Editar";
                             Session["status"] = true;
+                            Session["ovo"] = cod_ovo;
                         }
                     }
                 }
