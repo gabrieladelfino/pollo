@@ -251,7 +251,7 @@ namespace Pollo
             {
                 conexao.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT tbc.cod_chocadeira, tbc.nome_chocadeira FROM Pollo_Chocadeira AS tbc, Pollo_Usuario AS tbu WHERE tbu.cod_usuario = "+cod_user, conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT cod_chocadeira, nome_chocadeira FROM Pollo_Chocadeira  WHERE cod_usuario = " + cod_user, conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {

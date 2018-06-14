@@ -13,6 +13,7 @@ namespace Pollo
 
         public List<double> Temperaturas { get; set; }
         public List<int> Minutos { get; set; }
+        int cont_min;
 
         string linkServer = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
@@ -20,6 +21,7 @@ namespace Pollo
         {
             #region Verificando se o usuario está logado
             string cod_usuario = (string)Session["cod_usuario"];
+
             if (cod_usuario == null)
             {
                 Response.Redirect("../index.aspx");
@@ -28,12 +30,13 @@ namespace Pollo
 
             Temperaturas = new List<double>();
             Minutos = new List<int>();
-
+            //string cont_minuto = (string)Session["cont"];
+            //cont_min = Convert.ToInt32(cont_minuto);
             using (SqlConnection conexao = new SqlConnection(linkServer))
             {
                 conexao.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT minuto,temperatura FROM Pollo_Media_Minuto", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT minuto,temperatura FROM Pollo_Media_Minuto ", conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -107,8 +110,27 @@ namespace Pollo
                 PegarDesvModa();
             }
         }
+        //public void ContadorMin()
+        //{
+        //    using (SqlConnection conexao = new SqlConnection(linkServer))
+        //    {
+        //        conexao.Open();
 
-        public void PegarMaxMin()
+               
+        //        using (SqlCommand cmd = new SqlCommand("SELECT minuto FROM contador", conexao))
+        //        {
+        //            using (SqlDataReader reader = cmd.ExecuteReader())
+        //            {
+        //                while (reader.Read() == true)
+        //                {
+        //                    cont_min = reader.GetInt32(0);
+        //                    Session["cont"] = cont_min + "";
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+            public void PegarMaxMin()
         {
             using (SqlConnection conexao = new SqlConnection(linkServer))
             {

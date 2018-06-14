@@ -378,7 +378,7 @@ namespace Pollo
             {
                 conexao.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT  tbo.cod_ovo, tbo.tipo FROM Pollo_Ovo AS tbo, Pollo_Usuario AS tbu WHERE tbu.cod_usuario = " + cod_user, conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT  cod_ovo, tipo FROM Pollo_Ovo WHERE cod_usuario = " + cod_user, conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
