@@ -64,7 +64,9 @@ namespace Pollo
 
             }
             #region Verificando Login
-            if ((user.Equals(txtUser.Text) && senha.Equals(txtSenha.Text)) || (email.Equals(txtUser.Text) && senha.Equals(txtSenha.Text)))
+            string txt_user = Convert.ToString(txtUser.Text);
+            string txt_senha = Convert.ToString(txtSenha.Text);
+            if ((user == txt_user || email==txt_user) && senha == txt_senha)
              {
                 Session["cod_usuario"] = cod_user + "";
                 cont_login = 1;
