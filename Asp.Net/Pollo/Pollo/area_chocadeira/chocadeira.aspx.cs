@@ -217,13 +217,13 @@ namespace Pollo
 
                 Button btnEditar = new Button();
                 btnEditar.Text = "Editar";
-                btnEditar.CssClass = "botao";
+                btnEditar.CssClass = "botao_editar";
                 btnEditar.Click += Editar;
                // linha.Controls.Add(btnEditar);
             
                 Button btnExcluir = new Button();
                 btnExcluir.Text = "Excluir";
-                btnExcluir.CssClass = "botao";
+                btnExcluir.CssClass = "botao_excluir";
                 btnExcluir.Click += Excluir;
                // linha.Controls.Add(btnExcluir);
             }

@@ -275,15 +275,15 @@ namespace Pollo
                 linha.Controls.Add(lblNome);
 
                 btnEditar = new Button();
-                btnEditar.Text = "Editar";
-                btnEditar.CssClass = "botao";
+                btnEditar.Text = "";
+                btnEditar.CssClass = "botao_editar";
                 btnEditar.Command += Editar;
                 btnEditar.CommandArgument = oo.ElementAt(i).codOvo.ToString();
                 linha.Controls.Add(btnEditar);
 
                 btnExcluir = new Button();
-                btnExcluir.Text = "Excluir";
-                btnExcluir.CssClass = "botao";
+                btnExcluir.Text = "";
+                btnExcluir.CssClass = "botao_excluir";
                 btnExcluir.Command += Excluir;
                 btnExcluir.CommandArgument = oo.ElementAt(i).codOvo.ToString();
                 linha.Controls.Add(btnExcluir);
