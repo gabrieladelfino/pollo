@@ -8,6 +8,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using System.IO.Ports;
 
 
 namespace Pollo
@@ -22,6 +23,9 @@ namespace Pollo
         Chocadeira c;
         List<Chocadeira> cc;
         Panel monitor;
+        Button btnLampada;
+        SerialPort conexao = new SerialPort("COM3", 9600);
+        bool status;
 
 
         public struct Chocadeira
@@ -46,8 +50,9 @@ namespace Pollo
             #endregion
         }
 
-        public void CriarDiv(){
-            for (i= 0; i<cc.Count; i++)
+        public void CriarDiv()
+        {
+            for (i = 0; i < cc.Count; i++)
             {
 
                 monitor = new Panel();
@@ -64,10 +69,13 @@ namespace Pollo
                     lblNome.CssClass = "titulos_monitor";
                     monitor.Controls.Add(lblNome);
 
-                    Button btnEditar = new Button();
-                    btnEditar.CssClass = "botoes";
-                    btnEditar.Click += Editar;
-                    monitor.Controls.Add(btnEditar);
+                    btnLampada = new Button();
+                    btnLampada.Text = "";
+                    btnLampada.CssClass = "botoes";
+                    btnLampada.Command += Lampada;
+                    btnLampada.CommandArgument = cc.ElementAt(i).codChocadeira.ToString();
+                    monitor.Controls.Add(btnLampada);
+
 
                     Label lblTemperatura = new Label();
                     lblTemperatura.Text = "" + cc.ElementAt(i).temperatura;
@@ -100,7 +108,7 @@ namespace Pollo
 
         public void Editar(object sender, EventArgs e)
         {
-           
+
         }
 
         public void ListarChocadeiras()
@@ -116,7 +124,7 @@ namespace Pollo
             {
                 conexao.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT cod_chocadeira, nome_chocadeira, cod_ovo FROM Pollo_Chocadeira WHERE cod_usuario = "+cod_user, conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT cod_chocadeira, nome_chocadeira, cod_ovo FROM Pollo_Chocadeira WHERE cod_usuario = " + cod_user, conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -129,7 +137,7 @@ namespace Pollo
                     }
                 }
 
-                using (SqlCommand cmd = new SqlCommand("SELECT tbo.temperatura, tbm.temperatura FROM Pollo_Ovo AS tbo, Pollo_Media_Minuto AS tbm WHERE cod_ovo = "+ cod_ovo +" AND tbm.minuto = (SELECT MAX(minuto) FROM Pollo_Media_Minuto)", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT tbo.temperatura, tbm.temperatura FROM Pollo_Ovo AS tbo, Pollo_Media_Minuto AS tbm WHERE cod_ovo = " + cod_ovo + " AND tbm.minuto = (SELECT MAX(minuto) FROM Pollo_Media_Minuto)", conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -152,7 +160,7 @@ namespace Pollo
             using (SqlConnection conexao = new SqlConnection(linkServer))
             {
                 conexao.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT (VARCHAR, final) FROM Pollo_Chocadeira WHERE cod_chocadeira = "+c.codChocadeira, conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT (VARCHAR, final) FROM Pollo_Chocadeira WHERE cod_chocadeira = " + c.codChocadeira, conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -181,9 +189,33 @@ namespace Pollo
 
         protected void txtPesquisar_TextChanged(object sender, EventArgs e)
         {
-          
+
         }
 
-       
+        public void Lampada(object sender, CommandEventArgs e)
+        {
+            conexao.Open();
+
+
+            if (status)
+            {
+                conexao.Write("true");
+                string retorno = conexao.ReadLine();
+                conexao.Close();
+                status = !status;
+            }
+            else
+            {
+                conexao.Write("falsa");
+                string retorno = conexao.ReadLine();
+                conexao.Close();
+                status = !status;
+            }
+
+
+
+
+
+        }
     }
 }
