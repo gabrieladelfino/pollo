@@ -34,6 +34,9 @@ namespace Pollo
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            ListarChocadeiras();
+            CriarDiv();
+
             #region Verificando se o usuario está logado
             string cod_usuario = (string)Session["cod_usuario"];
             if (cod_usuario == null)
@@ -41,11 +44,6 @@ namespace Pollo
                 Response.Redirect("../index.aspx");
             }
             #endregion
-
-            if (IsPostBack == false) {
-                ListarChocadeiras();
-                CriarDiv();
-            }
         }
 
         public void CriarDiv(){
@@ -61,9 +59,6 @@ namespace Pollo
                 }
                 else
                 {
-
-
-
                     Label lblNome = new Label();
                     lblNome.Text = "" + cc.ElementAt(i).nomeChocadeira;
                     lblNome.CssClass = "titulos_monitor";
@@ -77,11 +72,11 @@ namespace Pollo
                     Label lblTemperatura = new Label();
                     lblTemperatura.Text = "" + cc.ElementAt(i).temperatura;
 
-                    if ((temperatura_ideal - 1) < temperatura_atual)
+                    if (temperatura_atual < (temperatura_ideal - 1))
                     {
                         lblTemperatura.CssClass = "titulos_monitor_temp_frio";
                     }
-                    else if ((temperatura_ideal + 1) > temperatura_atual)
+                    else if (temperatura_atual > (temperatura_ideal + 1))
                     {
                         lblTemperatura.CssClass = "titulos_monitor_temp_quente";
                     }
@@ -140,9 +135,9 @@ namespace Pollo
                     {
                         while (reader.Read() == true)
                         {
-                            c.temperatura = reader.GetDouble(0);
                             temperatura_ideal = reader.GetDouble(0);
                             temperatura_atual = reader.GetDouble(1);
+                            c.temperatura = reader.GetDouble(1);
                             c.tempoDiaOvo = DiasRestantes();
                             cc.Add(c);
                         }
@@ -169,7 +164,7 @@ namespace Pollo
 
                 }
 
-                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT (INT, '" + final + "' - GETDATE())", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(INT, '" + final + "' - GETDATE())", conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
