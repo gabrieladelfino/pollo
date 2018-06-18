@@ -15,10 +15,8 @@ namespace Pollo
         int cod_tamanho, cont_ovo, i;
         int cont_excluir;
         int cod_chocadeira;
-        int cod_ovo;
-        int cont_egg;
-        DateTime inicio;
-        DateTime final;
+        string inicio;
+        string final;
         Button btnEditar;
         Button btnExcluir;
         Ovo o;
@@ -67,7 +65,7 @@ namespace Pollo
             }
         }
 
-        #region Botão Cadastrar
+        #region Botão Cadastrar/Editar
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
             bool status = (bool)Session["status"];
@@ -150,13 +148,17 @@ namespace Pollo
                 {
                     using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Ovo SET tipo = @tipo, cod_tamanho= @cod_tamanho , temperatura= @temperatura ,tempo_dia= @tempo WHERE cod_ovo=@cod_ovo", conexao))
                     {
-                        int cod_ovo = (int)Session["ovo"];
+                        int cod_ovo = Convert.ToInt32(Session["ovo"]);
                         cmd.Parameters.AddWithValue("@tipo", txtTipo.Text);
                         cmd.Parameters.AddWithValue("@cod_tamanho", cod_tamanho);
                         cmd.Parameters.AddWithValue("@temperatura", txtTemperatura.Text);
                         cmd.Parameters.AddWithValue("@tempo", txtTempo.Text);
                         cmd.Parameters.AddWithValue("@cod_ovo", cod_ovo);
                         cmd.ExecuteNonQuery();
+
+                        SelectInicio();
+                        SelectFinal();
+                        UpdateFinal();
 
                         #region Limpando os campos
                         lblErro.Text = "Ovo editado com sucesso";
@@ -169,50 +171,18 @@ namespace Pollo
                     #region Verificando de se tem esse ovo em alguma chocadeira
                     using (SqlCommand cmd = new SqlCommand("SELECT tbc.cod_chocadeira, tbo.tempo_dia FROM Pollo_Chocadeira AS tbc , Pollo_Ovo AS tbo WHERE tbo.cod_ovo= @cod_ovo", conexao))
                     {
-                        Session["ovo"] = cod_ovo;
+                        string cod_ovo= (string)Session["ovo"];
                         cmd.Parameters.AddWithValue("@cod_ovo", cod_ovo);
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read() == true)
                             {
-                                cont_egg = 1;
                                 cod_chocadeira = reader.GetInt32(0);
                                 tempo = reader.GetInt32(1);
                             }
                         }
                     }
-                    if (cont_egg == 1)
-                    { 
-                        using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(DATE, inicio) FROM Pollo_Chocadeira WHERE cod_ovo = @cod_ovo", conexao))
-                        {
-                            Session["ovo"] = cod_ovo;
-                            cmd.Parameters.AddWithValue("@cod_ovo", cod_ovo);
-                            using (SqlDataReader reader = cmd.ExecuteReader())
-                            {
-                                while (reader.Read() == true)
-                                {
-                                    inicio = reader.GetDateTime(0);
-                                }
-                            }
-                        }
-
-
-                        using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(DATE," + inicio + "+" + tempo + ")", conexao))
-                        {
-                            using (SqlDataReader reader = cmd.ExecuteReader())
-                            {
-                                while (reader.Read() == true)
-                                {
-                                    final = reader.GetDateTime(0);
-                                }
-                            }
-                        }
-                        using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Chocadeira SET final = @final WHERE cod_ovo=@cod_ovo", conexao))
-                        {
-                            cmd.Parameters.AddWithValue("@final", final);
-                            cmd.ExecuteNonQuery();
-                        }
-                  }
+                    
                     #endregion
                 }
                 #endregion
@@ -244,6 +214,61 @@ namespace Pollo
         #endregion
 
 
+        public void SelectInicio()
+        {
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+                string cod_ovo = (string)Session["ovo"];
+                int cod_o = Convert.ToInt32(cod_ovo);
+                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR, inicio, 111) FROM Pollo_Chocadeira WHERE cod_ovo= "+cod_o, conexao))
+                {                  
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            inicio =reader.GetString(0);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void SelectFinal()
+        {
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR, (DATEADD(DAY," + txtTempo.Text + ",  '" + inicio + "' )),111) FROM Pollo_Chocadeira", conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            final = reader.GetString(0);
+                        }
+                    }
+                }
+            }
+                
+        }
+
+        public void UpdateFinal()
+        {
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+
+                string cod_ovo = (string)Session["ovo"];
+                int cod_o = Convert.ToInt32(cod_ovo);
+
+                using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Chocadeira SET final = @final WHERE cod_ovo = "+cod_o, conexao))
+                {
+                    cmd.Parameters.AddWithValue("@final", final);
+                    cmd.ExecuteNonQuery();
+                }
+            }      
+        }
         #endregion
 
         #region Botão Limpar
@@ -357,7 +382,7 @@ namespace Pollo
                             txtTempo.Text = "" + reader.GetInt32(3);
                             btnCadastrar.Text = "Editar";
                             Session["status"] = true;
-                            Session["ovo"] = cod_ovo;
+                            Session["ovo"] = cod_ovo+"";
                         }
                     }
                 }
