@@ -28,6 +28,16 @@ namespace Pollo
             }
             #endregion
 
+
+            Listar();
+            PegarMaxMin();
+            PegarMedia();
+            PegarQuartil();
+            PegarDesvModa();
+        }
+
+        public void Listar()
+        {
             Temperaturas = new List<double>();
             Minutos = new List<int>();
             //string cont_minuto = (string)Session["cont"];
@@ -48,13 +58,7 @@ namespace Pollo
                     }
                 }
             }
-
-            PegarMaxMin();
-            PegarMedia();
-            PegarQuartil();
-            PegarDesvModa();
         }
-
         protected void btnMaxMin_Click(object sender, EventArgs e)
         {
             if (btnMaxMin.Text.Equals("< Max >"))

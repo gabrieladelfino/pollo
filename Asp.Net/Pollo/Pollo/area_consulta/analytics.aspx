@@ -34,19 +34,17 @@
 
     <%--SCRIPTS--%>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript"> 
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+    <script src="http://code.jquery.com/jquery-1.8.2.js"> </script>
+	<script type="text/java" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+   <script type="text/javascript"> 
 
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['', 'Temp'],
-                <%for (int i = 0; i < Temperaturas.Count; i++){%>
-                 [<%=Minutos[i]%>,<%=Temperaturas[i].ToString(System.Globalization.CultureInfo.InvariantCulture)%>],
-                <%}%>
-            ]);
+       google.charts.load('current', { packages: ['corechart', 'line'] });
+       google.charts.setOnLoadCallback(drawChart);
 
-            var options = {
+        var chart = null, data;
+
+		var options = {
                 title: 'Temperaturas cada 1(um) minuto',
                 curveType: 'function',
                 colors: ['#e2431e'],
@@ -72,9 +70,31 @@
                     height: '70%'
                 }
             };
+			
+        function drawChart() {
 
-            var chart = new google.visualization.LineChart(document.getElementById('grafico'));
+            <% Listar(); %>
+
+            data = google.visualization.arrayToDataTable([
+                ['', 'Temp'],
+			    <%for (int i = 0; i < Temperaturas.Count; i++){%>
+                [<%=Minutos[i]%>,<%=Temperaturas[i].ToString(System.Globalization.CultureInfo.InvariantCulture)%>],
+			    <%}%>
+            ]);
+
+            chart = new google.visualization.LineChart(document.getElementById('grafico'));
             chart.draw(data, options);
+
+            setTimeout(function () {
+                <%PegarMaxMin(); PegarDesvModa(); PegarMedia(); PegarQuartil();%>
+                document.getElementById('grafico').reload();
+                document.getElementById('lblMaxMin').reload();
+                document.getElementById('lblQuartil').reload();
+                document.getElementById('lblMedia').reload();
+                document.getElementById('lblDesv').reload();
+                drawChart();
+            }, 60000);
+
         }
     </script>
 
