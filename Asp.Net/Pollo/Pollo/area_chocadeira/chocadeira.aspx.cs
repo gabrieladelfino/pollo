@@ -183,27 +183,32 @@ namespace Pollo
                 #region Update do editar
                 if (statusc)
                 {
-                    using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Chocadeira SET nome_chocadeira = @nome_chocadeira, cod_ovo = @cod_ovo, quantidade_ovos = @quantidade_ovos WHERE cod_chocadeira = @cod_chocadeira", conexao))
+                    using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Chocadeira SET nome_chocadeira = @nome_chocadeira, cod_ovo = @cod_ovo, quantidade_ovos = @quantidade_ovos, final = @final WHERE cod_chocadeira = @cod_chocadeira", conexao))
                     {
+                        SelectInicio();
+                        SelectTempo();
+                        SelectFinal();
                         int cod_chocadeira = Convert.ToInt32(Session["chocadeira"]);
                         cmd.Parameters.AddWithValue("@cod_chocadeira", cod_chocadeira);
                         cmd.Parameters.AddWithValue("@nome_chocadeira", txtNomeChocadeira.Text);
                         cmd.Parameters.AddWithValue("@cod_ovo", ddlCod_ovo.SelectedValue);
                         cmd.Parameters.AddWithValue("@quantidade_ovos", txtQtdOvos.Text);
+                        cmd.Parameters.AddWithValue("@final", final);
                         cmd.ExecuteNonQuery();
-
-                        lblErro.Text = "Chocadeira editado com sucesso";
+                        lblErro.Text = "Chocadeira editada com sucesso";
 
 
                     }
 
                 }
                 #endregion
+                #region Insert do cadastro
                 else
                 {
-                    #region Insert no banco
+                  
                     using (SqlCommand cmd = new SqlCommand("INSERT INTO Pollo_Chocadeira (nome_chocadeira, cod_ovo, quantidade_ovos, inicio, final, cod_usuario) VALUES (@nome_chocadeira, @cod_ovo, @quantidade_ovos, @inicio, @final, @cod_usuario)", conexao))
                     {
+                        
                         cmd.Parameters.AddWithValue("@nome_chocadeira", txtNomeChocadeira.Text);
                         cmd.Parameters.AddWithValue("@cod_ovo", ovo);
                         cmd.Parameters.AddWithValue("@quantidade_ovos", qtd_ovo);
@@ -213,8 +218,9 @@ namespace Pollo
                         cmd.ExecuteNonQuery();
                         lblErro.Text = "Cadastrado com sucesso";
                     }
-                    #endregion
+                    
                 }
+                #endregion
 
             }
             #region Limpando os campos
@@ -231,6 +237,59 @@ namespace Pollo
             txtNomeChocadeira.Text = "";
             txtQtdOvos.Text = "";
             ddlCod_ovo.SelectedValue = "";
+        }
+
+
+        public void SelectInicio()
+        {
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+                int cod_chocadeira = Convert.ToInt32(Session["chocadeira"]);
+                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR, inicio, 111) FROM Pollo_Chocadeira WHERE cod_chocadeira= " + cod_chocadeira, conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            inicio = reader.GetString(0);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void SelectTempo()
+        {
+            using (SqlCommand cmd = new SqlCommand("SELECT tempo_dia FROM Pollo_Ovo WHERE cod_ovo = " + ovo, conexao))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read() == true)
+                    {
+                        tempo = reader.GetInt32(0);
+                    }
+                }
+            }
+        }
+
+       public void SelectFinal()
+        {
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR, (DATEADD(DAY," + tempo + ",  '" + inicio + "' )),111) FROM Pollo_Chocadeira", conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            final = reader.GetString(0);
+                        }
+                    }
+                }
+            }
+
         }
 
 
