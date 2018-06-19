@@ -17,8 +17,8 @@ namespace Pollo
         int cod_tamanho;
         int cont_chocadeira;
         int tempo;
-        DateTime inicio;
-        DateTime final;
+        string inicio;
+        string final;
         Button btnEditar;
         Button btnExcluir;
         Chocadeira c;
@@ -157,25 +157,26 @@ namespace Pollo
                 }
                 #endregion
                 #region Obtendo o dia de hoje
-                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(DATE, GETDATE())", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR, GETDATE(),111)", conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read() == true)
                         {
-                            inicio = reader.GetDateTime(0);
+                            inicio = reader.GetString(0);
                         }
                     }
                 }
                 #endregion
                 #region Obtendo o dia final de incubação
-                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(DATE, GETDATE()+" + tempo + ")", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR, (DATEADD(DAY," + tempo + ", GETDATE() )),111)", conexao))
+                    
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read() == true)
                         {
-                            final = reader.GetDateTime(0);
+                            final = reader.GetString(0);
                         }
                     }
                 }
@@ -196,9 +197,9 @@ namespace Pollo
                         cmd.Parameters.AddWithValue("@final", final);
                         cmd.ExecuteNonQuery();
                         lblErro.Text = "Chocadeira editada com sucesso";
-
-
                     }
+                    btnCadastrar.Text = "Cadastrar";
+                    Session["statusc"] = false;
 
                 }
                 #endregion
@@ -244,6 +245,7 @@ namespace Pollo
         {
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
+               
                 conexao.Open();
                 int cod_chocadeira = Convert.ToInt32(Session["chocadeira"]);
                 using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR, inicio, 111) FROM Pollo_Chocadeira WHERE cod_chocadeira= " + cod_chocadeira, conexao))
@@ -256,18 +258,22 @@ namespace Pollo
                         }
                     }
                 }
+                
             }
         }
 
         public void SelectTempo()
         {
-            using (SqlCommand cmd = new SqlCommand("SELECT tempo_dia FROM Pollo_Ovo WHERE cod_ovo = " + ovo, conexao))
+            using (SqlConnection conexao = new SqlConnection(linkserver))
             {
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand("SELECT tempo_dia FROM Pollo_Ovo WHERE cod_ovo = " + ddlCod_ovo.SelectedValue, conexao))
                 {
-                    while (reader.Read() == true)
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        tempo = reader.GetInt32(0);
+                        while (reader.Read() == true)
+                        {
+                            tempo = reader.GetInt32(0);
+                        }
                     }
                 }
             }

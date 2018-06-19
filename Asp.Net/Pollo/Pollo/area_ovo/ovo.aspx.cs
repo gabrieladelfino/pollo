@@ -146,6 +146,7 @@ namespace Pollo
                 #region Update do editar
                 if (status)
                 {
+                    
                     using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Ovo SET tipo = @tipo, cod_tamanho= @cod_tamanho , temperatura= @temperatura ,tempo_dia= @tempo WHERE cod_ovo=@cod_ovo", conexao))
                     {
                         int cod_ovo = Convert.ToInt32(Session["ovo"]);
@@ -157,8 +158,12 @@ namespace Pollo
                         cmd.ExecuteNonQuery();
 
                         SelectInicio();
-                        SelectFinal();
-                        UpdateFinal();
+                        bool inicio = (bool)Session["inicio"];
+                        if (inicio)
+                        {
+                            SelectFinal();
+                            UpdateFinal();
+                        }
 
                         #region Limpando os campos
                         lblErro.Text = "Ovo editado com sucesso";
@@ -182,8 +187,10 @@ namespace Pollo
                             }
                         }
                     }
-                    
+
                     #endregion
+                    btnCadastrar.Text = "Cadastrar";
+                    Session["status"] = false;
                 }
                 #endregion
 
@@ -222,12 +229,14 @@ namespace Pollo
                 string cod_ovo = (string)Session["ovo"];
                 int cod_o = Convert.ToInt32(cod_ovo);
                 using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR, inicio, 111) FROM Pollo_Chocadeira WHERE cod_ovo= "+cod_o, conexao))
-                {                  
+                {
+                    Session["inicio"] = false;
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read() == true)
                         {
                             inicio =reader.GetString(0);
+                            Session["inicio"] = true;
                         }
                     }
                 }
