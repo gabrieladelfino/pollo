@@ -15,7 +15,7 @@
             <asp:Button Text="Analytics" ID="btnTempo" class="lbl" runat="server"/>
             <br /><br />
             <div class="lblTexto">
-                Gerando dados por <asp:Label Text="" ID="lblTempo" runat="server" />
+                Gerando dados por <asp:Label Text="" ID="lblTempo" runat="server" />.
             </div>
         </div>
         <div class="info">

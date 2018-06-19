@@ -52,8 +52,9 @@
     height: 3.5vw;
     text-align: left;
     font-size: 0.9vw;
-    background-color: rebeccapurple;
+    background-color: transparent;
     margin: 0 5px;
+    color: black;
 }
 
 /*GRAFICO*/
