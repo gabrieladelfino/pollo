@@ -5,7 +5,7 @@
     font-size: 1vw;
     color: #3D2520;
     float: left;
-    margin: 10px 10px 30px 10px;
+    margin: 10px;
     font-weight: bold;
     text-align: center;
     border: none;
@@ -18,14 +18,42 @@
     cursor: pointer;
 }
 
+.lbl_ddl {
+    width: auto;
+    height: auto;
+    font-family: arial;
+    font-size: 1vw;
+    color: #3D2520;
+    float: left;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-bottom: solid 2px orange;
+    background-color: transparent;
+    outline: none;
+    clear: both;
+    position: absolute;
+    left: 35px;
+    top: 75vh;
+}
+
 .lblTemp {
     text-align: center;
-    font-size: 3.6vw;
+    font-size: 2.5vw;
     background: -webkit-linear-gradient(top, #FA1905, #F99201);
     background: linear-gradient(top, #878787, #000);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin: 10px;
+    margin: 0 20px;
+}
+
+.lblTexto {
+    width: 91%;
+    height: 3.5vw;
+    text-align: left;
+    font-size: 0.9vw;
+    background-color: rebeccapurple;
+    margin: 0 5px;
 }
 
 /*GRAFICO*/
@@ -42,18 +70,19 @@
 /*MEDIAS*/
 .medias {
     width: 40%;
-    height: 70%;
+    height: auto;
     float: left;
     margin: 20px 30px;
-    padding: 0 30px;
+    padding: 0 20px;
+    background-color: transparent;
 }
 
 .info {
-    width: 35%;
-    height: 35%;
-    background-color: #FAFAFA;
-    margin: 20px;
+    width: 25%;
+    height: 30%;
+    background-color: white;
     float: left;
-    border-radius: 20px;
+    margin: 10px;
+    border-radius: 10px;
     padding: 10px;
 }

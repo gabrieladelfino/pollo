@@ -7,31 +7,75 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
+   
     <div id="grafico"></div>
-    
+
     <div class="medias">
         <div class="info">
-            <asp:Button Text="< Max >" ID="btnMaxMin" class="lbl" OnClick="btnMaxMin_Click"  runat="server"/>
+            <asp:Button Text="Analytics" ID="btnTempo" class="lbl" runat="server"/>
             <br /><br />
-            <asp:Label Text="" class="lblTemp" ID="lblMaxMin" runat="server" />
+            <div class="lblTexto">
+                Gerando dados por <asp:Label Text="" ID="lblTempo" runat="server" />
+            </div>
         </div>
         <div class="info">
-            <asp:Button Text="< 1° Quartil >" ID="btnQuartil" class="lbl" OnClick="btnQuartil_Click" runat="server"/>
+            <asp:Button Text="Max." ID="btnMax" class="lbl" runat="server"/>
             <br /><br />
-            <asp:Label Text="" class="lblTemp" ID="lblQuartil" runat="server" />
+            <asp:Label Text="" class="lblTemp" ID="lblMax" runat="server" />
         </div>
+
         <div class="info">
-            <asp:Button Text="< Média >" ID="btnMedia" class="lbl" OnClick="btnMedia_Click" runat="server" />
+            <asp:Button Text="Min." ID="btnMin" class="lbl" runat="server"/>
+            <br /><br />
+            <asp:Label Text="" class="lblTemp" ID="lblMin" runat="server" />
+        </div>
+        
+        <div class="info">
+            <asp:Button Text="1° Quartil" ID="btnPQuartil" class="lbl" runat="server"/>
+            <br /><br />
+            <asp:Label Text="" class="lblTemp" ID="lblPQuartil" runat="server" />
+        </div>
+            
+        <div class="info">
+            <asp:Button Text="3° Quartil" ID="btnTQuartil" class="lbl" runat="server"/>
+            <br /><br />
+            <asp:Label Text="" class="lblTemp" ID="lblTQuartil" runat="server" />
+        </div>
+            
+        <div class="info">
+            <asp:Button Text="Média" ID="btnMedia" class="lbl" runat="server" />
             <br /><br />
             <asp:Label Text="" class="lblTemp" ID="lblMedia" runat="server" />
         </div>
+
         <div class="info">
-            <asp:Button Text="< Desv. Padrão >" ID="btnDesv" class="lbl" OnClick="btnDesv_Click" runat="server" />
+            <asp:Button Text="Mediana" ID="btnMediana" class="lbl" runat="server" />
+            <br /><br />
+            <asp:Label Text="" class="lblTemp" ID="lblMediana" runat="server" />
+        </div>
+           
+        <div class="info">
+            <asp:Button Text="Desv. Padrão" ID="btnDesv" class="lbl" runat="server" />
             <br /><br />
             <asp:Label Text="" class="lblTemp" ID="lblDesv" runat="server" />
         </div>
+            
+        <div class="info">
+            <asp:Button Text="Moda" ID="btnModa" class="lbl" runat="server" />
+            <br /><br />
+            <asp:Label Text="" class="lblTemp" ID="lblModa" runat="server" />
+        </div>
     </div>
 
+     <label class="lbl_ddl">
+        Parâmetro: 
+        <asp:DropDownList ID="ddlTempo" runat="server" OnSelectedIndexChanged="SelecionarParametro" OnLoad="ddlTempo_Load">
+            <asp:ListItem Text="Minuto" Value="0"/>
+            <asp:ListItem Text="Hora" Value="1"/>
+            <asp:ListItem Text="Dia" Value="2"/>
+        </asp:DropDownList>
+    </label>
+   
     <%--SCRIPTS--%>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="http://code.jquery.com/jquery-1.8.2.js"> </script>
@@ -44,8 +88,10 @@
 
         var chart = null, data;
 
-		var options = {
-                title: 'Temperaturas cada 1(um) minuto',
+        function drawChart() {
+
+            var options = {
+                title: 'Temperaturas',
                 curveType: 'function',
                 colors: ['#e2431e'],
                 backgroundColor: 'transparent',
@@ -70,8 +116,6 @@
                     height: '70%'
                 }
             };
-			
-        function drawChart() {
 
             <% Listar(); %>
 
@@ -86,14 +130,13 @@
             chart.draw(data, options);
 
             setTimeout(function () {
-                <%PegarMaxMin(); PegarDesvModa(); PegarMedia(); PegarQuartil();%>
                 document.getElementById('grafico').reload();
                 document.getElementById('lblMaxMin').reload();
                 document.getElementById('lblQuartil').reload();
                 document.getElementById('lblMedia').reload();
                 document.getElementById('lblDesv').reload();
                 drawChart();
-            }, 60000);
+            }, 1000);
 
         }
     </script>
