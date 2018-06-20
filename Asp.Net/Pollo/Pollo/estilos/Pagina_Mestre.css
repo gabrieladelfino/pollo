@@ -109,9 +109,8 @@ main {
     position: absolute;
     float: left;
     top: 0;
-    /* background-image: url('../imagens/noise.png');*/
     color: #fff !important;
-    background-image: url("../imagens/fundo.png");
+    background-image: url(../imagens/fundo.png);
 }
 
 .submenu {
@@ -167,7 +166,7 @@ main {
 }
 
 #pollo_icon {
-    background-image: url('../imagens/isologo.PNG');
+    background-image: url(../imagens/isologo.PNG);
 }
 
 
@@ -213,35 +212,35 @@ p.menu-title-pollo {
 }
 
 #chocadeira_icon {
-    background-image: url('../imagens/icones/incubator.png');
+    background-image: url(../imagens/icones/incubator.png);
 }
 
 #chocadeira_icon:hover {
-    background-image: url('../imagens/icones/incubator_cor.png');
+    background-image: url(../imagens/icones/incubator_cor.png);
 }
 
 #ovo_icon {
-    background-image: url('../imagens/icones/eggs.png');
+    background-image: url(../imagens/icones/eggs.png);
 }
 
 #ovo_icon:hover {
-    background-image: url('../imagens/icones/eggs_cor.png');
+    background-image: url(../imagens/icones/eggs_cor.png);
 }
 
 #analytics_icon {
-    background-image: url('../imagens/icones/graph.png');
+    background-image: url(../imagens/icones/graph.png);
 }
 
 #analytics_icon:hover {
-    background-image: url('../imagens/icones/graph_cor.png');
+    background-image: url(../imagens/icones/graph_cor.png);
 }
 
 #logout_icon {
-    background-image: url('../imagens/icones/sair.png');
+    background-image: url(../imagens/icones/sair.png);
 }
 
 #logout_icon:hover {
-    background-image: url('../imagens/icones/sair_c.png');
+    background-image: url(../imagens/icones/sair_c.png);
 }
 
 img {
@@ -280,9 +279,6 @@ footer {
     height: 1vh;
     display: block;
     background: red;
-    /*-webkit-box-shadow: 1px 8px 19px 2px rgba(171,153,131,1);
-    -moz-box-shadow: 1px 8px 19px 2px rgba(171,153,131,1);
-    box-shadow: 1px 8px 19px 2px rgba(171,153,131,1);*/
 }
 
 .border {
