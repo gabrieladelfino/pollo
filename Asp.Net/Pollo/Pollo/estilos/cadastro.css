@@ -71,7 +71,7 @@
 
 .ddl {
     width: 50%;
-    height: 25px;
+    height: 35px;
 }
 
 .btn {
@@ -84,6 +84,11 @@
     margin: 20px 10px;
     padding: 5px;
     background: white;
+}
+
+.btn:hover {
+    cursor: pointer;
+    border-color: orangered;
 }
 
 .textarea {
@@ -110,13 +115,6 @@
     border: solid 2px;
     border-color: rgba(100, 100, 255, 0.5);
 }
-
-.btn:hover{
-	outline: none;
-    border: none;
-    background-color: darkgrey;
-}
-
 
 /*REGISTROS*/
 .titulo-painel {
@@ -173,7 +171,7 @@
     background-color: #FAFAFA;
     text-align: center;
     color: black;
-    border: none;
+    border: solid 2px white;
     border-radius: 10px;
     font-size: 1vw;
     background-image: url(../imagens/icones/edit.png);
@@ -191,7 +189,7 @@
     background-color: #FAFAFA;
     text-align: center;
     color: black;
-    border: none;
+    border: solid 2px white;
     border-radius: 10px;
     font-size: 1vw;
     background-image: url(../imagens/icones/excluir.png);
@@ -201,11 +199,11 @@
 }
 
 .botao_editar:hover {
-    background-color: yellow;
-    opacity: 0.8;
+    cursor: pointer;
+    border-color: orangered;
 }
 
-.botao_excluir:hover{
-    background-color: yellow;
-    opacity: 0.8;
+.botao_excluir:hover {
+    cursor: pointer;
+    border-color: orangered;
 }

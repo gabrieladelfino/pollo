@@ -22,6 +22,15 @@ namespace Pollo {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl cadastrados;
         
         /// <summary>
+        /// Controle titulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl titulo;
+        
+        /// <summary>
         /// Controle txtNomeChocadeira.
         /// </summary>
         /// <remarks>

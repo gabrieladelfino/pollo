@@ -69,12 +69,12 @@
 
      <label class="lbl_ddl">
         Parâmetro: 
-        <asp:DropDownList ID="ddlTempo" runat="server" OnLoad="ddlTempo_Load">
+        <asp:DropDownList class="ddl" ID="ddlTempo" runat="server" OnLoad="ddlTempo_Load">
             <asp:ListItem Text="Minuto" Value="0"/>
             <asp:ListItem Text="Hora" Value="1"/>
             <asp:ListItem Text="Dia" Value="2"/>
         </asp:DropDownList>
-         <asp:Button ID="btnParametro" Text="Ver" runat="server"  OnClick="btnParametro_Click" />
+         <asp:Button ID="btnParametro" class="btn" Text="Ver" runat="server"  OnClick="btnParametro_Click" />
     </label>
    
     <%--SCRIPTS--%>
@@ -131,8 +131,7 @@
             chart.draw(data, options);
 
             setTimeout(function () {
-                $("#grafico").load;
-                $("#medias").load;
+                <% Listar(); %>
                 drawChart();
             }, 1000);
         }

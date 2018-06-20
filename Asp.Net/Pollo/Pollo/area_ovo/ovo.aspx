@@ -8,7 +8,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
   
     <div id="cadastrados" class="painel" runat="server">  
-        <h3 class="titulo-painel">Ovos já cadastradas</h3>
+           <h3 class="titulo-painel" runat="server" ID="titulo">Chocadeiras já cadastradas</h3>
     </div>
 
     <div class="componente">
@@ -40,5 +40,4 @@
             <asp:Label Text="" runat="server" ID="lblErro" class="lbl"/>
         </div>
     </div>
-
 </asp:Content>

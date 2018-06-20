@@ -13,14 +13,16 @@
 
 body {
     color: #000 !important;
-    overflow: hidden;
     color: #fff !important;
     background-image: url("../imagens/fundo.png");
+    background-color: aqua;
+    overflow-x: hidden;
 }
 
 /*CABECALHO*/
 header {
-    padding: 50px 0;
+    height: 13.5vh;
+    padding: 0;
     display: block;
     background: #FFF;
     -webkit-box-shadow: 0px 4px 25px -7px rgba(128,119,128,1);
@@ -29,34 +31,54 @@ header {
 }
 
 .abrirMenu {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 4%;
-    height: 8%;
+    width: 5%;
+    height: 10%;
     padding: 10px;
+    margin: 0;
+    background-image: url(../imagens/icones/menu.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+}
+
+.abrirMenu:hover {
+    background-image: url(../imagens/icones/menu_c.png);
 }
 
 .perfil {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 4%;
-    height: 8%;
+    width: 5%;
+    height: 10%;
     padding: 10px;
+    margin: 0;
+    background-image: url(../imagens/icones/user.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+}
+
+.perfil:hover{
+    background-image: url(../imagens/icones/user_c.png);
 }
 
 .titulo-pagina {
-    position: absolute;
-    top: 15px;
-    margin: auto;
-    margin-left: 10%;
     width: 80%;
+    height: 10%;
     text-align: center;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 10%;
 }
 
 .titulo-pagina-p {
-    margin: auto;
     font-size: 3vw;
 }
 
@@ -71,8 +93,8 @@ header {
 
 main {
     width: 100%;
-    height: 77.7vh;
-    padding: 20px 0;
+    height: 80.8vh;
+    padding: 23px 0;
     display: block;
     background-color: transparent;
 }
@@ -215,7 +237,11 @@ p.menu-title-pollo {
 }
 
 #logout_icon {
-    background-image: url('../imagens/icones/turn-off.png');
+    background-image: url('../imagens/icones/sair.png');
+}
+
+#logout_icon:hover {
+    background-image: url('../imagens/icones/sair_c.png');
 }
 
 img {
@@ -246,12 +272,12 @@ img.menu-icon-pollo {
     padding: 20px;
     background-color: transparent;
     display: block;
-    overflow: auto;
 }
 
 /*BORDA*/
 footer {
     width: 100%;
+    height: 1vh;
     display: block;
     background: red;
     /*-webkit-box-shadow: 1px 8px 19px 2px rgba(171,153,131,1);
@@ -261,7 +287,7 @@ footer {
 
 .border {
     width: 100%;
-    height: 10px;
+    height: 100%;
     background: #fc0093;
     background: -moz-linear-gradient(to right, #fc0093 71%, #ff0000 0%, #ffee00 100%);
     background: -webkit-linear-gradient(left, #fc0093 71%,#ff0000 0%,#ffee00 100%);

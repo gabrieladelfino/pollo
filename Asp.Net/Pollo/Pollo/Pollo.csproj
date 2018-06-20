@@ -129,7 +129,13 @@
     <Content Include="imagens\icones\graph_cor.png" />
     <Content Include="imagens\icones\incubator.png" />
     <Content Include="imagens\icones\incubator_cor.png" />
+    <Content Include="imagens\icones\menu.png" />
+    <Content Include="imagens\icones\menu_c.png" />
+    <Content Include="imagens\icones\sair.png" />
+    <Content Include="imagens\icones\sair_c.png" />
     <Content Include="imagens\icones\turn-off.png" />
+    <Content Include="imagens\icones\user.png" />
+    <Content Include="imagens\icones\user_c.png" />
     <Content Include="imagens\isologo.PNG" />
     <Content Include="imagens\list.png" />
     <Content Include="imagens\logo.PNG" />

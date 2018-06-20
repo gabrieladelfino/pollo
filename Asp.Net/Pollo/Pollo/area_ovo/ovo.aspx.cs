@@ -37,8 +37,10 @@ namespace Pollo
                 Response.Redirect("../index.aspx");
             }
             #endregion
+
             ListarRegistros();
             CriarRegistros();
+
             if (IsPostBack == false)
             {
                 Session["status"] = false;
@@ -172,6 +174,8 @@ namespace Pollo
                         txtTemperatura.Text = "";
                         txtTempo.Text = "";
                         #endregion
+                        ListarRegistros();
+                        CriarRegistros();
                     }
                     #region Verificando de se tem esse ovo em alguma chocadeira
                     using (SqlCommand cmd = new SqlCommand("SELECT tbc.cod_chocadeira, tbo.tempo_dia FROM Pollo_Chocadeira AS tbc , Pollo_Ovo AS tbo WHERE tbo.cod_ovo= @cod_ovo", conexao))
@@ -191,6 +195,8 @@ namespace Pollo
                     #endregion
                     btnCadastrar.Text = "Cadastrar";
                     Session["status"] = false;
+                    ListarRegistros();
+                    CriarRegistros();
                 }
                 #endregion
 
@@ -294,7 +300,9 @@ namespace Pollo
         #region Criando panel, botões e label
         public void CriarRegistros()
         {
-            
+            cadastrados.Controls.Clear();
+            cadastrados.Dispose();
+            cadastrados.Controls.Add(titulo);
 
             for (i = 0; i < oo.Count; i++)
             {

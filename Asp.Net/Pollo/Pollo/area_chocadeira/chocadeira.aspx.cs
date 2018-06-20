@@ -19,10 +19,10 @@ namespace Pollo
         int tempo;
         string inicio;
         string final;
-        Button btnEditar;
-        Button btnExcluir;
-        Chocadeira c;
-        List<Chocadeira> cc;
+        public Button btnEditar;
+        public Button btnExcluir;
+        public Chocadeira c;
+        public List<Chocadeira> cc;
        
         public struct Chocadeira
         {
@@ -200,7 +200,8 @@ namespace Pollo
                     }
                     btnCadastrar.Text = "Cadastrar";
                     Session["statusc"] = false;
-
+                    ListarRegistros();
+                    CriarRegistros();
                 }
                 #endregion
                 #region Insert do cadastro
@@ -219,7 +220,8 @@ namespace Pollo
                         cmd.ExecuteNonQuery();
                         lblErro.Text = "Cadastrado com sucesso";
                     }
-                    
+                    ListarRegistros();
+                    CriarRegistros();
                 }
                 #endregion
 
@@ -228,6 +230,8 @@ namespace Pollo
             txtNomeChocadeira.Text = "";
             ddlCod_ovo.SelectedValue = "";
             txtQtdOvos.Text = "";
+            ListarRegistros();
+            CriarRegistros();
             #endregion
 
         }
@@ -301,6 +305,11 @@ namespace Pollo
 
         public void CriarRegistros()
         {
+
+            cadastrados.Controls.Clear();
+            cadastrados.Dispose();
+            cadastrados.Controls.Add(titulo);
+
             for (i = 0; i < cc.Count; i++)
             {
                 Panel linha = new Panel();

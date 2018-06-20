@@ -21,13 +21,13 @@
 
                 <header>
                     <div class="abrirMenu" id="abrirMenu" onclick="mostrar_menu()">
-                        <img id="perfil" src="../imagens/list.png" />
+                        <%--<img id="perfil" src="../imagens/list.png" />--%>
                     </div>
                     <div class="titulo-pagina">
                         <asp:Label runat="server" ID="label" Text="Bem vindo" class="titulo-pagina-p"></asp:Label>
                     </div>
                     <div class="perfil">
-                        <img src="../imagens/user.png"/>
+                        <%--<img src="../imagens/user.png"/>--%>
                     </div>
                 </header>
              

@@ -87,3 +87,30 @@
     border-radius: 10px;
     padding: 10px;
 }
+
+.btn {
+    font-size: 1vw;
+    color: #424242;
+    border-radius: 10px;
+    outline: none;
+    border: solid 2px;
+    border-color: white;
+    margin: 10px;
+    background-color: white;
+    padding: 5px;
+}
+
+.btn:hover{
+    cursor: pointer;
+  border-color: gray;
+}
+
+ .ddl {
+    font-size: 1vw;
+    color: #424242;
+    border-radius: 10px;
+    outline: none;
+    border: solid 2px;
+    border-color: white;
+    margin: 10px;
+}
