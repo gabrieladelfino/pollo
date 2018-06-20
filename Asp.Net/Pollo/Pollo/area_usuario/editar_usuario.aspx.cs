@@ -14,6 +14,8 @@ namespace Pollo
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         string cod_usuario;
 
+        int cont_celular, cont_user, cont_email, cod_user;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             cod_usuario = (string)Session["cod_usuario"];
@@ -22,10 +24,10 @@ namespace Pollo
                 Response.Redirect("../index.aspx");
             }
 
-            CarregarFoto();
+            CarregarDados();
         }
 
-        public void CarregarFoto()
+        public void CarregarDados()
         {
 
             using (SqlConnection conexao = new SqlConnection(linkserver))
@@ -75,7 +77,7 @@ namespace Pollo
                         cmd.Parameters.AddWithValue("@cod_user", cod_user);
                         cmd.ExecuteNonQuery();
                         lblMessage.Text = "Salvo";
-                        CarregarFoto();
+                        CarregarDados();
                     }
                 }
             }
@@ -93,31 +95,110 @@ namespace Pollo
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
+            cod_usuario = (string)Session["cod_usuario"];
+            cod_user = Convert.ToInt32(cod_usuario);
 
-            if(txtNome.Text != "" && txtEmail.Text != "" && txtCelular.Text != "" && txtUser.Text != "")
-            {
-
-            }
+            #region 'Verificando se existem dados repetidos'
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
 
-                cod_usuario = (string)Session["cod_usuario"];
-                int cod_user = Convert.ToInt32(cod_usuario);
-
-                using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Usuario SET nome = @nome, data_nasc = @data_nasc, email = @email, celular = @celular, user_pollo = @user WHERE cod_usuario = @cod_user", conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE email = '" + txtEmail.Text + "' AND cod_usuario = " + cod_usuario, conexao))
                 {
-                    cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-                    cmd.Parameters.AddWithValue("@data_nasc", txtDataNasc.Text);
-                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
-                    cmd.Parameters.AddWithValue("@celular", txtCelular.Text);
-                    cmd.Parameters.AddWithValue("@user", txtUser.Text);
-                    cmd.Parameters.AddWithValue("@cod_user", cod_user);
-                    cmd.ExecuteNonQuery();
-                    lblMessage.Text = "Salvo";
-                    CarregarFoto();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            cont_email = 1;
+                        }
+                    }
+                }
+
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE user_pollo = '" + txtUser.Text + "' AND cod_usuario = " + cod_usuario, conexao))
+                {
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            cont_user = 1;
+                        }
+                    }
+
+                }
+
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE user_pollo = '" + txtCelular.Text + "' AND cod_usuario = " + cod_usuario, conexao))
+                {
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            cont_celular = 1;
+                        }
+                    }
+                }
+                }
+            #endregion
+
+            if (txtNome.Text.Length == 0)
+            {
+                lblErro.Text = "Existem dados inválidos.";
+                txtNome.Focus();
+                return;
+            }
+
+            if (txtDataNasc.Text.Length == 0)
+            {
+                lblErro.Text = "Existem dados inválidos.";
+                txtNome.Focus();
+                return;
+            }
+
+            if (txtEmail.Text.Length == 0 || cont_email == 1)
+            {
+                lblErro.Text = "Campo vazio ou user já cadastrado.";
+                txtNome.Focus();
+                return;
+            }
+
+            if (txtUser.Text.Length == 0 || cont_user == 1)
+            {
+                lblErro.Text = "Campo vazio ou user já cadastrado.";
+                txtNome.Focus();
+                return;
+            }
+
+            if (txtCelular.Text.Length == 0 || cont_celular == 1)
+            {
+                lblErro.Text = "Campo vazio ou número de celular já cadastrado.";
+                txtNome.Focus();
+                return;
+            }
+
+            else
+            {
+                using (SqlConnection conexao = new SqlConnection(linkserver))
+                {
+                    conexao.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Usuario SET nome = @nome, data_nasc = @data_nasc, email = @email, celular = @celular, user_pollo = @user WHERE cod_usuario = @cod_user", conexao))
+                    {
+                        cmd.Parameters.AddWithValue("@nome", txtNome.Text);
+                        cmd.Parameters.AddWithValue("@data_nasc", txtDataNasc.Text);
+                        cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+                        cmd.Parameters.AddWithValue("@celular", txtCelular.Text);
+                        cmd.Parameters.AddWithValue("@user", txtUser.Text);
+                        cmd.Parameters.AddWithValue("@cod_user", cod_user);
+                        cmd.ExecuteNonQuery();
+                        lblErro.Text = "Dados editados com sucesso.";
+                    }
                 }
             }
+           
+
         }
+        
     }
 }

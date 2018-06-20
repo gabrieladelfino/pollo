@@ -33,7 +33,7 @@
                 <asp:Button Text="Limpar" runat="server" ID="btnLimpar" class="btn" OnClick="btnLimpar_Click"/>
                 <asp:Button Text="Prosseguir" runat="server" ID= "btnCadastrar" class="btn" onclick="btnCadastrar_Click"/>
                 <br />
-                <asp:Label Text="" runat="server" ID="lblErro" />
+               <asp:Label Text="" runat="server" ID="lblErro" class="lbl"/>
             </div>
 
         </div>

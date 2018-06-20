@@ -113,6 +113,7 @@ namespace Pollo
                 }
 
             }
+
             #region Verificação cadastro
             if (txtNomeChocadeira.Text.Length == 0 || cont_chocadeira == 1)
             {
@@ -226,6 +227,7 @@ namespace Pollo
                 #endregion
 
             }
+
             #region Limpando os campos
             txtNomeChocadeira.Text = "";
             ddlCod_ovo.SelectedValue = "";
