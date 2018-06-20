@@ -38,8 +38,10 @@ namespace Pollo
             }
             #endregion
 
+            #region 'Chamando os metodos para listar e preencher o panel'
             ListarRegistros();
             CriarRegistros();
+            #endregion
 
             if (IsPostBack == false)
             {
@@ -297,6 +299,7 @@ namespace Pollo
             #endregion
         }
         #endregion
+
         #region Criando panel, botões e label
         public void CriarRegistros()
         {
@@ -370,6 +373,7 @@ namespace Pollo
             }
         }
         #endregion
+
         #region Botão editar
         public void Editar(object sender, CommandEventArgs e)
         {
@@ -407,6 +411,7 @@ namespace Pollo
             }
         }
          #endregion
+
         #region Listar registros no painel
         public void ListarRegistros()
         {

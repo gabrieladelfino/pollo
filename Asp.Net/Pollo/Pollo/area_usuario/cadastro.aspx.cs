@@ -58,141 +58,142 @@ namespace Pollo.area_usuario
             {
                 conexao.Open();
 
-                #region Verificação User repetido
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE user_pollo= '" + txtUser.Text + "'", conexao))
-                {
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    #region Verificação User repetido
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE user_pollo= '" + txtUser.Text + "'", conexao))
                     {
-                        while (reader.Read() == true)
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            cont_user = 1;
+                            while (reader.Read() == true)
+                            {
+                                cont_user = 1;
+                            }
                         }
                     }
-                }
-                #endregion
+                    #endregion
 
-                #region Verificação Email repetido
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE email= '" + txtEmail.Text + "'", conexao))
-                {
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    #region Verificação Email repetido
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM Pollo_Usuario WHERE email= '" + txtEmail.Text + "'", conexao))
                     {
-                        while (reader.Read() == true)
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            cont_email = 1;
+                            while (reader.Read() == true)
+                            {
+                                cont_email = 1;
+                            }
                         }
                     }
-                }
-                #endregion
+                    #endregion
 
-                #region Verificação primeira parte cadastro
-                if (txtNome.Text.Length == 0)
-                {
-                    txtNome.Focus();
-                    return;
-                }
+                    #region Verificação primeira parte cadastro
+                    if (txtNome.Text.Length == 0)
+                    {
+                        txtNome.Focus();
+                        return;
+                    }
               
-                if (DateTime.TryParse(txtNasc.Text, out nascimento) == false)
-                {
-                    txtNasc.Focus();
-                    return;
-                }
-                string sexo = ddlSexo.SelectedValue;
-                if (sexo.Equals("0"))
-                {
-                    ddlSexo.Focus();
-                    return;
-                }
+                    if (DateTime.TryParse(txtNasc.Text, out nascimento) == false)
+                    {
+                        txtNasc.Focus();
+                        return;
+                    }
+                    string sexo = ddlSexo.SelectedValue;
+                    if (sexo.Equals("0"))
+                    {
+                        ddlSexo.Focus();
+                        return;
+                    }
 
-                if (txtCelular.Text.Length == 0)
-                {
-                    txtCelular.Focus();
-                    return;
-                }
-                #endregion
-
-                #region Verificação segunda parte cadastro
-                if (txtUser.Text.Length == 0 || cont_user == 1)
-                {
-                    txtUser.Focus();
-                    return;
-                }
-
-                string email = txtEmail.Text.Trim();
-                int arroba, arroba2, ponto;
-
-                arroba = email.IndexOf('@');
-                arroba2 = email.LastIndexOf('@');
-                ponto = email.LastIndexOf('.');
-
-                if (arroba <= 0 || ponto <= (arroba + 1) || ponto == (email.Length - 1) || arroba2 != arroba || cont_email == 1)
-                {
-                    txtEmail.Focus();
-                    return;
-                }
-
-                if (txtSenha.Text.Length == 0)
-                {
-                    txtSenha.Focus();
-                    return;
-                }
-                #region Verificando se as senhas coincidem
-                if (txtSenha.Text != txtSenhaConfirm.Text)
-                {
-                    txtSenhaConfirm.Focus();
-                    return;
-                }
-                #endregion
-
-                #endregion
-
-                #region Verificação terceira parte cadastro
-                string pergunta = ddlPergunta.SelectedValue;
-
-                if (pergunta.Equals(""))
-                {
-                    ddlPergunta.Focus();
-                    return;
-                }
-
-
-                if (txtResposta.Text.Length == 0)
-                {
-                    txtResposta.Focus();
-                    return;
-                }
-                #endregion
-
-                #region Insert no banco
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO Pollo_Usuario (nome, data_nasc, sexo, celular, user_pollo, email, senha, cod_pergunta, rec_resposta)  VALUES (@nome, @data_nasc, @sexo, @celular, @user_pollo, @email, @senha, @cod_pergunta, @rec_resposta )", conexao))
-                {
-
-                    cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-                    cmd.Parameters.AddWithValue("@data_nasc", txtNasc.Text);
-                    cmd.Parameters.AddWithValue("@sexo", ddlSexo.Text);
-                    cmd.Parameters.AddWithValue("@celular", txtCelular.Text);
-                    cmd.Parameters.AddWithValue("@user_pollo", txtUser.Text);
-                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
-                    cmd.Parameters.AddWithValue("@senha", txtSenha.Text);
-                    cmd.Parameters.AddWithValue("@cod_pergunta", ddlPergunta.SelectedValue.ToString());
-                    cmd.Parameters.AddWithValue("@rec_resposta", txtResposta.Text);
-                    cmd.ExecuteNonQuery();
-
-                    #region Limpando os campos
-                    txtNome.Text = "";
-                    txtNasc.Text = "";
-                    txtCelular.Text = "";
-                    ddlSexo.SelectedValue = "";
-                    txtUser.Text = "";
-                    txtEmail.Text = "";
-                    txtSenha.Text = "";
-                    txtSenhaConfirm.Text = "";
-                    ddlPergunta.SelectedValue = "";
-                    txtResposta.Text = "";
+                    if (txtCelular.Text.Length == 0)
+                    {
+                        txtCelular.Focus();
+                        return;
+                    }
                     #endregion
+
+                    #region Verificação segunda parte cadastro
+                    if (txtUser.Text.Length == 0 || cont_user == 1)
+                    {
+                        txtUser.Focus();
+                        return;
+                    }
+
+                    string email = txtEmail.Text.Trim();
+                    int arroba, arroba2, ponto;
+
+                    arroba = email.IndexOf('@');
+                    arroba2 = email.LastIndexOf('@');
+                    ponto = email.LastIndexOf('.');
+
+                    if (arroba <= 0 || ponto <= (arroba + 1) || ponto == (email.Length - 1) || arroba2 != arroba || cont_email == 1)
+                    {
+                        txtEmail.Focus();
+                        return;
+                    }
+
+                    if (txtSenha.Text.Length == 0)
+                    {
+                        txtSenha.Focus();
+                        return;
+                    }
+                    #region Verificando se as senhas coincidem
+                    if (txtSenha.Text != txtSenhaConfirm.Text)
+                    {
+                        txtSenhaConfirm.Focus();
+                        return;
+                    }
                     #endregion
-                Response.Redirect("../index.aspx");
+
+                    #endregion
+
+                    #region Verificação terceira parte cadastro
+                    string pergunta = ddlPergunta.SelectedValue;
+
+                    if (pergunta.Equals(""))
+                    {
+                        ddlPergunta.Focus();
+                        return;
+                    }
+
+
+                    if (txtResposta.Text.Length == 0)
+                    {
+                        txtResposta.Focus();
+                        return;
+                    }
+                    #endregion
+
+                    #region Insert no banco
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO Pollo_Usuario (nome, data_nasc, sexo, celular, user_pollo, email, senha, cod_pergunta, rec_resposta)  VALUES (@nome, @data_nasc, @sexo, @celular, @user_pollo, @email, @senha, @cod_pergunta, @rec_resposta )", conexao))
+                    {
+
+                        cmd.Parameters.AddWithValue("@nome", txtNome.Text);
+                        cmd.Parameters.AddWithValue("@data_nasc", txtNasc.Text);
+                        cmd.Parameters.AddWithValue("@sexo", ddlSexo.Text);
+                        cmd.Parameters.AddWithValue("@celular", txtCelular.Text);
+                        cmd.Parameters.AddWithValue("@user_pollo", txtUser.Text);
+                        cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+                        cmd.Parameters.AddWithValue("@senha", txtSenha.Text);
+                        cmd.Parameters.AddWithValue("@cod_pergunta", ddlPergunta.SelectedValue.ToString());
+                        cmd.Parameters.AddWithValue("@rec_resposta", txtResposta.Text);
+                        cmd.ExecuteNonQuery();
+
+                        #region Limpando os campos
+                        txtNome.Text = "";
+                        txtNasc.Text = "";
+                        txtCelular.Text = "";
+                        ddlSexo.SelectedValue = "";
+                        txtUser.Text = "";
+                        txtEmail.Text = "";
+                        txtSenha.Text = "";
+                        txtSenhaConfirm.Text = "";
+                        ddlPergunta.SelectedValue = "";
+                        txtResposta.Text = "";
+                        #endregion
+                        #endregion
+
+                    Response.Redirect("../index.aspx");
                 }
             }
         }

@@ -14,6 +14,7 @@ namespace Pollo
         string linkserver = "Server=tcp:cyberbitchs.database.windows.net,1433;Initial Catalog=Primeiro_Banco;Persist Security Info=False;User ID=cyberbitchs;Password=Teste<code/>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         string nome;
         string sexo;
+
         public String CompanyName{
             get {
                 return (String)ViewState["companyName"];
@@ -32,6 +33,7 @@ namespace Pollo
                 {
                     conexao.Open();
                     int cod_user = Convert.ToInt32(cod_usuario);
+                    
                     #region Identificando qual usuario está logado
                     using (SqlCommand cmd = new SqlCommand("SELECT sexo, nome FROM Pollo_Usuario WHERE cod_usuario = "+cod_user, conexao))
                     {
@@ -47,7 +49,8 @@ namespace Pollo
                     }
                 }
                 #endregion
-                #region Verificando o sexo para personalizar 
+
+                #region 'Verificando o sexo para personalizar'
                 if (sexo.Equals("F"))
                 {
                     label.Text = "Bem vinda, " + nome + ".";
@@ -63,6 +66,7 @@ namespace Pollo
                 #endregion
             }
         }
+
         #region Redirecionando paginas do menu 
         protected void pollo_Click(object sender, EventArgs e)
         {

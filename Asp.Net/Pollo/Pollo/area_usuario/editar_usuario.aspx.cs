@@ -18,15 +18,20 @@ namespace Pollo
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            #region 'Verificando se o usuario está logado'
             cod_usuario = (string)Session["cod_usuario"];
             if (cod_usuario == null)
             {
                 Response.Redirect("../index.aspx");
             }
+            #endregion
 
+            #region 'Chamando metodo para carregar os dados do usuario'
             CarregarDados();
+            #endregion
         }
 
+        #region 'Carregando dados para as combos, e campo de foto'
         public void CarregarDados()
         {
 
@@ -54,7 +59,9 @@ namespace Pollo
                 }
             }
         }
+        #endregion
 
+        #region 'Editando foto do usuario'
         protected void btnUpload_Click(object sender, EventArgs e)
         {
 
@@ -87,18 +94,15 @@ namespace Pollo
             }
 
         }
+        #endregion
 
-        protected void btnLimpar_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        #region 'Editando dados do usuario'
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             cod_usuario = (string)Session["cod_usuario"];
             cod_user = Convert.ToInt32(cod_usuario);
 
-            #region 'Verificando se existem dados repetidos'
+            #region 'Buscando dados repetidos'
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
@@ -139,9 +143,10 @@ namespace Pollo
                         }
                     }
                 }
-                }
+            }
             #endregion
 
+            #region 'Verificando se os campos foram preenchidos corretamente'
             if (txtNome.Text.Length == 0)
             {
                 lblErro.Text = "Existem dados inválidos.";
@@ -176,7 +181,9 @@ namespace Pollo
                 txtNome.Focus();
                 return;
             }
+            #endregion
 
+            #region 'Realizando o Update'
             else
             {
                 using (SqlConnection conexao = new SqlConnection(linkserver))
@@ -196,9 +203,10 @@ namespace Pollo
                     }
                 }
             }
-           
+            #endregion
 
         }
-        
+        #endregion
+
     }
 }
