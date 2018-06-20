@@ -115,10 +115,8 @@
     <Content Include="imagens\code\slider\3.jpg" />
     <Content Include="imagens\code\time\bruna.png" />
     <Content Include="imagens\code\time\elias.png" />
-    <Content Include="imagens\code\time\gabi.jpg" />
     <Content Include="imagens\code\time\gaby.png" />
     <Content Include="imagens\code\time\livia.png" />
-    <Content Include="imagens\code\time\lucas.jpg" />
     <Content Include="imagens\code\time\lucas.png" />
     <Content Include="imagens\fotos_usuarios\1.png" />
     <Content Include="imagens\fotos_usuarios\1f61c.png" />
@@ -132,6 +130,7 @@
     <Content Include="imagens\fotos_usuarios\livia.png" />
     <Content Include="imagens\fotos_usuarios\lucas.png" />
     <Content Include="imagens\fotos_usuarios\smiling-face-with-heart.png" />
+    <Content Include="imagens\fundo.png" />
     <Content Include="imagens\icones\edit.png" />
     <Content Include="imagens\icones\eggs.png" />
     <Content Include="imagens\icones\eggs_cor.png" />
@@ -151,6 +150,7 @@
     <Content Include="imagens\isologo.PNG" />
     <Content Include="imagens\list.png" />
     <Content Include="imagens\logo.PNG" />
+    <Content Include="imagens\noise.png" />
     <Content Include="imagens\pollo.png" />
     <Content Include="imagens\user.png" />
     <Content Include="index.aspx" />

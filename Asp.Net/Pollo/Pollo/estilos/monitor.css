@@ -63,7 +63,7 @@
     padding: 10px;
     z-index: 9999;
     float: right;
-    background-image: url('../imagens/icones/edit.png');
+    background-image: url(../imagens/icones/edit.png);
     background-repeat: no-repeat;
     background-size: 25px;
     background-position: center;
@@ -120,25 +120,3 @@
     -webkit-text-fill-color: transparent;
     transition: 3s;
 }
-
-/*
-    QUENTE    
-background: -webkit-linear-gradient(top, #FA1905, #F99201);
-background: linear-gradient(top, #878787, #000);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;*/
-
-/*
-    FRIO
-background: #fc0093;
-background: -webkit-linear-gradient(top, #C71585, #00BFFF);
-background: linear-gradient(top, #878787, #000);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;*/
-
-/*
-    NEUTRO    
-background: -webkit-linear-gradient(top, #00FF7F, #D2B48C);
-background: linear-gradient(top, #878787, #000);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;*/
