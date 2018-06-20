@@ -7,10 +7,11 @@ body{
     font-family: 'Bebas Neue';
 }
 
-header{
+header {
+    font-family: 'Bebas Neue';
     width: 100%;
     height: 10%;
-    background-color:#070719;
+    background-color: #070719;
     -webkit-box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
     -moz-box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
     box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.6);
@@ -56,6 +57,11 @@ h1.title{
     margin: 10px 0;
     font-size: 2vw;
 }
+
+a {
+    font-family: 'Bebas Neue';
+}
+
 main{
     width: 100%;
     height: auto;
