@@ -1,0 +1,195 @@
+/*@font-face {
+    src: url("../fontes/Domotika.ttf");
+    font-family: Poet;
+}*/
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body {
+    color: #fff !important;
+    background-image: url("../imagens/fundo.png");
+}
+
+main {
+    display: block;
+    width: auto;
+    height: 100%;
+    margin: auto;
+    padding: 10px 0;
+}
+
+/*LOGO*/
+
+#logo{
+	margin: auto;
+}
+
+img{
+	width: 80%;
+    height: 10%;
+    margin: 0 10%;
+}
+
+/*TITULO*/
+
+/*.pollo {
+    width: 100%;
+    padding: 10px 0;
+}
+
+p {
+    font-size: 4.2vw;
+    font-family: Poet;
+    text-align: center;
+    color: #3C221E;
+    letter-spacing: 4px;
+}*/
+
+/* FORMULÁRIO */
+
+#form {
+    width: 25%;
+    height: auto;
+    background: #d98324;
+    background: -moz-linear-gradient(top, #d98324 2%, #fad735 77%); 
+    background: -webkit-linear-gradient(top, #d98324 2%,#fad735 77%); 
+    background: linear-gradient(to bottom, #d98324 2%,#fad735 77%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d98324', endColorstr='#fad735',GradientType=0 ); 
+    padding: 30px 25px 30px 25px;
+    border-radius: 10px;
+    margin: auto;
+    -webkit-box-shadow: -15px 17px 32px -5px rgba(82,79,82,0.49);
+    -moz-box-shadow: -15px 17px 32px -5px rgba(82,79,82,0.49);
+    box-shadow: -15px 17px 32px -5px rgba(82,79,82,0.49);
+}
+
+
+/*COMP*/
+.comp{
+    width: 100%;
+    height: 100%;
+    padding: 40px 0 0 0;
+    /*background-color: greenyellow;*/
+}
+
+#info-usuario {
+    margin: 10px 0;
+    display: block;
+}
+
+#info-login {
+    margin: 10px 0;
+    display: none;
+}
+
+#info-recuperacao-senha {
+    margin: 10px 0;
+    display: none;
+}
+
+
+/*ATRIBUTOS FORM*/
+.lbl {
+    width: 100%;
+    text-align: justify;
+    font-family: arial;
+    font-size: 1.2vw;
+    color: #3C221E;
+    background: none;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+.btn {
+    width: auto;
+    padding: 10px;
+    color: #424242;
+    font-size: 1vw;
+    border-radius: 10px;
+    outline: none;
+    font-weight: bold;
+    border: solid 2px;
+    border-color: white;
+    border-color: #424242;
+    background-color: transparent;
+}
+
+.txt {
+    width: 93.4%;
+    background-color: white;
+}
+
+.ddl {
+    width: 100%;
+    background-color: white;
+}
+
+.txt, .ddl{
+    height: 2%;
+    margin: 10px 0;
+    padding: 10px;
+    color: #424242;
+    font-size: 1vw;
+    border-radius: 10px;
+    outline: none;
+    font-weight: bold;
+    border: solid 2px;
+    border-color: white;
+}
+
+.txt_disable{
+    width: 93.4%;
+    height: 2%;
+    margin: 10px 0;
+    padding: 10px;
+    color: #424242;
+    font-size: 1vw;
+    border-radius: 10px;
+    outline: none;
+    font-weight: bold;
+    border: solid 2px;
+    border-color: white;
+    pointer-events: none;
+}
+
+.txt, .ddl {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -webkit-box-shadow: -5px 5px 5px -5px rgba(82,79,82,0.49);
+    -moz-box-shadow: -5px 5px 5px -5px rgba(82,79,82,0.49);
+    box-shadow: -5px 5px 5px -5px rgba(82,79,82,0.49);
+}
+
+.txt:focus, .btn:focus{
+	border: solid 2px;
+	border-color: rgba(100, 100, 255, 0.5);
+}
+
+.btn:hover {
+    background-color: rgba(122, 62, 24, 1);
+    color: white;
+    border-color: rgba(122, 62, 24, 1);
+}
+
+.btn {
+    font-size: 1.3vw;
+}
+
+.txt {
+    font-size: 1vw;
+}
+
+a {
+    text-decoration: none;
+    color: #3C221E;
+}
+
+a:hover {
+    color: #d98324;
+    opacity: 1;
+}
+

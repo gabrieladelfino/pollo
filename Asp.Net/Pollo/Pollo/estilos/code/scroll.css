@@ -1,4 +1,4 @@
-::-webkit-scrollbar-track {
+﻿::-webkit-scrollbar-track {
     background-color: #F4F4F4;
 }
 
@@ -8,5 +8,5 @@
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color:rgb(200,200,200);
+    background-color: rgb(200,200,200);
 }
