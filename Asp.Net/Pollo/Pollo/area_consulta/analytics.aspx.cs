@@ -44,11 +44,20 @@ namespace Pollo
         #region 'Carregando ddl'
         protected void ddlTempo_Load(object sender, EventArgs e)
         {
+            string valor = ddlTempo.SelectedValue;
+
+            if (valor.Equals("0"))
+            {
+                tabela = "Pollo_Media_Minuto";
+                campo_tabela = "minuto";
+                tempo = 60;
+                lblTempo.Text = "minuto";
+
                 using (SqlConnection conexao = new SqlConnection(linkServer))
                 {
                     conexao.Open();
 
-                    using (SqlCommand cmd = new SqlCommand("SELECT minuto FROM Contador", conexao))
+                    using (SqlCommand cmd = new SqlCommand("SELECT " + campo_tabela + " FROM Contador", conexao))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -60,11 +69,6 @@ namespace Pollo
                     }
                 }
 
-                tabela = "Pollo_Media_Minuto";
-                campo_tabela = "minuto";
-                tempo = 60;
-                lblTempo.Text = "minuto";
-
                 if (contador / tempo == 0)
                 {
                     tamanho = 1;
@@ -81,33 +85,36 @@ namespace Pollo
                     Listar();
                 }
             }
+        }
         #endregion
 
         #region 'Selecionando Parâmetro'
-        protected void SelecionarParametro(object sender, EventArgs e)
+        protected void btnParametro_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conexao = new SqlConnection(linkServer))
-            {
-                conexao.Open();
+            string valor = ddlTempo.SelectedValue;
 
-                using (SqlCommand cmd = new SqlCommand("SELECT "+ campo_tabela +" FROM Contador", conexao))
-                {
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read() == true)
-                        {
-                            contador = reader.GetInt32(0);
-                        }
-                    }
-                }
-            }
-
-            if (ddlTempo.SelectedValue == "0")
+            if (valor.Equals("0"))
             {
                 tabela = "Pollo_Media_Minuto";
                 campo_tabela = "minuto";
                 tempo = 60;
                 lblTempo.Text = "minuto";
+
+                using (SqlConnection conexao = new SqlConnection(linkServer))
+                {
+                    conexao.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("SELECT " + campo_tabela + " FROM Contador", conexao))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read() == true)
+                            {
+                                contador = reader.GetInt32(0);
+                            }
+                        }
+                    }
+                }
 
                 if (contador / tempo == 0)
                 {
@@ -126,12 +133,28 @@ namespace Pollo
                 }
             }
 
-            if (ddlTempo.SelectedValue == "1")
+            else if (valor.Equals("1"))
             {
                 tabela = "Pollo_Media_Hora";
                 campo_tabela = "hora";
                 tempo = 24;
                 lblTempo.Text = "hora";
+
+                using (SqlConnection conexao = new SqlConnection(linkServer))
+                {
+                    conexao.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("SELECT " + campo_tabela + " FROM Contador", conexao))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read() == true)
+                            {
+                                contador = reader.GetInt32(0);
+                            }
+                        }
+                    }
+                }
 
                 if (contador / tempo == 0)
                 {
@@ -150,12 +173,28 @@ namespace Pollo
                 }
             }
 
-            if (ddlTempo.SelectedValue == "2")
+            else if (valor.Equals("2"))
             {
                 tabela = "Pollo_Media_Dia";
                 campo_tabela = "dia";
                 tempo = 30;
                 lblTempo.Text = "dia";
+
+                using (SqlConnection conexao = new SqlConnection(linkServer))
+                {
+                    conexao.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("SELECT " + campo_tabela + " FROM Contador", conexao))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read() == true)
+                            {
+                                contador = reader.GetInt32(0);
+                            }
+                        }
+                    }
+                }
 
                 if (contador / tempo == 0)
                 {
@@ -171,7 +210,7 @@ namespace Pollo
                 {
                     tamanho = 61;
                     Listar();
-                } 
+                }
             }
         }
         #endregion
@@ -334,7 +373,7 @@ namespace Pollo
         #endregion
 
         #region 'Mediana'
-            public void PegarMediana()
+        public void PegarMediana()
         {
             using (SqlConnection conexao = new SqlConnection(linkServer))
             {
