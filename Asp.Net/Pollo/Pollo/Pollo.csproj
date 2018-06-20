@@ -89,6 +89,7 @@
     <Content Include="estilos\cadastro.css" />
     <Content Include="estilos\code\celular.css" />
     <Content Include="estilos\code\desktop.css" />
+    <Content Include="estilos\code\login.css" />
     <Content Include="estilos\code\normalize.css" />
     <Content Include="estilos\code\scroll.css" />
     <Content Include="estilos\code\slider.css" />
@@ -132,6 +133,7 @@
     <Content Include="imagens\icones\edit.png" />
     <Content Include="imagens\icones\eggs.png" />
     <Content Include="imagens\icones\eggs_cor.png" />
+    <Content Include="imagens\icones\excluir.png" />
     <Content Include="imagens\icones\graph.png" />
     <Content Include="imagens\icones\graphs.png" />
     <Content Include="imagens\icones\graphs_cor.png" />
