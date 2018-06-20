@@ -29,12 +29,12 @@
     <div class="componente">
         <div class="comp">
             <label class="lbl">Nome usuario</label>
-            <asp:TextBox runat="server" ID="txtNomeChocadeira" class="txt" />    
+            <asp:TextBox runat="server" ID="txtNome" class="txt" />    
         </div>
 
         <div class="comp">
             <label class="lbl">Data nascimento</label> 
-            <asp:TextBox runat="server" ID="txtQtdOvos" class="txt" />
+            <asp:TextBox runat="server" ID="txtDataNasc" class="txt" />
         </div>
 
             <div class="comp">
@@ -53,8 +53,7 @@
         </div>
 
         <div class="comp">
-            <asp:Button Text="Limpar" runat="server" ID="btnLimpar" class="btn" />
-            <asp:Button Text="Prosseguir" runat="server" ID= "btnCadastrar" class="btn" />
+            <asp:Button Text="Editar" runat="server" ID= "btnEditar" class="btn" OnClick="btnEditar_Click"/>
             <br />
             <asp:Label Text="" runat="server" ID="lblErro" />
         </div>

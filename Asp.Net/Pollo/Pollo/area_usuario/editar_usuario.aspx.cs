@@ -21,6 +21,7 @@ namespace Pollo
             {
                 Response.Redirect("../index.aspx");
             }
+
             CarregarFoto();
         }
 
@@ -33,7 +34,7 @@ namespace Pollo
 
                 int cod_user = Convert.ToInt32(cod_usuario);
 
-                using (SqlCommand cmd = new SqlCommand("SELECT caminho_foto, nome FROM Pollo_Usuario WHERE cod_usuario = " + cod_user, conexao))
+                using (SqlCommand cmd = new SqlCommand("SELECT caminho_foto, nome, data_nasc, email, celular, user_pollo FROM Pollo_Usuario WHERE cod_usuario = " + cod_user, conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -41,6 +42,11 @@ namespace Pollo
                         {
                             imgUsuario.ImageUrl = "../imagens/fotos_usuarios/" + reader.GetString(0);
                             lblNomeUsuario.Text = reader.GetString(1);
+                            txtNome.Text = reader.GetString(1);
+                            txtDataNasc.Text = reader.GetString(2);
+                            txtEmail.Text = reader.GetString(3);
+                            txtCelular.Text = reader.GetString(4);
+                            txtUser.Text = reader.GetString(5);
                         }
                     }
                 }
@@ -78,6 +84,40 @@ namespace Pollo
                 lblMessage.Text = "Selecione uma imagem.";
             }
 
+        }
+
+        protected void btnLimpar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+
+            if(txtNome.Text != "" && txtEmail.Text != "" && txtCelular.Text != "" && txtUser.Text != "")
+            {
+
+            }
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+                conexao.Open();
+
+                cod_usuario = (string)Session["cod_usuario"];
+                int cod_user = Convert.ToInt32(cod_usuario);
+
+                using (SqlCommand cmd = new SqlCommand("UPDATE Pollo_Usuario SET nome = @nome, data_nasc = @data_nasc, email = @email, celular = @celular, user_pollo = @user WHERE cod_usuario = @cod_user", conexao))
+                {
+                    cmd.Parameters.AddWithValue("@nome", txtNome.Text);
+                    cmd.Parameters.AddWithValue("@data_nasc", txtDataNasc.Text);
+                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+                    cmd.Parameters.AddWithValue("@celular", txtCelular.Text);
+                    cmd.Parameters.AddWithValue("@user", txtUser.Text);
+                    cmd.Parameters.AddWithValue("@cod_user", cod_user);
+                    cmd.ExecuteNonQuery();
+                    lblMessage.Text = "Salvo";
+                    CarregarFoto();
+                }
+            }
         }
     }
 }

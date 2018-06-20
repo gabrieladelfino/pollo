@@ -67,22 +67,22 @@ namespace Pollo {
         protected global::System.Web.UI.WebControls.Label lblMessage;
         
         /// <summary>
-        /// Controle txtNomeChocadeira.
+        /// Controle txtNome.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNomeChocadeira;
+        protected global::System.Web.UI.WebControls.TextBox txtNome;
         
         /// <summary>
-        /// Controle txtQtdOvos.
+        /// Controle txtDataNasc.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQtdOvos;
+        protected global::System.Web.UI.WebControls.TextBox txtDataNasc;
         
         /// <summary>
         /// Controle txtEmail.
@@ -112,22 +112,13 @@ namespace Pollo {
         protected global::System.Web.UI.WebControls.TextBox txtUser;
         
         /// <summary>
-        /// Controle btnLimpar.
+        /// Controle btnEditar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLimpar;
-        
-        /// <summary>
-        /// Controle btnCadastrar.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCadastrar;
+        protected global::System.Web.UI.WebControls.Button btnEditar;
         
         /// <summary>
         /// Controle lblErro.
