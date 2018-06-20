@@ -20,6 +20,9 @@ function abrirFrame(id){
     
 }
 
+function editar_usuario() {
+    window.location.href = "../area_usuario/editar_usuario.aspx";
+}
 
 function troca_icon(id){
 	

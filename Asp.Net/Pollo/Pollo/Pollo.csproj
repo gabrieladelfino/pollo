@@ -120,6 +120,18 @@
     <Content Include="imagens\code\time\livia.png" />
     <Content Include="imagens\code\time\lucas.jpg" />
     <Content Include="imagens\code\time\lucas.png" />
+    <Content Include="imagens\fotos_usuarios\1.png" />
+    <Content Include="imagens\fotos_usuarios\1f61c.png" />
+    <Content Include="imagens\fotos_usuarios\2.png" />
+    <Content Include="imagens\fotos_usuarios\3.png" />
+    <Content Include="imagens\fotos_usuarios\813780_people_512x512.png" />
+    <Content Include="imagens\fotos_usuarios\avatar.png" />
+    <Content Include="imagens\fotos_usuarios\bruna.png" />
+    <Content Include="imagens\fotos_usuarios\elias.png" />
+    <Content Include="imagens\fotos_usuarios\gaby.png" />
+    <Content Include="imagens\fotos_usuarios\livia.png" />
+    <Content Include="imagens\fotos_usuarios\lucas.png" />
+    <Content Include="imagens\fotos_usuarios\smiling-face-with-heart.png" />
     <Content Include="imagens\icones\edit.png" />
     <Content Include="imagens\icones\eggs.png" />
     <Content Include="imagens\icones\eggs_cor.png" />
@@ -151,6 +163,7 @@
     <Content Include="area_ovo\ovo.aspx" />
     <Content Include="area_consulta\analytics.aspx" />
     <Content Include="area_inicio\monitor.aspx" />
+    <Content Include="area_usuario\editar_usuario.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -235,6 +248,13 @@
     <Compile Include="area_inicio\monitor.aspx.designer.cs">
       <DependentUpon>monitor.aspx</DependentUpon>
     </Compile>
+    <Compile Include="area_usuario\editar_usuario.aspx.cs">
+      <DependentUpon>editar_usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="area_usuario\editar_usuario.aspx.designer.cs">
+      <DependentUpon>editar_usuario.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fontes\Bebas.otf" />
@@ -251,6 +271,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="area_usuario\fotos\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>

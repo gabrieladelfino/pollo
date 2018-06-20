@@ -20,15 +20,11 @@
             <div id="conteudo_server">
 
                 <header>
-                    <div class="abrirMenu" id="abrirMenu" onclick="mostrar_menu()">
-                        <%--<img id="perfil" src="../imagens/list.png" />--%>
-                    </div>
+                    <div class="abrirMenu" id="abrirMenu" onclick="mostrar_menu()"></div>
                     <div class="titulo-pagina">
                         <asp:Label runat="server" ID="label" Text="Bem vindo" class="titulo-pagina-p"></asp:Label>
                     </div>
-                    <div class="perfil">
-                        <%--<img src="../imagens/user.png"/>--%>
-                    </div>
+                    <div class="perfil" id="editar" onclick="editar_usuario()"></div>
                 </header>
              
                 <main>
@@ -66,11 +62,11 @@
                     <div class="border"></div>
                 </footer>
                 <script>
-  window.fcWidget.init({
-    token: "c397a11d-9a1e-4236-b72e-46fc012dce16",
-    host: "https://wchat.freshchat.com"
-  });
-</script>
+                      window.fcWidget.init({
+                        token: "c397a11d-9a1e-4236-b72e-46fc012dce16",
+                        host: "https://wchat.freshchat.com"
+                      });
+                </script>
             </div>
         </form>
     </body>
