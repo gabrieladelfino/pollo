@@ -37,6 +37,8 @@ namespace Pollo
             public int codChocadeira;
             public int tempoDiaOvo;
             public double temperatura;
+            public double temperatura_ideal;
+            public double temperatura_atual;
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -74,21 +76,22 @@ namespace Pollo
                     monitor.Controls.Add(lblNome);
                     
                     Label lblTemperatura = new Label();
-                    lblTemperatura.Text = "" + cc.ElementAt(i).temperatura;
+                    lblTemperatura.Text = "" + cc.ElementAt(i).temperatura_atual;
 
-                    if (temperatura_atual < (temperatura_ideal - 1))
+                    if (cc.ElementAt(i).temperatura_atual < (cc.ElementAt(i).temperatura_ideal - 1))
                     {
                         lblTemperatura.CssClass = "titulos_monitor_temp_frio";
                     }
-                    else if (temperatura_atual > (temperatura_ideal + 1))
+
+                    else if (cc.ElementAt(i).temperatura_atual > (cc.ElementAt(i).temperatura_ideal + 1))
                     {
                         lblTemperatura.CssClass = "titulos_monitor_temp_quente";
                     }
+
                     else
                     {
                         lblTemperatura.CssClass = "titulos_monitor_temp_neutro";
                     }
-
                     monitor.Controls.Add(lblTemperatura);
 
                     Label lblTempoRestante = new Label();
@@ -161,6 +164,8 @@ namespace Pollo
 
         public void AddLista()
         {
+            c.temperatura_atual = temperatura_atual;
+            c.temperatura_ideal = temperatura_ideal;
             c.nomeChocadeira = nome_chocadeira;
             c.codChocadeira = cod_chocadeira;
             c.temperatura = temperatura;
