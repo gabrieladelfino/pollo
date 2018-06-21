@@ -68,7 +68,7 @@ namespace Pollo
             if (fileImagem.HasFile)
             {
                 string nome_imagem = fileImagem.FileName;
-                string path = "~/area_usuario/fotos/" + nome_imagem.ToString();
+                string path = "/area_usuario/fotos/" + nome_imagem.ToString();
                 fileImagem.PostedFile.SaveAs(Server.MapPath(path));
                 
                 using (SqlConnection conexao = new SqlConnection(linkserver))
