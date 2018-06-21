@@ -22,11 +22,14 @@ namespace Pollo
         double temperatura_atual, temperatura_ideal;
         Chocadeira c;
         List<Chocadeira> cc;
-        Panel monitor;
-        Button btnLampada;
-        SerialPort conexao = new SerialPort("COM3", 9600);
         bool status;
 
+        string nome_chocadeira;
+        int cod_chocadeira;
+
+        double temperatura;
+
+        int cod_ovo = 0;
 
         public struct Chocadeira
         {
@@ -38,9 +41,6 @@ namespace Pollo
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ListarChocadeiras();
-            CriarDiv();
-
             #region Verificando se o usuario está logado
             string cod_usuario = (string)Session["cod_usuario"];
             if (cod_usuario == null)
@@ -48,15 +48,19 @@ namespace Pollo
                 Response.Redirect("../index.aspx");
             }
             #endregion
+
+            ListarChocadeiras();
+            CriarDiv();
+
         }
 
         public void CriarDiv()
         {
             for (i = 0; i < cc.Count; i++)
             {
-
-                monitor = new Panel();
+                Panel monitor = new Panel();
                 monitor.CssClass = "monitor";
+                monitores.Controls.Add(monitor);
 
                 if (c.tempoDiaOvo < 1)
                 {
@@ -68,15 +72,7 @@ namespace Pollo
                     lblNome.Text = "" + cc.ElementAt(i).nomeChocadeira;
                     lblNome.CssClass = "titulos_monitor";
                     monitor.Controls.Add(lblNome);
-
-                    btnLampada = new Button();
-                    btnLampada.Text = "";
-                    btnLampada.CssClass = "botoes";
-                    btnLampada.Command += Lampada;
-                    btnLampada.CommandArgument = cc.ElementAt(i).codChocadeira.ToString();
-                    monitor.Controls.Add(btnLampada);
-
-
+                    
                     Label lblTemperatura = new Label();
                     lblTemperatura.Text = "" + cc.ElementAt(i).temperatura;
 
@@ -99,8 +95,7 @@ namespace Pollo
                     lblTempoRestante.Text = "Dias restantes: " + cc.ElementAt(i).tempoDiaOvo;
                     lblTempoRestante.CssClass = "titulos_monitor_tempo";
                     monitor.Controls.Add(lblTempoRestante);
-
-                    monitores.Controls.Add(monitor);
+                    
                 }
 
             }
@@ -115,8 +110,7 @@ namespace Pollo
         {
             string cod_usuario = (string)Session["cod_usuario"];
             int cod_user = Convert.ToInt32(cod_usuario);
-            int cod_ovo = 0;
-
+            
             c = new Chocadeira();
             cc = new List<Chocadeira>();
 
@@ -130,13 +124,25 @@ namespace Pollo
                     {
                         while (reader.Read() == true)
                         {
-                            c.codChocadeira = reader.GetInt32(0);
-                            c.nomeChocadeira = reader.GetString(1);
+                            cod_chocadeira = reader.GetInt32(0);
+                            nome_chocadeira = reader.GetString(1);
                             cod_ovo = reader.GetInt32(2);
+                            ListarOvo();
                         }
                     }
                 }
 
+              
+               
+
+            }
+        }
+
+        public void ListarOvo()
+        {
+            using (SqlConnection conexao = new SqlConnection(linkServer))
+            {
+                conexao.Open();
                 using (SqlCommand cmd = new SqlCommand("SELECT tbo.temperatura, tbm.temperatura FROM Pollo_Ovo AS tbo, Pollo_Media_Minuto AS tbm WHERE cod_ovo = " + cod_ovo + " AND tbm.minuto = (SELECT MAX(minuto) FROM Pollo_Media_Minuto)", conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -145,14 +151,21 @@ namespace Pollo
                         {
                             temperatura_ideal = reader.GetDouble(0);
                             temperatura_atual = reader.GetDouble(1);
-                            c.temperatura = reader.GetDouble(1);
-                            c.tempoDiaOvo = DiasRestantes();
-                            cc.Add(c);
+                            temperatura = reader.GetDouble(1);
+                            AddLista();
                         }
                     }
                 }
-
             }
+        }
+
+        public void AddLista()
+        {
+            c.nomeChocadeira = nome_chocadeira;
+            c.codChocadeira = cod_chocadeira;
+            c.temperatura = temperatura;
+            c.tempoDiaOvo = DiasRestantes();
+            cc.Add(c);
         }
 
         public int DiasRestantes()
@@ -185,37 +198,6 @@ namespace Pollo
             }
 
             return tempo;
-        }
-
-        protected void txtPesquisar_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public void Lampada(object sender, CommandEventArgs e)
-        {
-            conexao.Open();
-
-
-            if (status)
-            {
-                conexao.Write("true");
-                string retorno = conexao.ReadLine();
-                conexao.Close();
-                status = !status;
-            }
-            else
-            {
-                conexao.Write("falsa");
-                string retorno = conexao.ReadLine();
-                conexao.Close();
-                status = !status;
-            }
-
-
-
-
-
         }
     }
 }

@@ -23,7 +23,8 @@ namespace Pollo
         public Button btnExcluir;
         public Chocadeira c;
         public List<Chocadeira> cc;
-       
+        
+
         public struct Chocadeira
         {
             public string nomeChocadeira;
@@ -32,6 +33,7 @@ namespace Pollo
 
         protected void Page_Load(object sender, EventArgs e)
         {
+           
 
             #region Verificando se o usuario está logado
             string cod_usuario = (string)Session["cod_usuario"];
@@ -46,16 +48,15 @@ namespace Pollo
 
             if (IsPostBack == false)
             {
+                Session["statusc"] = false;
 
-                
                 using (SqlConnection conexao = new SqlConnection(linkserver))
                 {
-
                     conexao.Open();
 
                     #region Alimentando a ddl do tipo de ovo
                     #region Selecionando cod, tipo e cod do tamanho
-                    using (SqlCommand cmd = new SqlCommand("SELECT cod_ovo, tipo, cod_tamanho FROM Pollo_Ovo WHERE cod_usuario= 1000 OR cod_usuario=" + cod_usuario, conexao))
+                    using (SqlCommand cmd = new SqlCommand("SELECT cod_ovo, tipo, cod_tamanho FROM Pollo_Ovo WHERE cod_usuario= 1000 OR cod_usuario =" + cod_usuario, conexao))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -64,26 +65,38 @@ namespace Pollo
                                 cod_ovo = reader.GetInt32(0);
                                 tipo = reader.GetString(1);
                                 cod_tamanho = reader.GetInt32(2);
+                                ListarTamanho();
                             }
                         }
                     }
                     #endregion
-                    #region Identificando o tamanho com o codigo
-                    using (SqlCommand cmd = new SqlCommand("SELECT tamanho FROM Pollo_Tamanho_Ovo WHERE cod_tamanho =" + cod_tamanho, conexao))
-                    {
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read() == true)
-                            {
-                                string tamanho = reader.GetString(0);
-                                ddlCod_ovo.Items.Add(new ListItem(tipo + " " + tamanho, cod_ovo + ""));
-                            }
-                        }
-                    }
-                    #endregion
+                   
                     #endregion
                 }
             }
+        }
+
+        public void ListarTamanho()
+        {
+            #region Identificando o tamanho com o codigo
+            using (SqlConnection conexao = new SqlConnection(linkserver))
+            {
+
+                conexao.Open();
+
+                using (SqlCommand cmd = new SqlCommand("SELECT tamanho FROM Pollo_Tamanho_Ovo WHERE cod_tamanho =" + cod_tamanho, conexao))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            string tamanho = reader.GetString(0);
+                            ddlCod_ovo.Items.Add(new ListItem(tipo + " " + tamanho, cod_ovo + ""));
+                        }
+                    }
+                }
+            }
+            #endregion
         }
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
@@ -272,6 +285,8 @@ namespace Pollo
         {
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
+                conexao.Open();
+
                 using (SqlCommand cmd = new SqlCommand("SELECT tempo_dia FROM Pollo_Ovo WHERE cod_ovo = " + ddlCod_ovo.SelectedValue, conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -290,6 +305,7 @@ namespace Pollo
             using (SqlConnection conexao = new SqlConnection(linkserver))
             {
                 conexao.Open();
+
                 using (SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR, (DATEADD(DAY," + tempo + ",  '" + inicio + "' )),111) FROM Pollo_Chocadeira", conexao))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
